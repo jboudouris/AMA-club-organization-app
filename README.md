@@ -4,7 +4,7 @@ Requirements and Specification Document
 2019-02-09, version 1.0
 
 # Project Abstract
-Running a student club is a complicated process and organizations often end up relying on many different applicationsas a result.This disorganization leads to a need for a larger boardand difficulties planning events and managing administrativetasks. Ultimatelythese setbacks slow down and complicate the club’s operations. By addressing these issues and coming up with a solution the club would be able to streamline their operations, reduce the size of their executive board and be able to be much more effective in their role on campus. The club would be ableto perform at a much better standard and accomplish much more.
+Running a student club is a complicated process and organizations often end up relying on many different applications a result.This disorganization leads to a need for a larger boardand difficulties planning events and managing administrativetasks. Ultimatelythese setbacks slow down and complicate the club’s operations. By addressing these issues and coming up with a solution the club would be able to streamline their operations, reduce the size of their executive board and be able to be much more effective in their role on campus. The club would be ableto perform at a much better standard and accomplish much more.
 
 ### Tentative Features
 Sign-in
