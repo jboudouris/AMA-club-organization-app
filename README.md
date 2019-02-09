@@ -20,7 +20,7 @@ The system would bea mobile application which all members of the club would use.
 ## Document Revision History
 Your first version of this document is version 1.0. After that minor changes increment the minor version number (e.g., 1.1, 1.2, …) and major changes increment the major version number and set the minor number to zero (e.g., 2.0, 3.0, …). We will follow this convention with other documents as well.
 
-Rev. 1.0 <YYYY-MM-DD>: initial version
+Rev. 1.0 2019-02-09: initial version
 
 ## Customer
 A brief description of the customer for this software, both in general (the population who might eventually use such a system) and specifically for this document (the customer(s) who informed this document). Every project is expected to find an external customer (i.e., not you). Requirements should not be derived simply from discussion among team members. Ideally your customer should not only talk to you about requirements but also be excited later in the semester to use the system.
