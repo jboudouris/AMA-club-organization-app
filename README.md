@@ -1,10 +1,12 @@
 # AMA-club-organization-app
 
 <Your Project Name>
+# AMA Club App
 Requirements and Specification Document
-<YYYY-MM-DD>, version 1.0
-Project Abstract
-A one paragraph summary of what the software will do.
+2019-02-09, version 1.0
+
+# Project Abstract
+
 
 Document Revision History
 Your first version of this document is version 1.0. After that minor changes increment the minor version number (e.g., 1.1, 1.2, …) and major changes increment the major version number and set the minor number to zero (e.g., 2.0, 3.0, …). We will follow this convention with other documents as well.
