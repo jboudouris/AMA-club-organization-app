@@ -21,7 +21,6 @@ The system would be a mobile application which all members of the club would use
 * Executive chat room
    * Schedule push notifications
 * DM Officers
-* Minutes storage and history
 * Dues notification
 * autocompiled newsletter?
 * question board
