@@ -10,6 +10,7 @@ The system would be a mobile application which all members of the club would use
 
 ### Tentative Features- "how can we disseminate information"
 * member profile!
+    * need access code
     * ability to delete or be deleted by admin
     * check status
 * Sign-in!
@@ -25,7 +26,8 @@ The system would be a mobile application which all members of the club would use
 * autocompiled newsletter?
 * question board
 * election system
-* photo gallery!
+* photo gallery wall
+    * included text post/ minutes thingy
 * member list
 
 ## Document Revision History
