@@ -15,10 +15,11 @@ The system would be a mobile application which all members of the club would use
 * Polling
 * Events
     * flag yourself as 'going'
+    * event abstract/summary
 * Executive chat room
    * Schedule push notifications
 * DM Officers
-* Minutes
+* Minutes storage and history
 * Dues notification
 * autocompiled newsletter?
 * question board
