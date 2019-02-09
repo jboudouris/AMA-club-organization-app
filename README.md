@@ -13,22 +13,23 @@ The system would be a mobile application which all members of the club would use
     * need access code
     * ability to delete or be deleted by admin
     * check status
+    * status set by exec
+         * general member, active member, lead member
 * Sign-in!
 * Calendar!
-* Polling
+* Polling~
 * Events!
     * flag yourself as 'going'
     * event abstract/summary
-* Executive chat room
+* Executive chat room~
    * Schedule push notifications
-* DM Officers
-* Dues notification
-* autocompiled newsletter?
-* question board
-* election system
-* photo gallery wall
+* DM Officers!
+* Dues notification!
+* autocompiled newsletter~
+* election system~
+* photo gallery wall!
     * included text post/ minutes thingy
-* member list
+* member list!
 
 ## Document Revision History
 Your first version of this document is version 1.0. After that minor changes increment the minor version number (e.g., 1.1, 1.2, …) and major changes increment the major version number and set the minor number to zero (e.g., 2.0, 3.0, …). We will follow this convention with other documents as well.
