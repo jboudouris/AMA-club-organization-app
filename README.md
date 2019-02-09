@@ -9,12 +9,13 @@ Running a student club is a complicated process. As a result organizations often
 The system would be a mobile application which all members of the club would use. The board members would have the ability to create new content to broadcast to club members, as well as see data about club members that the board currently collects by hand. The use of a single mobile application allows for a central place to manage as many operations of the club in one easily accessible place. The application would essentially combine Slack, Google Calendars, Google Docs, and Doodle polls.By adding bits and pieces of these technologies the existing needs for these applications would disappearand allow all data to be much more easily accessibleand useable.
 
 ### Tentative Features- "how can we disseminate information"
-* member profile
+* member profile!
     * ability to delete or be deleted by admin
-* Sign-in
-* Calendar
+    * check status
+* Sign-in!
+* Calendar!
 * Polling
-* Events
+* Events!
     * flag yourself as 'going'
     * event abstract/summary
 * Executive chat room
@@ -25,7 +26,7 @@ The system would be a mobile application which all members of the club would use
 * autocompiled newsletter?
 * question board
 * election system
-* photo gallery
+* photo gallery!
 * member list
 
 ## Document Revision History
