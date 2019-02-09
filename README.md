@@ -4,18 +4,16 @@ Requirements and Specification Document
 2019-02-09, version 1.0
 
 # Project Abstract
-Running a student club is a complicated process and organizations often end up relying on many different applications a result.This disorganization leads to a need for a larger boardand difficulties planning events and managing administrative tasks. Ultimately these setbacks slow down and complicate the club’s operations. By addressing these issues and coming up with a solution the club would be able to streamline their operations, reduce the size of their executive board and be able to be much more effective in their role on campus. The club would be ableto perform at a much better standard and accomplish much more.
-
-The system would bea mobile application which all members of the club would use. The board members would have the ability to create new content to broadcast to club members, as well as see data about club members that the board currently collects by hand. The use of a single mobile application allows for a central place to manage as many operations of the club in one easily accessible place. The application would essentially combine Slack, Google Calendars, Google Docs, and Doodle polls.By adding bits and pieces of these technologies the existing needs for these applications would disappearand allow all data to be much more easily accessibleand useable.
+Running a student club is a complicated process and organizations often end up relying on many different applications a result.This disorganization leads to a need for a larger boardand difficulties planning events and managing administrativetasks. Ultimatelythese setbacks slow down and complicate the club’s operations. By addressing these issues and coming up with a solution the club would be able to streamline their operations, reduce the size of their executive board and be able to be much more effective in their role on campus. The club would be ableto perform at a much better standard and accomplish much more.
 
 ### Tentative Features
-Sign-in
-Calendar
-Polling
-Events
-Executive chat room
-   Schedule push notifications
-DM Officers
+*Sign-in
+*Calendar
+*Polling
+*Events
+*Executive chat room
+   *Schedule push notifications
+*DM Officers
 
 ## Document Revision History
 Your first version of this document is version 1.0. After that minor changes increment the minor version number (e.g., 1.1, 1.2, …) and major changes increment the major version number and set the minor number to zero (e.g., 2.0, 3.0, …). We will follow this convention with other documents as well.
