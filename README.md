@@ -13,7 +13,7 @@ Polling
 Events
 Executive chat room
    Schedule push notifications
-  
+DM Officers
 
 ## Document Revision History
 Your first version of this document is version 1.0. After that minor changes increment the minor version number (e.g., 1.1, 1.2, …) and major changes increment the major version number and set the minor number to zero (e.g., 2.0, 3.0, …). We will follow this convention with other documents as well.
