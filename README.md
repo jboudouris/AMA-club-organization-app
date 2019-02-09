@@ -13,6 +13,7 @@ The system would bea mobile application which all members of the club would use.
 * Calendar
 * Polling
 * Events
+    * flag yourself as 'going'
 * Executive chat room
    * Schedule push notifications
 * DM Officers
