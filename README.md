@@ -54,7 +54,7 @@ The system would be a mobile application which all members of the club would use
 ## Document Revision History
 Rev. 1.0 <YYYY-MM-DD>: initial version
 
-## Customer
+## Customer - James
 A brief description of the customer for this software, both in general (the population who might eventually use such a system) and specifically for this document (the customer(s) who informed this document). Every project is expected to find an external customer (i.e., not you). Requirements should not be derived simply from discussion among team members. Ideally your customer should not only talk to you about requirements but also be excited later in the semester to use the system.
 
 ## Competitive Landscape
