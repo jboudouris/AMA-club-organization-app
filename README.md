@@ -54,7 +54,7 @@ The system would be a mobile application which all members of the club would use
 ## Document Revision History
 Rev. 1.0 <YYYY-MM-DD>: initial version
 
-## Customer - James
+## Customer
 The Customer for the AMA club organization app is the AMA organization on campus. Specifically, we are communicating with the Vice President of the club. She will be able to test the app along with other members of their executive board and selected club members throughout the development process. 
 
 She is the direct contact for creating the applications specifications, meeting with our development group to discuss what features they would like to see. She has helped organize which features are priority and would have the biggest impact to her clubs efficiency and how they would impact the club. She has also expressed desire for certain features which would be useful but not entirely required to have a functioning application. She is able to check in with her club for further ideas which emerge over the semester and provide immediate feedback on the project as needed. We will continue to meet with her whenever we have questions or features for her to test, or when she has a new request or feedback for us.
