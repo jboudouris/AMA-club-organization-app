@@ -3,10 +3,8 @@ AMA Club App
 Requirements and Specification Document
 2019-02-09, version 1.0
 
-# Project Abstract- 
-Running a student club is a complicated process. As a result organizations often end up relying on many different applications.This disorganization leads to a need for a larger boardand difficulties planning events and managing administrative tasks. Ultimately these setbacks slow down and complicate the club’s operations. By addressing these issues and coming up with a solution the club would be able to streamline their operations, reduce the size of their executive board and be able to be much more effective in their role on campus. The club would be ableto perform at a much better standard and accomplish much more.
-
-The system would be a mobile application which all members of the club would use. The board members would have the ability to create new content to broadcast to club members, as well as see data about club members that the board currently collects by hand. The use of a single mobile application allows for a central place to manage as many operations of the club in one easily accessible place. The application would essentially combine Slack, Google Calendars, Google Docs, and Doodle polls.By adding bits and pieces of these technologies the existing needs for these applications would disappearand allow all data to be much more easily accessibleand useable.
+# Project Abstract - Logan
+Running a student organization is a complicated process. From struggling with the logistics of setting up events to handling administrative tasks like tracking member involvement, the process of running a student organization in today's world requires several apps to manage. In the present day, apps like Slack, Google Calendars, Google Docs, and Doodle Polls would be used to handle all these day-to-day problems. The goal of the AMA Club Organization App is to streamline all these processes and centralize their use within a single app. The key features of this application will be a calendar where members can view upcoming events and RSVP to them, a profile page where members can see their standing, a social panel with access to a member list and chatrooms, and a club info page where important documents and notifications will be posted. The system will be a mobile application in which all members of the club would use and will improve the functionality of the organization as a whole. 
 
 ### Primary Goals
 * member profile
