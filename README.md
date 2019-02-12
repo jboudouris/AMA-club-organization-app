@@ -3,7 +3,7 @@ AMA Club App
 Requirements and Specification Document
 2019-02-09, version 1.0
 
-# Project Abstract - Logan
+## Project Abstract - Logan
 Running a student organization is a complicated process. From struggling with the logistics of setting up events to handling administrative tasks like tracking member involvement, the process of running a student organization in today's world requires several apps to manage. In the present day, apps like Slack, Google Calendars, Google Docs, and Doodle Polls would be used to handle all these day-to-day problems. The goal of the AMA Club Organization App is to streamline all these processes and centralize their use within a single app. The key features of this application will be a calendar where members can view upcoming events and RSVP to them, a profile page where members can see their standing, a social panel with access to a member list and chatrooms, and a club info page where important documents and notifications will be posted. The system will be a mobile application in which all members of the club would use and will improve the functionality of the organization as a whole. 
 
 ### Primary Goals
