@@ -59,7 +59,9 @@ She is the direct contact for creating the applications specifications, meeting 
 
 ## Competitive Landscape
 Since our product incorporates many features ranging from document and calendar sharing to group messaging and polling, there are many existing applications that intersect with some functionality of our application. Because of this, it is important to analyze the competitive landscape in two distinct categories. The first category will be for direct competitors, which are cross-platform mobile applications that are geared to allow clubs or groups of people operate effectively and have features that reflect our user requirements/main features. The second category will be for indirect competitors, which will be a collection of a variety of software systems that implement a subset of the functionality of our application. We are looking into indirect competitors to ensure our solution is more effective than using multiple different applications, that together outperform the functionalities of our app, so our customer will have a solution better than their existing one. Additionally, these alternative solutions are great sources for evaluating their strengths.
+
 Direct competitors
+
 BAND
 https://band.us/home
 
