@@ -127,7 +127,24 @@ Describes any customer user interface requirements including graphical user inte
 At the present time there are very few secutiry concerns regarding this app. The only potential worry is how the user accounts are stored. The only user information that would be displayed on the application are the emails of the executive board. This information is already available on the wisc.edu website and not extremely sensative. In order to handle the account storage we will use external database tools which safely store these values (that is, signing in with your UW account).
 
 ## System Requirements
-List here all of the external entities, other than users, on which your system will depend. For example, if your system inter-operates with sendmail, or if you will depend on Apache for the web server, or if you must target both Unix and Windows, list those requirements here. List also memory requirements, performance/speed requirements, data capacity requirements, if applicable.
+System Requirements
+•	Android 4.1 or greater or iOS 9 or greater
+•	256 MB of total RAM
+•	25 MB of internal storage
+•	Touch Screen
+•	Internet Connection
+•	
+Front-End:
+•	C#
+•	React
+•	JavaScript
+•	HTML and CSS
+•	TypeScript
+Back-End:
+•	SQLite
+Version Control:
+•	GitHub
+
 
 ## Specification- Jake
 A detailed specification of the system. Every possible execution should be in the specification, though not every aspect need be covered in extraordinary depth. UML, or other diagrams, such as finite automata, or other appropriate specification formalisms, are encouraged over natural language.
