@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "646738391243",
+    "firebase_url": "https://amaapp-650d3.firebaseio.com",
+    "project_id": "amaapp-650d3",
+    "storage_bucket": "amaapp-650d3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:646738391243:android:f19bba6d06d35a0b",
+        "android_client_info": {
+          "package_name": "com.amaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "646738391243-132a8dd9icq4rjjqh2bj5rqjcsrn7go4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnzw50jM6GHJdJG3I_QFDi2DWEZ-7K_IQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
