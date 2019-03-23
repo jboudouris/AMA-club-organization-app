@@ -120,7 +120,7 @@ This section lists the behavior that the users see. This information needs to be
 ## Use Cases
 Use cases that support the user requirements in the previous section. Every major scenario should be represented by a use case, and every use case should say something not already illustrated by the other use cases. Diagrams (such as sequence charts) are encouraged. Ask the customer what are the most important use cases to implement by the deadline. You can have a total ordering, or mark use cases with “must have,” “useful,” or “optional.” For each use case you may list one or more concrete acceptance tests (concrete scenarios that the customer will try to see if the use case is implemented).
 
-## User Interface Requirements- Jake
+## User Interface Requirements
 Describes any customer user interface requirements including graphical user interface requirements as well as data exchange format requirements. This also should include necessary reporting and other forms of human readable input and output. This should focus on how the feature or product and user interact to create the desired workflow. Describing your intended interface as “easy” or “intuitive” will get you nowhere unless it is accompanied by details.
 
 ## Security Requirements
@@ -146,5 +146,5 @@ Version Control:
 •	GitHub
 
 
-## Specification- Jake
+## Specification
 A detailed specification of the system. Every possible execution should be in the specification, though not every aspect need be covered in extraordinary depth. UML, or other diagrams, such as finite automata, or other appropriate specification formalisms, are encouraged over natural language.
