@@ -3,7 +3,7 @@ AMA Club App
 Requirements and Specification Document
 2019-02-09, version 1.0
 
-## Project Abstract - Logan
+## Project Abstract
 Running a student organization is a complicated process. From struggling with the logistics of setting up events to handling administrative tasks like tracking member involvement, the process of running a student organization in today's world requires several apps to manage. In the present day, apps like Slack, Google Calendars, Google Docs, and Doodle Polls would be used to handle all these day-to-day problems. The goal of the AMA Club Organization App is to streamline all these processes and centralize their use within a single app. The key features of this application will be a calendar where members can view upcoming events and RSVP to them, a profile page where members can see their standing, a social panel with access to a member list and chatrooms, and a club info page where important documents and notifications will be posted. The system will be a mobile application in which all members of the club would use and will improve the functionality of the organization as a whole. 
 
 ## Document Revision History
@@ -120,14 +120,31 @@ This section lists the behavior that the users see. This information needs to be
 ## Use Cases
 Use cases that support the user requirements in the previous section. Every major scenario should be represented by a use case, and every use case should say something not already illustrated by the other use cases. Diagrams (such as sequence charts) are encouraged. Ask the customer what are the most important use cases to implement by the deadline. You can have a total ordering, or mark use cases with “must have,” “useful,” or “optional.” For each use case you may list one or more concrete acceptance tests (concrete scenarios that the customer will try to see if the use case is implemented).
 
-## User Interface Requirements- Jake
+## User Interface Requirements
 Describes any customer user interface requirements including graphical user interface requirements as well as data exchange format requirements. This also should include necessary reporting and other forms of human readable input and output. This should focus on how the feature or product and user interact to create the desired workflow. Describing your intended interface as “easy” or “intuitive” will get you nowhere unless it is accompanied by details.
 
 ## Security Requirements
 At the present time there are very few secutiry concerns regarding this app. The only potential worry is how the user accounts are stored. The only user information that would be displayed on the application are the emails of the executive board. This information is already available on the wisc.edu website and not extremely sensative. In order to handle the account storage we will use external database tools which safely store these values (that is, signing in with your UW account).
 
 ## System Requirements
-List here all of the external entities, other than users, on which your system will depend. For example, if your system inter-operates with sendmail, or if you will depend on Apache for the web server, or if you must target both Unix and Windows, list those requirements here. List also memory requirements, performance/speed requirements, data capacity requirements, if applicable.
+System Requirements
+•	Android 4.1 or greater or iOS 9 or greater
+•	256 MB of total RAM
+•	25 MB of internal storage
+•	Touch Screen
+•	Internet Connection
+•	
+Front-End:
+•	C#
+•	React
+•	JavaScript
+•	HTML and CSS
+•	TypeScript
+Back-End:
+•	SQLite
+Version Control:
+•	GitHub
 
-## Specification- Jake
+
+## Specification
 A detailed specification of the system. Every possible execution should be in the specification, though not every aspect need be covered in extraordinary depth. UML, or other diagrams, such as finite automata, or other appropriate specification formalisms, are encouraged over natural language.
