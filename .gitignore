@@ -27,7 +27,6 @@ project.xcworkspace
 build/
 .idea
 .gradle
-android/gradlew
 local.properties
 *.iml
 
@@ -58,3 +57,4 @@ buck-out/
 
 
 
+android/gradlew
