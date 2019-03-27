@@ -17,7 +17,7 @@ export default class Login extends React.Component {
    firebase
      .auth()
      .signInWithEmailAndPassword(email, password)
-     .catch(error => this.setState({ errorMessage: error.message }))
+     .catch(error => this.setState({ errorMessage: 'Invalid information provided. Please try again' }))
    }
   render() {
     return (

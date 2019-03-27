@@ -18,7 +18,8 @@ export default class Login extends React.Component {
       //Email sent.
       alert('Sent');
     }).catch(function(error) {
-      //An error happened.
+      //An error happaned
+      alert('There was no account fount with the information provided');
     });
    }
   render() {
