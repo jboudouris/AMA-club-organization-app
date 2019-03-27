@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import {CalendarList} from 'react-native-calendars';
-import {View, Modal, Text, TouchableHighlight} from 'react-native';
+import {View, Modal, Text, TouchableHighlight, Button} from 'react-native';
 import { db } from '../config';
 
 
@@ -29,6 +29,7 @@ export default class HorizontalCalendarList extends Component {
       role: '',
       currentUserUid: '',
       full_Name: '',
+      attendantNum: '',
     };
   }
 
@@ -41,6 +42,7 @@ export default class HorizontalCalendarList extends Component {
       role: this.props.navigation.state.params.role,
       currentUserUid: this.props.navigation.state.params.currentUserUid,
       full_Name: this.props.navigation.state.params.full_Name,
+      attendantNum: this.props.navigation.state.params.attendantNum,
     });
 /*
     itemsRef.on('value', snapshot => {
@@ -84,6 +86,7 @@ export default class HorizontalCalendarList extends Component {
                   role: this.props.navigation.state.params.role,
                   currentUserUid: this.props.navigation.state.params.currentUserUid,
                   full_Name:this.props.navigation.state.params.full_Name,
+                  attendantNum: this.props.navigation.state.params.attendantNum,
                 });  }}
 
           markedDates={this.state.marked}

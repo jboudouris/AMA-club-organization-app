@@ -21,6 +21,7 @@ export default class AddItem extends Component {
     picture: '',
     RSVP: '',
     eventKey: '',
+    eventUKey: '',
   };
 
   componentDidMount() {
@@ -46,6 +47,7 @@ export default class AddItem extends Component {
             picture: items[i].picture,
             RSVP: items[i].RSVP,
             eventKey: items[i].eventKey,
+            eventUKey: items[i].key,
           });
         }
       }
@@ -66,6 +68,7 @@ export default class AddItem extends Component {
         <Text style={styles.title}>{this.state.picture}</Text>
         <Text style={styles.title}>{this.state.RSVP}</Text>
         <Text style={styles.title}>{this.state.eventKey}</Text>
+        <Text style={styles.title}>{this.state.eventUKey}</Text>
         <Button
           title="RSVP the event"
           onPress={() => {this.props.navigation.navigate('RSVP', {
@@ -76,6 +79,8 @@ export default class AddItem extends Component {
                   currentUserUid: this.props.navigation.state.params.currentUserUid,
                   full_Name:this.props.navigation.state.params.full_Name,
                   eventName: this.state.name,
+                  eventUKey: this.state.eventUKey,
+                  attendantNum: this.props.navigation.state.params.attendantNum,
                 });
               }}
         />

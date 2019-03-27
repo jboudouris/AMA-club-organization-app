@@ -15,8 +15,10 @@ export default class SignUp extends React.Component {
   state = {
     email: '',
     password: '',
+    confirmedPassword: '',
     first_Name: '',
     last_Name: '',
+    req: '',
     errorMessage: null
   }
   handleSignUp = () => {
@@ -33,6 +35,7 @@ export default class SignUp extends React.Component {
                 userKey: user.uid,
                 first_Name: this.state.first_Name,
                 last_Name: this.state.last_Name,
+                attendantNum: 0,
                 role: 'user',
               });
               this.sendVerification();
@@ -59,12 +62,19 @@ export default class SignUp extends React.Component {
   }
 
   checkEmail = () => {
-  //  if (this.state.email.includes("@wisc.edu") == true){
-      this.handleSignUp();
-  //  }
-//   else {
-  //    alert("Please enter your wisc email");
-  //  }
+    if (this.state.email.includes("@wisc.edu") == true){
+      if (this.state.password == this.state.confirmedPassword)
+      {
+        this.handleSignUp();
+      }
+      else
+      {
+        alert('Password does not matched');
+      }
+    }
+   else {
+      alert("Please enter your wisc email");
+    }
   }
 render() {
     return (
@@ -88,6 +98,14 @@ render() {
           style={styles.textInput}
           onChangeText={password => this.setState({ password })}
           value={this.state.password}
+        />
+        <TextInput
+          secureTextEntry
+          placeholder="Confirmed Password"
+          autoCapitalize="none"
+          style={styles.textInput}
+          onChangeText={confirmedPassword => this.setState({ confirmedPassword })}
+          value={this.state.confirmedPassword}
         />
         <TextInput
           placeholder="First Name"

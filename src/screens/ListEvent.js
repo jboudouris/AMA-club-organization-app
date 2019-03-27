@@ -34,7 +34,7 @@ export default class List extends Component {
       <ScrollView>
       <View style={styles.container}>
         {this.state.items.length > 0 ? (
-          <EventComponent items={this.state.items}/>
+          <EventComponent items={this.state.items} navigation={this.props.navigation}/>
         ) : (
           <Text>No items</Text>
         )}

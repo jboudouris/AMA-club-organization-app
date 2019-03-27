@@ -12,6 +12,8 @@ export default class Home extends Component {
     role: '',
     currentUserUid: '',
     full_Name: '',
+    attendantNum: '',
+    cond: 'true',
   };
   logout(){
     firebase.auth().signOut();
@@ -39,6 +41,8 @@ export default class Home extends Component {
             role: items[i].role,
             full_Name: items[i].first_Name + ' ' + items[i].last_Name,
             currentUserUid: items[i].userKey,
+            attendantNum: items[i].attendantNum,
+
           });
           break;
         }
@@ -52,12 +56,36 @@ export default class Home extends Component {
           'lastName: ' + this.state.last_Name + '\n' +
           'fullName: ' + this.state.full_Name + '\n' +
           'role: ' + this.state.role + '\n' +
+          'attendantNum: ' + this.state.attendantNum + '\n' +
           'userUid: ' + this.state.currentUserUid
 
         );
   }
 
-
+  renderElement(){
+   if(this.state.role == 'user'){
+      return <Button
+        title="Go to Calender"
+        onPress={() => {this.props.navigation.navigate('Calender', {
+                email: this.state.email,
+                first_Name: this.state.first_Name,
+                last_Name: this.state.last_Name,
+                role: this.state.role,
+                currentUserUid: this.state.currentUserUid,
+                full_Name: this.state.full_Name,
+                attendantNum: this.state.attendantNum,
+              });
+            }}
+      />;
+    }
+  else if (this.state.role == 'admin') {
+   return <Button
+     title="Create Event"
+     onPress={() => this.props.navigation.navigate('CreateEvent')}
+   />;
+ }
+ return null;
+}
   render() {
     return (
       <View>
@@ -87,6 +115,7 @@ export default class Home extends Component {
                  role: this.state.role,
                  currentUserUid: this.state.currentUserUid,
                  full_Name: this.state.full_Name,
+                 attendantNum: this.state.attendantNum,
                });
              }}
        />
@@ -122,6 +151,14 @@ export default class Home extends Component {
          title="Check this user role"
          onPress={() => this.logout3()}
        />
+       <Button
+         title="Check each event RSVP"
+         onPress={() => this.props.navigation.navigate('RSVPList')}
+       />
+       {this.state.cond ? <Text>Something </Text> : <Text>'False'</Text>}
+       <View>
+            { this.renderElement() }
+        </View>
      </View>
     );
   }

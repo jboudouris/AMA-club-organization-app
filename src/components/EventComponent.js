@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, TouchableHighlight } from 'react-native';
 import PropTypes from 'prop-types';
-
+import firebase from 'firebase';
 export default class ItemComponent extends Component {
   static propTypes = {
     items: PropTypes.array.isRequired,
@@ -22,11 +22,19 @@ export default class ItemComponent extends Component {
               <Text style={styles.itemtext}>Description: {item.description}</Text>
 
               <View>
-              <Button
-                title= {item.name}
-                color="red"
-                onPress={this.handleSubmit}
-              />
+              <TouchableHighlight
+                style={styles.button}
+                underlayColor="white"
+                onPress={() => {
+                    this.props.navigation.navigate('RSVPList', {
+                    eventName: item.name,
+                  });
+
+                }}
+
+              >
+                <Text style={styles.buttonText}>{item.name} RSVP List</Text>
+              </TouchableHighlight>
               </View>
             </View>
           );

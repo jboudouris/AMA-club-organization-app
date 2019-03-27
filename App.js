@@ -24,7 +24,9 @@ import AddPost from './src/screens/AddPost';
 import ViewAllPost from './src/screens/ViewAllPost';
 import ViewAllUser from './src/screens/ViewAllUser';
 import Chat from './src/screens/Chat';
-import EditEvent from './src/screens/EditEvent'
+import EditEvent from './src/screens/EditEvent';
+import ForgetPassword from './src/screens/ForgetPassword';
+import RSVPList from './src/screens/RSVPList';
 const AppNavigator = createStackNavigator(
   {
     Loading,
@@ -47,6 +49,8 @@ const AppNavigator = createStackNavigator(
     ViewAllUser,
     Chat,
     EditEvent,
+    ForgetPassword,
+    RSVPList,
   },
   {
     initialRouteName: 'Loading'

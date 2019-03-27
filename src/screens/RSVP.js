@@ -6,14 +6,47 @@ import {
   StyleSheet,
   TextInput,
 } from 'react-native';
-
+import firebase from 'firebase';
 import { db } from '../config';
 
-let addItem = (name, eventName) => {
-  db.ref('/userRSVP').push({
-    name: name,
-    eventName: eventName,
+let addItem = (name, eventName, eventUKey, isRSVP, currentUserUid, attendantNum) => {
+  let RSVP;
+  db.ref('/userRSVP').child(eventName).on('value', snapshot => {
+    if (snapshot.exists() == true){
+      let data = snapshot.val();
+      let items = Object.values(data);
+      for (let i=0; i< items.length; i++){
+        if (items[i].name == name){
+          RSVP = true;
+          break;
+        }
+        else {
+          RSVP = false;
+        }
+      }
+    }
+    //}
   });
+  if (RSVP == true){
+    alert('You already RSVP this event');
+  }
+  else {
+    //alert(RSVP);
+    key = db.ref('/userRSVP').child(eventName).push();
+    db.ref('/userRSVP').child(eventName).push({
+      name: name,
+      eventName: eventName,
+    });
+     let attendantNum1 = attendantNum + 1;
+     firebase.database().ref('user/' + currentUserUid).update({
+     'attendantNum': attendantNum1
+   });
+
+    alert('RSVP Sucess');
+  }
+
+
+
 };
 
 export default class AddItem extends Component {
@@ -26,6 +59,9 @@ export default class AddItem extends Component {
     role: '',
     currentUserUid: '',
     full_Name: '',
+    eventUKey: '',
+    attendantNum: '',
+    isRSVP: false,
   };
 
   componentDidMount() {
@@ -38,7 +74,30 @@ export default class AddItem extends Component {
       role: this.props.navigation.state.params.role,
       currentUserUid: this.props.navigation.state.params.currentUserUid,
       full_Name: this.props.navigation.state.params.full_Name,
+      eventUKey: this.props.navigation.state.params.eventUKey,
+      attendantNum: this.props.navigation.state.params.attendantNum,
     });
+    // db.ref('/userRSVP').child(this.props.navigation.state.params.eventName).on('value', snapshot => {
+    //   if (snapshot.exists() == true){
+    //     let data = snapshot.val();
+    //     let items = Object.values(data);
+    //     for (let i=0; i< items.length; i++){
+    //       if (items[i].name == this.state.name){
+    //         //alert(items[i].name == this.state.name);
+    //         this.setState({
+    //           isRSVP: true
+    //         });
+    //         break;
+    //       }
+    //       else {
+    //         this.setState({
+    //           isRSVP: false
+    //         });
+    //       }
+    //     }
+    //   }
+    //   //}
+    // });
     }
 
   handleChange = e => {
@@ -47,8 +106,9 @@ export default class AddItem extends Component {
     });
   };
   handleSubmit = () => {
-    addItem(this.state.name, this.state.eventName);
-    alert('Success');
+    addItem(this.state.name, this.state.eventName, this.state.eventUKey, this.state.isRSVP,
+            this.state.currentUserUid, this.state.attendantNum);
+    //alert('Success');
   };
 
   render() {
@@ -58,13 +118,14 @@ export default class AddItem extends Component {
         <Text style={styles.title}>{this.props.navigation.state.params.email}</Text>
         <Text style={styles.title}>{this.props.navigation.state.params.first_Name}</Text>
         <Text style={styles.title}>{this.props.navigation.state.params.eventName}</Text>
-        <TextInput style={styles.itemInput} onChange={this.handleChange} />
+        <Text style={styles.title}>{this.props.navigation.state.params.eventUKey}</Text>
+        <Text style={styles.title}>Attendant {this.props.navigation.state.params.attendantNum}</Text>
         <TouchableHighlight
           style={styles.button}
           underlayColor="white"
           onPress={this.handleSubmit}
         >
-          <Text style={styles.buttonText}>Add</Text>
+          <Text style={styles.buttonText}>RSVP</Text>
         </TouchableHighlight>
       </View>
     );
