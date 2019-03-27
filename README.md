@@ -147,4 +147,6 @@ Version Control:
 
 
 ## Specification
+=======
+List here all of the external entities, other than users, on which your system will depend. For example, if your system inter-operates with sendmail, or if you will depend on Apache for the web server, or if you must target both Unix and Windows, list those requirements here. List also memory requirements, performance/speed requirements, data capacity requirements, if applicable
 A detailed specification of the system. Every possible execution should be in the specification, though not every aspect need be covered in extraordinary depth. UML, or other diagrams, such as finite automata, or other appropriate specification formalisms, are encouraged over natural language.
