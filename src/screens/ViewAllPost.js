@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableHighlight } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableHighlight, ScrollView } from 'react-native';
 import PostComponent from '../components/PostComponent';
 
 import { db } from '../config';
@@ -50,6 +50,13 @@ export default class List extends Component {
 
       <View>
         <Text> Archives </Text>
+        <ScrollView>
+            {this.state.items.length > 0 ? (
+              <PostComponent items={this.state.items} />
+              ) : (
+              <Text>No items</Text>
+            )}
+        </ScrollView>
         <TextInput style={styles.itemInput} onChangeText={description => this.setState({ description })} />
         <TouchableHighlight
           style={styles.button}
@@ -58,11 +65,6 @@ export default class List extends Component {
         >
           <Text style={styles.buttonText}>Add</Text>
         </TouchableHighlight>
-        {this.state.items.length > 0 ? (
-          <PostComponent items={this.state.items} />
-          ) : (
-          <Text>No items</Text>
-        )}
       </View>
     );
   }

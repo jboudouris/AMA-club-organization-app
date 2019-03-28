@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import {CalendarList} from 'react-native-calendars';
-import {View, Modal, Text, TouchableHighlight, Button} from 'react-native';
+import {Header, View, Modal, Text, TouchableHighlight, Button} from 'react-native';
 import { db } from '../config';
 
 
@@ -44,19 +44,7 @@ export default class HorizontalCalendarList extends Component {
       full_Name: this.props.navigation.state.params.full_Name,
       attendantNum: this.props.navigation.state.params.attendantNum,
     });
-/*
-    itemsRef.on('value', snapshot => {
-      let data = snapshot.val();
-      let items = Object.values(data);
-      //this.setState({ items });
-    //for (let i=0; i< nextDay.length; i++)
-  //  {
-      nextDay.push(items[9].date);
 
-
-  //  }
-  })
-  */
     this.anotherFunc();
     }
 

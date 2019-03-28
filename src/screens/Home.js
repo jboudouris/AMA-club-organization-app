@@ -89,7 +89,36 @@ export default class Home extends Component {
   render() {
     return (
       <View>
-       <Text>Home Screen</Text>
+        <Button
+            title="Archives"
+            onPress={() => this.props.navigation.navigate('ViewAllPost')}
+        />
+        <Button
+            title="Profile"
+            onPress={() => {this.props.navigation.navigate('Profile', {
+               email: this.state.email,
+               first_Name: this.state.first_Name,
+               last_Name: this.state.last_Name,
+               role: this.state.role,
+               currentUserUid: this.state.currentUserUid,
+               full_Name: this.state.full_Name,
+               attendantNum: this.state.attendantNum,
+            });
+            }}
+        />
+        <Button
+            title="Calendar"
+            onPress={() => {this.props.navigation.navigate('Calender', {
+               email: this.state.email,
+               first_Name: this.state.first_Name,
+               last_Name: this.state.last_Name,
+               role: this.state.role,
+               currentUserUid: this.state.currentUserUid,
+               full_Name: this.state.full_Name,
+               attendantNum: this.state.attendantNum,
+             });
+           }}
+        />
        <Button
          title="Create Event"
          onPress={() => this.props.navigation.navigate('CreateEvent')}
@@ -107,58 +136,17 @@ export default class Home extends Component {
          onPress={() => this.props.navigation.navigate('EditEvent')}
        />
        <Button
-         title="Go to Calender"
-         onPress={() => {this.props.navigation.navigate('Calender', {
-                 email: this.state.email,
-                 first_Name: this.state.first_Name,
-                 last_Name: this.state.last_Name,
-                 role: this.state.role,
-                 currentUserUid: this.state.currentUserUid,
-                 full_Name: this.state.full_Name,
-                 attendantNum: this.state.attendantNum,
-               });
-             }}
-       />
-       <Button
-         title="Go to Archives"
-         onPress={() => this.props.navigation.navigate('Archives')}
-       />
-       <Button
-         title="Add Post"
-         onPress={() => this.props.navigation.navigate('AddPost')}
-       />
-       <Button
-         title="View All Post"
-         onPress={() => this.props.navigation.navigate('ViewAllPost')}
-       />
-       <Button
-         title="Log out"
-         onPress={() => this.logout()}
-       />
-       <Button
-         title="Unique ID"
-         onPress={() => this.logout1()}
-       />
-       <Button
-         title="Email Verified"
-         onPress={() => this.logout2()}
-       />
-       <Button
          title="View All User"
          onPress={() => this.props.navigation.navigate('ViewAllUser')}
-       />
-       <Button
-         title="Check this user role"
-         onPress={() => this.logout3()}
        />
        <Button
          title="Check each event RSVP"
          onPress={() => this.props.navigation.navigate('RSVPList')}
        />
-       {this.state.cond ? <Text>Something </Text> : <Text>'False'</Text>}
-       <View>
-            { this.renderElement() }
-        </View>
+      <Button
+        title="Log out"
+        onPress={() => this.logout()}
+      />
      </View>
     );
   }

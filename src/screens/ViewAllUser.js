@@ -40,12 +40,8 @@ export default class List extends Component {
     itemsRef.on('value', snapshot => {
       let data = snapshot.val();
       let items = Object.values(data);
-      //if (items.email != firebase.auth().currentUser.email)
-      //{
 
       this.setState({ items });
-      //}
-      //}
     });
   }
 
