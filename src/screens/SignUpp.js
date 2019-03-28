@@ -76,6 +76,34 @@ export default class SignUp extends React.Component {
       alert("Please enter your wisc email");
     }
   }
+
+  handleEmailChange = (email) => {
+    this.setState({
+      email: email
+    });
+  }
+
+  handlePasswordChange = (password) => {
+    this.setState({
+      password: password
+    });
+  }
+
+  handleConPasswordChange = (confirmedPassword) => {
+    this.setState({
+      confirmedPassword: confirmedPassword
+    });
+  }
+  handleFirstNameChange = (first_Name) => {
+    this.setState({
+      first_Name: first_Name
+    });
+  }
+  handleLastNameChange = (last_Name) => {
+    this.setState({
+      last_Name: last_Name
+    });
+  }
 render() {
     return (
       <View style={styles.container}>
@@ -88,7 +116,7 @@ render() {
           placeholder="Email"
           autoCapitalize="none"
           style={styles.textInput}
-          onChangeText={email => this.setState({ email })}
+          onChangeText={email => this.handleEmailChange({ email })}
           value={this.state.email}
         />
         <TextInput
@@ -96,7 +124,7 @@ render() {
           placeholder="Password"
           autoCapitalize="none"
           style={styles.textInput}
-          onChangeText={password => this.setState({ password })}
+          onChangeText={password => this.handlePasswordChange({ password })}
           value={this.state.password}
         />
         <TextInput
@@ -104,21 +132,21 @@ render() {
           placeholder="Confirmed Password"
           autoCapitalize="none"
           style={styles.textInput}
-          onChangeText={confirmedPassword => this.setState({ confirmedPassword })}
+          onChangeText={confirmedPassword => this.handleConPasswordChange({ confirmedPassword })}
           value={this.state.confirmedPassword}
         />
         <TextInput
           placeholder="First Name"
           autoCapitalize="none"
           style={styles.textInput}
-          onChangeText={first_Name => this.setState({ first_Name })}
+          onChangeText={first_Name => this.handleFirstNameChange({ first_Name })}
           value={this.state.first_Name}
         />
         <TextInput
           placeholder="Last Name"
           autoCapitalize="none"
           style={styles.textInput}
-          onChangeText={last_Name => this.setState({ last_Name })}
+          onChangeText={last_Name => this.handleLastNameChange({ last_Name })}
           value={this.state.last_Name}
         />
         <Button title="Sign Up" onPress={this.checkEmail} />

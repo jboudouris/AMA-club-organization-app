@@ -22,6 +22,13 @@ export default class Login extends React.Component {
       alert('There was no account fount with the information provided');
     });
    }
+
+   handleEmailChange = (email) => {
+     this.setState({
+       email: email
+     });
+   }
+
   render() {
     return (
       <View style={styles.container}>
@@ -34,7 +41,7 @@ export default class Login extends React.Component {
           style={styles.textInput}
           autoCapitalize="none"
           placeholder="Email"
-          onChangeText={email => this.setState({ email })}
+          onChangeText={email => handleEmailChange(email)}
           value={this.state.email}
         />
         <Button title="Send Password Reset Email" onPress={this.handleForget} />
