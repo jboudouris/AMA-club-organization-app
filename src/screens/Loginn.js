@@ -19,6 +19,18 @@ export default class Login extends React.Component {
      .signInWithEmailAndPassword(email, password)
      .catch(error => this.setState({ errorMessage: 'Invalid information provided. Please try again' }))
    }
+
+   handlePasswordChange = (password) => {
+     this.setState({
+       password: password
+     });
+   }
+
+   handleEmailChange = (email) => {
+     this.setState({
+       email: email
+     });
+   }
   render() {
     return (
       <View style={styles.container}>
@@ -31,7 +43,7 @@ export default class Login extends React.Component {
           style={styles.textInput}
           autoCapitalize="none"
           placeholder="Email"
-          onChangeText={email => this.setState({ email })}
+          onChangeText={email => this.handleEmailChange({ email })}
           value={this.state.email}
         />
         <TextInput
@@ -39,7 +51,7 @@ export default class Login extends React.Component {
           style={styles.textInput}
           autoCapitalize="none"
           placeholder="Password"
-          onChangeText={password => this.setState({ password })}
+          onChangeText={password => this.handlePasswordChange(password)}
           value={this.state.password}
         />
         <Button title="Login" onPress={this.handleLogin} />

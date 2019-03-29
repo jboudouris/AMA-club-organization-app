@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 
 import {CalendarList} from 'react-native-calendars';
-import {Header, View, Modal, Text, TouchableHighlight, Button} from 'react-native';
+import {View, Modal, Text, TouchableHighlight, Button} from 'react-native';
+import List from './ListEvent'
 import { db } from '../config';
 
 
@@ -79,6 +80,8 @@ export default class HorizontalCalendarList extends Component {
 
           markedDates={this.state.marked}
         />
+        <List>
+        </List>
       </View>
     );
   }
