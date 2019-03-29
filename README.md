@@ -1,5 +1,5 @@
-# AMA-club-organization-app
-AMA Club App
+# AMA Organization App
+AMA Organization App
 Requirements and Specification Document
 2019-02-09, version 1.0
 
