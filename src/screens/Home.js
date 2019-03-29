@@ -139,10 +139,6 @@ export default class Home extends Component {
          title="View All User"
          onPress={() => this.props.navigation.navigate('ViewAllUser')}
        />
-       <Button
-         title="Check each event RSVP"
-         onPress={() => this.props.navigation.navigate('RSVPList')}
-       />
       <Button
         title="Log out"
         onPress={() => this.logout()}

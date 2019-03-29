@@ -6,18 +6,25 @@ import {KeyboardAvoidingView, ScrollView, View, Modal, Text, TextInput, Touchabl
 import { db } from '../config';
 import firebase from 'firebase';
 let itemsRef = db.ref('/user');
-let addItem = (description, date, picture) => {
-let valuekey = db.ref('/user').push().key;
 
-  db.ref('/post/' + valuekey).update({
-    description: description,
-    date: new Date(),
-    picture: picture,
-    user: firebase.auth().currentUser.uid,
-    key: valuekey,
-
-
+let addUser = (alt_Email, first_Name, last_Name, full_Name, phone_Number, quote, payment, role) => {
+  let valuekey = '';
+  itemsRef.on('value', snapshot => {
+    let data = snapshot.val();
+    let items = Object.values(data);
+    for (let i=0; i < items.length; i++)
+    {
+      if(items[i].email == firebase.auth().currentUser.email)
+      {
+        valuekey = items[i].userkey;
+        alert(valuekey);
+        break;
+      }
+    }
   });
+//    firebase.database().ref('/user/' + valuekey).update({
+//      "first_Name": first_Name,
+//    });
 };
 
 
@@ -26,12 +33,15 @@ export default class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
       marked: null,
       email: '',
+      alt_Email: '',
       first_Name: '',
       last_Name: '',
       role: '',
+      quote: '',
+      payment: '',
+      phone_Number: '',
       currentUserUid: '',
       full_Name: '',
       attendantNum: '',
@@ -45,25 +55,24 @@ export default class Profile extends Component {
       first_Name: this.props.navigation.state.params.first_Name,
       last_Name: this.props.navigation.state.params.last_Name,
       role: this.props.navigation.state.params.role,
-      currentUserUid: this.props.navigation.state.params.currentUserUid,
-      full_Name: this.props.navigation.state.params.full_Name,
-      attendantNum: this.props.navigation.state.params.attendantNum,
     });
-  itemsRef.on('value', snapshot => {
-    let data = snapshot.val();
-    let items = Object.values(data);
-    for (let i=0; i< items.length; i++)
-    {
-      if(items[i].email == this.state.email)
-      {
+    alert(this.state.email);
+  }
 
-        valuekey = items[i].key;
+   handleSubmit = () => {
+     addUser(
+          this.state.alt_Email,
+          this.state.first_Name,
+          this.state.last_Name,
+          this.state.full_Name,
+          this.state.phone_Number,
+          this.state.quote,
+          this.state.payment,
+          this.state.role
+      );
+   };
 
-        break;
-      }
-    }
-  });
-}
+
   render() {
     return (
       <KeyboardAvoidingView>
@@ -71,26 +80,20 @@ export default class Profile extends Component {
       <View>
         <Text>First Name: </Text>
         <TextInput
-             placeholder={this.state.first_Name}
+             placeholder={this.props.navigation.state.params.first_Name}
             onChange={ (text) => this.setState({first_Name:text}) }
             underlineColorAndroid='transparent'
         />
         <Text>Last Name: </Text>
         <TextInput
-             placeholder={this.state.last_Name}
+             placeholder={this.props.navigation.state.params.last_Name}
             onChange={ (text) => this.setState({last_Name:text}) }
             underlineColorAndroid='transparent'
         />
-        <Text>Email: </Text>
+        <Text>Email: {this.props.navigation.state.params.email}</Text>
+        <Text>Alternate Email:</Text>
         <TextInput
-              placeholder={this.state.email}
-            onChange={ (text) => this.setState({email:text}) }
-            underlineColorAndroid='transparent'
-        />
-        <Text>Re-enter Email: </Text>
-        <TextInput
-              placeholder={this.state.email}
-            onChange={ (text) => this.setState({email:text}) }
+            onChange={ (text) => this.setState({alt_Email:text}) }
             underlineColorAndroid='transparent'
         />
         <Text>Phone Number: </Text>
@@ -106,17 +109,21 @@ export default class Profile extends Component {
         />
         <Text>Payment: </Text>
         <TextInput
-            onChange={ (text) => this.setState({phone_Number:text}) }
+            onChange={ (text) => this.setState({payment:text}) }
             underlineColorAndroid='transparent'
         />
         <Button
           title="Submit"
-          onPress={() => this.props.navigation.navigate('Profile')}
+          onPress={this.handleSubmit}
         />
         <Button
           title="Cancel"
           onPress={() => this.props.navigation.navigate('Profile')}
         />
+                <Button
+                  title="Email?"
+                  onPress={() => alert(this.state.first_Name)}
+                />
       </View>
       </ScrollView>
       </KeyboardAvoidingView>

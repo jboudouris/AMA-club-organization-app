@@ -6,21 +6,6 @@ import {View, Modal, Text, TouchableHighlight, Button} from 'react-native';
 import { db } from '../config';
 import firebase from 'firebase';
 let itemsRef = db.ref('/user');
-let addItem = (description, date, picture) => {
-let valuekey = db.ref('/user').push().key;
-
-  db.ref('/post/' + valuekey).update({
-    description: description,
-    date: new Date(),
-    picture: picture,
-    user: firebase.auth().currentUser.uid,
-    key: valuekey,
-
-
-  });
-};
-
-
 
 export default class Profile extends Component {
   constructor(props) {
@@ -81,14 +66,11 @@ export default class Profile extends Component {
         </View>
         <Button
           title="Edit Account"
-          onPress={() => {this.props.navigation.navigate('ProfileEdit', {
-             email: this.state.email,
-             first_Name: this.state.first_Name,
-             last_Name: this.state.last_Name,
-             role: this.state.role,
-             currentUserUid: this.state.currentUserUid,
-             full_Name: this.state.full_Name,
-             attendantNum: this.state.attendantNum,
+          onPress={() => {this.props.navigation.navigate('Profilee', {
+              email: this.state.email,
+              first_Name: this.state.first_Name,
+              last_Name: this.state.last_Name,
+              role: this.state.email,
           });
           }}
         />

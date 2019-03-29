@@ -50,7 +50,7 @@ export default class List extends Component {
 
       <View>
         <Text> Archives </Text>
-        <ScrollView>
+        <ScrollView style={styles.scrollView}>
             {this.state.items.length > 0 ? (
               <PostComponent items={this.state.items} />
               ) : (
@@ -75,5 +75,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: '#ebebeb'
+  },
+  scrollView: {
+    height: 400,
   }
 });

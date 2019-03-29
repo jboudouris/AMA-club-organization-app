@@ -28,6 +28,7 @@ import EditEvent from './src/screens/EditEvent';
 import ForgetPassword from './src/screens/ForgetPassword';
 import RSVPList from './src/screens/RSVPList';
 import Profile from './src/screens/Profile';
+import Profilee from './src/screens/Profilee';
 import ProfileEdit from './src/screens/ProfileEdit';
 
 const AppNavigator = createStackNavigator(
@@ -55,6 +56,7 @@ const AppNavigator = createStackNavigator(
     ForgetPassword,
     RSVPList,
     Profile,
+    Profilee,
     ProfileEdit,
   },
   {
