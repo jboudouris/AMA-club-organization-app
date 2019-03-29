@@ -40,25 +40,21 @@ export default class List extends Component {
     itemsRef.on('value', snapshot => {
       let data = snapshot.val();
       let items = Object.values(data);
-      //if (items.email != firebase.auth().currentUser.email)
-      //{
 
       this.setState({ items });
-      //}
-      //}
     });
   }
 
   render() {
     return (
 
-      <View>
+      <ScrollView style={styles.scrollView}>
         {this.state.items.length > 0 ? (
           <UserComponent items={this.state.items} navigation={this.props.navigation} />
           ) : (
           <Text>No items</Text>
         )}
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -68,5 +64,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: '#ebebeb'
+  },
+  scrollView: {
+    height: 400,
   }
 });

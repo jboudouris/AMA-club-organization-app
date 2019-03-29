@@ -27,6 +27,9 @@ import Chat from './src/screens/Chat';
 import EditEvent from './src/screens/EditEvent';
 import ForgetPassword from './src/screens/ForgetPassword';
 import RSVPList from './src/screens/RSVPList';
+import Profile from './src/screens/Profile';
+import ProfileEdit from './src/screens/ProfileEdit';
+
 const AppNavigator = createStackNavigator(
   {
     Loading,
@@ -51,6 +54,8 @@ const AppNavigator = createStackNavigator(
     EditEvent,
     ForgetPassword,
     RSVPList,
+    Profile,
+    ProfileEdit,
   },
   {
     initialRouteName: 'Loading'
