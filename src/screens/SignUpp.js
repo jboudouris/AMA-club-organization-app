@@ -30,14 +30,17 @@ export default class SignUp extends React.Component {
             if(user){
               if(this.state.email.includes("@wisc.edu")) {
                 db.ref('/user/' + user.uid).update({
-                email: this.state.email,
-                password: this.state.password,
-                userKey: user.uid,
-                first_Name: this.state.first_Name,
-                last_Name: this.state.last_Name,
-                attendantNum: 0,
-                role: 'user',
-              });
+                    email: this.state.email,
+                    password: this.state.password,
+                    userKey: user.uid,
+                    first_Name: this.state.first_Name,
+                    last_Name: this.state.last_Name,
+                    attendantNum: 0,
+                    role: 'user',
+                    quote: '',
+                    phone_Number: '',
+                    alt_Email: '',
+                });
               this.sendVerification();
               firebase.auth().signOut();
 
@@ -69,7 +72,7 @@ export default class SignUp extends React.Component {
       }
       else
       {
-        alert('Password does not matched');
+        alert('Passwords do not match');
       }
     }
    else {
@@ -116,7 +119,7 @@ render() {
           placeholder="Email"
           autoCapitalize="none"
           style={styles.textInput}
-          onChangeText={email => this.handleEmailChange({ email })}
+          onChangeText={email => this.handleEmailChange( email )}
           value={this.state.email}
         />
         <TextInput
@@ -124,7 +127,7 @@ render() {
           placeholder="Password"
           autoCapitalize="none"
           style={styles.textInput}
-          onChangeText={password => this.handlePasswordChange({ password })}
+          onChangeText={password => this.handlePasswordChange( password )}
           value={this.state.password}
         />
         <TextInput
@@ -132,21 +135,21 @@ render() {
           placeholder="Confirmed Password"
           autoCapitalize="none"
           style={styles.textInput}
-          onChangeText={confirmedPassword => this.handleConPasswordChange({ confirmedPassword })}
+          onChangeText={confirmedPassword => this.handleConPasswordChange( confirmedPassword )}
           value={this.state.confirmedPassword}
         />
         <TextInput
           placeholder="First Name"
           autoCapitalize="none"
           style={styles.textInput}
-          onChangeText={first_Name => this.handleFirstNameChange({ first_Name })}
+          onChangeText={first_Name => this.handleFirstNameChange( first_Name )}
           value={this.state.first_Name}
         />
         <TextInput
           placeholder="Last Name"
           autoCapitalize="none"
           style={styles.textInput}
-          onChangeText={last_Name => this.handleLastNameChange({ last_Name })}
+          onChangeText={last_Name => this.handleLastNameChange( last_Name )}
           value={this.state.last_Name}
         />
         <Button title="Sign Up" onPress={this.checkEmail} />

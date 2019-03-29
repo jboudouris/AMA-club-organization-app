@@ -14,6 +14,9 @@ export default class Home extends Component {
     full_Name: '',
     attendantNum: '',
     cond: 'true',
+    phone_Number: '',
+    quote: '',
+    payment: '',
   };
   logout(){
     firebase.auth().signOut();
@@ -42,7 +45,8 @@ export default class Home extends Component {
             full_Name: items[i].first_Name + ' ' + items[i].last_Name,
             currentUserUid: items[i].userKey,
             attendantNum: items[i].attendantNum,
-
+            phone_Number: items[i].phone_Number,
+            quote: items[i].quote,
           });
           break;
         }
@@ -103,6 +107,8 @@ export default class Home extends Component {
                currentUserUid: this.state.currentUserUid,
                full_Name: this.state.full_Name,
                attendantNum: this.state.attendantNum,
+               phone_Number: this.state.phone_Number,
+               quote: this.state.quote,
             });
             }}
         />
