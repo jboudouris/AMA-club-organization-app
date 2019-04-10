@@ -3,8 +3,6 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import Home from './src/screens/Home';
 
 // we will use these two screens later in our AppNavigator
-import AddItem from './src/screens/AddItem';
-import List from './src/screens/List';
 import AddUser from './src/screens/AddUser';
 import Login from './src/screens/Login';
 import Check from './src/screens/Check';
@@ -37,13 +35,11 @@ const AppNavigator = createStackNavigator(
     SignUp,
     Loginn,
     Main,
-    AddItem,
     CreateEvent,
     Home,
     ListEvent,
     RSVP,
     DeleteEvent,
-    List,
     Calender,
     EventDetail,
     Archives,
