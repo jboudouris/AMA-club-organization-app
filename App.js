@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
+import { View, StyleSheet } from 'react-native';
 import Home from './src/screens/Home';
 
 // we will use these two screens later in our AppNavigator
@@ -37,13 +38,11 @@ const AppNavigator = createStackNavigator(
     SignUp,
     Loginn,
     Main,
-    AddItem,
     CreateEvent,
     Home,
     ListEvent,
     RSVP,
     DeleteEvent,
-    List,
     Calender,
     EventDetail,
     Archives,
@@ -58,7 +57,11 @@ const AppNavigator = createStackNavigator(
     ProfileEdit,
   },
   {
-    initialRouteName: 'Loading'
+    initialRouteName: 'Loading',
+    headerMode: 'none',
+    navigationOptions: {
+        headerVisible: false,
+    },
   }
 );
 
