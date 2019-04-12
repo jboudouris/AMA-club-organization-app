@@ -19,7 +19,6 @@ export default class Home extends Component {
     cond: 'true',
     phone_Number: '',
     quote: '',
-    payment: '',
   };
   logout(){
     firebase.auth().signOut();

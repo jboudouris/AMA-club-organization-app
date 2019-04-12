@@ -4,8 +4,6 @@ import { View, StyleSheet } from 'react-native';
 import Home from './src/screens/Home';
 
 // we will use these two screens later in our AppNavigator
-import AddItem from './src/screens/AddItem';
-import List from './src/screens/List';
 import AddUser from './src/screens/AddUser';
 import Login from './src/screens/Login';
 import Check from './src/screens/Check';
@@ -16,7 +14,7 @@ import Loginn from './src/screens/Loginn';
 import Main from './src/screens/Main';
 import CreateEvent from './src/screens/CreateEvent';
 import EventDetail from './src/screens/EventDetail';
-import ListEvent from './src/screens/ListEvent';
+import SelectedDayEvent from './src/screens/SelectedDayEvent';
 import RSVP from './src/screens/RSVP';
 import DeleteEvent from './src/screens/DeleteEvent';
 import Calender from './src/screens/Calender';
@@ -31,6 +29,9 @@ import RSVPList from './src/screens/RSVPList';
 import Profile from './src/screens/Profile';
 import ProfileEdit from './src/screens/ProfileEdit';
 import Tools from './src/screens/Tools';
+import ListEvent from './src/screens/ListEvent';
+import Inbox from './src/screens/Inbox';
+import DeleteUser from './src/screens/DeleteUser';
 
 const AppNavigator = createStackNavigator(
   {
@@ -41,7 +42,7 @@ const AppNavigator = createStackNavigator(
     Main,
     CreateEvent,
     Home,
-    ListEvent,
+    SelectedDayEvent,
     RSVP,
     DeleteEvent,
     Calender,
@@ -57,6 +58,9 @@ const AppNavigator = createStackNavigator(
     Profile,
     ProfileEdit,
     Tools,
+    ListEvent,
+    Inbox,
+    DeleteUser,
   },
   {
     initialRouteName: 'Loading',

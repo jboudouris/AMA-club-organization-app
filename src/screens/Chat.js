@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Button, View, Text, TextInput, SafeAreaView, FlatList } from 'react-native';
+import { Button, View, Text, TextInput, SafeAreaView, FlatList, ScrollView, Dimensions, TouchableOpacity } from 'react-native';
 import firebase from 'firebase';
 let title1 = 'Chat';
+
 export default class Home extends Component {
   static navigationOptions = {
    title: title1
@@ -17,6 +18,7 @@ export default class Home extends Component {
      },
      textMessage: '',
      messageList:[],
+     page:1,
    }
  }
 
@@ -27,7 +29,10 @@ export default class Home extends Component {
      let message = {
        message: this.state.textMessage,
        time: firebase.database.ServerValue.TIMESTAMP,
-       from: firebase.auth().currentUser.email
+       from: firebase.auth().currentUser.email,
+       to: this.props.navigation.state.params.email,
+       otherUserKey: this.state.person.userKey,
+       email: this.props.navigation.state.params.email,
      }
      updates['messages/'+ firebase.auth().currentUser.uid + '/' + this.state.person.userKey + '/' + msgId] = message;
      updates['messages/'+ this.state.person.userKey + '/' + firebase.auth().currentUser.uid + '/' + msgId] = message;
@@ -58,35 +63,49 @@ export default class Home extends Component {
        marginBottom:10
      }}>
       <Text style={{color:'#fff'}}> {item.message} </Text>
-      <Text> {item.time} </Text>
+      <Text> {this.convertTime(item.time)} </Text>
       </View>
    )
  }
+  convertTime = (time) => {
+    let d = new Date(time);
+    let c = new Date();
+    let result = (d.getHours() < 10 ? '0' : '') + d.getHours() + ':';
+    result += (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
+    if (c.getDay() !== d.getDay()){
+      result = d.getDay() + ' ' + d.getMonth() + ' ' + result;
+    }
+    return result;
+  }
+
+GoTo_bottom_function =()=>{
+
+    this.refs.FlatList1.scrollToEnd({animated: true});
+
+ }
+
   render() {
+    let {height, width} = Dimensions.get('window');
     return (
-      <View>
-        <TextInput
-          style={{}}
-          onChangeText={textMessage => this.setState({ textMessage })}
-          placeholder="Message"
-        />
-        <Button
-          title="Send"
-          color="green"
-          onPress={this.handleSubmit}
-        />
-       <Text>{this.props.navigation.state.params.email}</Text>
-       <Text>{this.props.navigation.state.params.user}</Text>
-       <Text>{this.props.navigation.state.params.first_Name}</Text>
-      <Text>{this.props.navigation.state.params.userKey}</Text>
       <SafeAreaView>
         <FlatList
+          style={{padding: 10, height: height * 0.8}}
           data={this.state.messageList}
           renderItem={this.renderRow}
           keyExtractor={(item, index)=>index.toString()}
+          scrollToIndex={this.state.messageList.length -1 }
         />
-      </SafeAreaView>
+     <View style={{ flexDirection:'row', alignItems: 'center' }}>
+        <TextInput
+            value={this.state.textMessage}
+            placeholder="Type message..."
+            onChangeText={textMessage => this.setState({ textMessage })}
+        />
+        <TouchableOpacity onPress={this.handleSubmit}>
+          <Text> Send </Text>
+        </TouchableOpacity>
      </View>
+     </SafeAreaView>
     );
   }
 }
