@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import UserComponent from '../components/UserComponent';
-
 import {View, Modal, Text, TouchableHighlight, Button} from 'react-native';
 
 import { db } from '../config';

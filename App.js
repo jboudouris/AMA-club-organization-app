@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
+import { View, StyleSheet } from 'react-native';
 import Home from './src/screens/Home';
 
 // we will use these two screens later in our AppNavigator
@@ -27,9 +28,11 @@ import ForgetPassword from './src/screens/ForgetPassword';
 import RSVPList from './src/screens/RSVPList';
 import Profile from './src/screens/Profile';
 import ProfileEdit from './src/screens/ProfileEdit';
+import Tools from './src/screens/Tools';
 import ListEvent from './src/screens/ListEvent';
 import Inbox from './src/screens/Inbox';
 import DeleteUser from './src/screens/DeleteUser';
+
 const AppNavigator = createStackNavigator(
   {
     Loading,
@@ -54,12 +57,17 @@ const AppNavigator = createStackNavigator(
     RSVPList,
     Profile,
     ProfileEdit,
+    Tools,
     ListEvent,
     Inbox,
     DeleteUser,
   },
   {
-    initialRouteName: 'Loading'
+    initialRouteName: 'Loading',
+    headerMode: 'none',
+    navigationOptions: {
+        headerVisible: false,
+    },
   }
 );
 
