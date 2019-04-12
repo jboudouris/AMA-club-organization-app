@@ -8,13 +8,8 @@ import {
 } from 'react-native';
 
 import { db } from '../config';
+let itemsRef = db.ref('/event');
 
-let addItem = item => {
-  let toAdd = '/items';
-  db.ref(toAdd).push({
-    name: item
-  });
-};
 
 export default class AddItem extends Component {
   state = {
@@ -27,14 +22,32 @@ export default class AddItem extends Component {
     });
   };
   handleSubmit = () => {
-    addItem(this.state.name);
-    alert('Success');
+    itemsRef.on('value', snapshot => {
+      let data = snapshot.val();
+      let items = Object.values(data);
+      let notFound = false;
+      let key = '';
+      for (let i=0; i< items.length; i++){
+        if (items[i].name == this.state.name)
+        {
+          key = items[i].key;
+          let toRemove = '/event/' + key;
+          db.ref(toRemove).remove();
+          //alert('success');
+          break
+        }
+        else
+        {
+        }
+      }
+
+    });
   };
 
   render() {
     return (
       <View style={styles.main}>
-        <Text style={styles.title}>Add Item</Text>
+        <Text style={styles.title}>Delete Event</Text>
         <TextInput style={styles.itemInput} onChange={this.handleChange} />
         <TouchableHighlight
           style={styles.button}

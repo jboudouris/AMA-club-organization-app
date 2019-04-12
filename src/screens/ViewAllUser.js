@@ -18,9 +18,12 @@ let valuekey = db.ref('/user').push().key;
 
   });
 };
+
+
 export default class List extends Component {
   state = {
     items: [],
+    userList: [],
     description: '',
     date: '',
     picture: '',
@@ -37,11 +40,29 @@ export default class List extends Component {
   };
 
   componentDidMount() {
+    let execArr = [];
+    let userArr = [];
     itemsRef.on('value', snapshot => {
       let data = snapshot.val();
       let items = Object.values(data);
+      if (items.length > 0 ){
+          for (let i=0; i<items.length; i++){
+            if (items[i].role == 'exec'){
+              execArr.push(items[i]);
+            }
+            else {
+              userArr.push(items[i]);
+            }
+          }
+      }
 
-      this.setState({ items });
+      this.setState({
+        items: execArr
+      });
+
+      this.setState({
+        userList: userArr
+      });
     });
   }
 
@@ -49,8 +70,15 @@ export default class List extends Component {
     return (
 
       <ScrollView style={styles.scrollView}>
+        <Text style={styles.title}> Executive Member </Text>
         {this.state.items.length > 0 ? (
           <UserComponent items={this.state.items} navigation={this.props.navigation} />
+          ) : (
+          <Text>No items</Text>
+        )}
+        <Text style={styles.title}> Club Member </Text>
+        {this.state.userList.length > 0 ? (
+          <UserComponent items={this.state.userList} navigation={this.props.navigation} />
           ) : (
           <Text>No items</Text>
         )}
@@ -67,5 +95,11 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     height: 400,
+  },
+  title: {
+    marginTop: 10,
+    marginBottom: 20,
+    fontSize: 20,
+    paddingRight: 5,
   }
 });
