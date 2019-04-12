@@ -30,6 +30,7 @@ import ForgetPassword from './src/screens/ForgetPassword';
 import RSVPList from './src/screens/RSVPList';
 import Profile from './src/screens/Profile';
 import ProfileEdit from './src/screens/ProfileEdit';
+import Tools from './src/screens/Tools';
 
 const AppNavigator = createStackNavigator(
   {
@@ -55,6 +56,7 @@ const AppNavigator = createStackNavigator(
     RSVPList,
     Profile,
     ProfileEdit,
+    Tools,
   },
   {
     initialRouteName: 'Loading',

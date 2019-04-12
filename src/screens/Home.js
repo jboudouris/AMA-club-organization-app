@@ -236,7 +236,7 @@ export default class Home extends Component {
                                });
                                }}
                            >
-                                <Text>Calendar</Text>
+                                <Text>About Us</Text>
                            </TouchableOpacity>
                            <TouchableOpacity
                                style = {styles.btn}
