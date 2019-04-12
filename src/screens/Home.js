@@ -16,7 +16,6 @@ export default class Home extends Component {
     cond: 'true',
     phone_Number: '',
     quote: '',
-    payment: '',
   };
   logout(){
     firebase.auth().signOut();
@@ -92,64 +91,75 @@ export default class Home extends Component {
 }
   render() {
     return (
-      <View>
-        <Button
-            title="Archives"
-            onPress={() => this.props.navigation.navigate('ViewAllPost')}
-        />
-        <Button
-            title="Profile"
-            onPress={() => {this.props.navigation.navigate('Profile', {
-               email: this.state.email,
-               first_Name: this.state.first_Name,
-               last_Name: this.state.last_Name,
-               role: this.state.role,
-               currentUserUid: this.state.currentUserUid,
-               full_Name: this.state.full_Name,
-               attendantNum: this.state.attendantNum,
-               phone_Number: this.state.phone_Number,
-               quote: this.state.quote,
+        <View>
+          <Button
+              title="Archives"
+              onPress={() => this.props.navigation.navigate('ViewAllPost')}
+          />
+          <Button
+              title="Profile"
+              onPress={() => {this.props.navigation.navigate('Profile', {
+                 email: this.state.email,
+                 first_Name: this.state.first_Name,
+                 last_Name: this.state.last_Name,
+                 role: this.state.role,
+                 currentUserUid: this.state.currentUserUid,
+                 full_Name: this.state.full_Name,
+                 attendantNum: this.state.attendantNum,
+                 phone_Number: this.state.phone_Number,
+                 quote: this.state.quote,
+              });
+              }}
+          />
+          <Button
+              title="Calendar"
+              onPress={() => {this.props.navigation.navigate('Calender', {
+                 email: this.state.email,
+                 first_Name: this.state.first_Name,
+                 last_Name: this.state.last_Name,
+                 role: this.state.role,
+                 currentUserUid: this.state.currentUserUid,
+                 full_Name: this.state.full_Name,
+                 attendantNum: this.state.attendantNum,
+               });
+             }}
+          />
+         <Button
+           title="Create Event"
+           onPress={() => this.props.navigation.navigate('CreateEvent')}
+         />
+         <Button
+           title="List Event"
+           onPress={() => this.props.navigation.navigate('ListEvent')}
+         />
+         <Button
+           title="Delete Event"
+           onPress={() => this.props.navigation.navigate('DeleteEvent')}
+         />
+         <Button
+           title="Edit Event"
+           onPress={() => this.props.navigation.navigate('EditEvent')}
+         />
+         <Button
+           title="View All User"
+           onPress={() => this.props.navigation.navigate('ViewAllUser')}
+         />
+         <Button
+           title="Inbox"
+           onPress={() => {this.props.navigation.navigate('Inbox', {
+              refresh: true
             });
-            }}
-        />
+          }}
+         />
+         <Button
+           title="Delete Usesr"
+           onPress={() => this.props.navigation.navigate('DeleteUser')}
+         />
         <Button
-            title="Calendar"
-            onPress={() => {this.props.navigation.navigate('Calender', {
-               email: this.state.email,
-               first_Name: this.state.first_Name,
-               last_Name: this.state.last_Name,
-               role: this.state.role,
-               currentUserUid: this.state.currentUserUid,
-               full_Name: this.state.full_Name,
-               attendantNum: this.state.attendantNum,
-             });
-           }}
+          title="Log out"
+          onPress={() => this.logout()}
         />
-       <Button
-         title="Create Event"
-         onPress={() => this.props.navigation.navigate('CreateEvent')}
-       />
-       <Button
-         title="List Event"
-         onPress={() => this.props.navigation.navigate('ListEvent')}
-       />
-       <Button
-         title="Delete Event"
-         onPress={() => this.props.navigation.navigate('DeleteEvent')}
-       />
-       <Button
-         title="Edit Event"
-         onPress={() => this.props.navigation.navigate('EditEvent')}
-       />
-       <Button
-         title="View All User"
-         onPress={() => this.props.navigation.navigate('ViewAllUser')}
-       />
-      <Button
-        title="Log out"
-        onPress={() => this.logout()}
-      />
-     </View>
+       </View>
     );
   }
 }

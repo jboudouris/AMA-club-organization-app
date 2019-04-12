@@ -7,6 +7,7 @@ import {
   TextInput,
   ScrollView,
   TouchableOpacity,
+  Picker,
 } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import TimePicker from 'react-native-simple-time-picker';
@@ -37,7 +38,7 @@ export default class AddItem extends Component {
     location: '',
     description: '',
     picture: '',
-    RSVP: '',
+    RSVP: "False",
     eventKey: '',
     key: '',
     chooseDate: 'Choose a date',
@@ -207,7 +208,17 @@ export default class AddItem extends Component {
 
           <View style={{flex:1, flexDirection: 'row'}}>
             <Text style={styles.title}>Enable RSVP</Text>
-            <TextInput style={styles.itemInput} onChangeText={RSVP => this.setState({ RSVP })} />
+            <Picker
+              selectedValue={this.state.RSVP}
+              style={{height: 50, width: 150}}
+              onValueChange={(itemValue, itemIndex) =>
+                this.setState({
+                  RSVP: itemValue
+                })
+              }>
+              <Picker.Item label="True" value= "True" />
+              <Picker.Item label="False" value= "False" />
+            </Picker>
           </View>
 
           <View style={{flex:1, flexDirection: 'row'}}>

@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import Loginn from '../src/screens/Loginn';
 import { db } from '../src/config';
 
@@ -37,11 +38,12 @@ it('should login user', () => {
     expect(loginComponent.state.errorMessage).toBeNull()
 })
 
-// it('should not login user', () => {
-//     let loginComponent = renderer.create(<Loginn/>).getInstance()
-//
-//       loginComponent.handlePasswordChange('1231234')
-//       loginComponent.handleEmailChange('sly5@wisc.edu')
-//       loginComponent.handleLogin()
-//     expect(loginComponent.state.errorMessage).toEqual('Invalid information provided. Please try again')
-// })
+describe('Test Button component', () => {
+  it('Test click event', () => {
+    const mockCallBack = jest.fn();
+
+    const button = shallow((<Loginn onClick={mockCallBack}>Ok!</Loginn>));
+    button.find('button').simulate('click');
+    expect(mockCallBack.mock.calls.length).toEqual(1);
+  });
+});

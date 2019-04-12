@@ -3,8 +3,6 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import Home from './src/screens/Home';
 
 // we will use these two screens later in our AppNavigator
-import AddItem from './src/screens/AddItem';
-import List from './src/screens/List';
 import AddUser from './src/screens/AddUser';
 import Login from './src/screens/Login';
 import Check from './src/screens/Check';
@@ -15,7 +13,7 @@ import Loginn from './src/screens/Loginn';
 import Main from './src/screens/Main';
 import CreateEvent from './src/screens/CreateEvent';
 import EventDetail from './src/screens/EventDetail';
-import ListEvent from './src/screens/ListEvent';
+import SelectedDayEvent from './src/screens/SelectedDayEvent';
 import RSVP from './src/screens/RSVP';
 import DeleteEvent from './src/screens/DeleteEvent';
 import Calender from './src/screens/Calender';
@@ -29,7 +27,9 @@ import ForgetPassword from './src/screens/ForgetPassword';
 import RSVPList from './src/screens/RSVPList';
 import Profile from './src/screens/Profile';
 import ProfileEdit from './src/screens/ProfileEdit';
-
+import ListEvent from './src/screens/ListEvent';
+import Inbox from './src/screens/Inbox';
+import DeleteUser from './src/screens/DeleteUser';
 const AppNavigator = createStackNavigator(
   {
     Loading,
@@ -37,13 +37,11 @@ const AppNavigator = createStackNavigator(
     SignUp,
     Loginn,
     Main,
-    AddItem,
     CreateEvent,
     Home,
-    ListEvent,
+    SelectedDayEvent,
     RSVP,
     DeleteEvent,
-    List,
     Calender,
     EventDetail,
     Archives,
@@ -56,6 +54,9 @@ const AppNavigator = createStackNavigator(
     RSVPList,
     Profile,
     ProfileEdit,
+    ListEvent,
+    Inbox,
+    DeleteUser,
   },
   {
     initialRouteName: 'Loading'
