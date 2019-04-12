@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1554942737547" clover="3.2.0">
-  <project timestamp="1554942737547" name="All files">
-    <metrics statements="104" coveredstatements="33" conditionals="20" coveredconditionals="5" methods="64" coveredmethods="16" elements="188" coveredelements="54" complexity="0" loc="104" ncloc="104" packages="3" files="7" classes="7"/>
+<coverage generated="1555107431583" clover="3.2.0">
+  <project timestamp="1555107431583" name="All files">
+    <metrics statements="108" coveredstatements="35" conditionals="20" coveredconditionals="5" methods="66" coveredmethods="16" elements="194" coveredelements="56" complexity="0" loc="108" ncloc="108" packages="5" files="9" classes="9"/>
     <package name="src">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="config.js" path="C:\Users\Logan Mahan\AppData\Local\Android\Sdk\AMA-club-organization-app\src\config.js">
@@ -9,6 +9,13 @@
         <line num="2" count="5" type="stmt"/>
         <line num="10" count="5" type="stmt"/>
         <line num="11" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.backgrounds">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="BG2.png" path="C:\Users\Logan Mahan\AppData\Local\Android\Sdk\AMA-club-organization-app\src\backgrounds\BG2.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="3" type="stmt"/>
       </file>
     </package>
     <package name="src.components">
@@ -25,10 +32,17 @@
         <line num="54" count="2" type="stmt"/>
       </file>
     </package>
+    <package name="src.icons">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="AMA_white.png" path="C:\Users\Logan Mahan\AppData\Local\Android\Sdk\AMA-club-organization-app\src\icons\AMA_white.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="3" type="stmt"/>
+      </file>
+    </package>
     <package name="src.screens">
-      <metrics statements="93" coveredstatements="28" conditionals="20" coveredconditionals="5" methods="59" coveredmethods="16"/>
+      <metrics statements="95" coveredstatements="28" conditionals="20" coveredconditionals="5" methods="61" coveredmethods="16"/>
       <file name="ForgetPassword.js" path="C:\Users\Logan Mahan\AppData\Local\Android\Sdk\AMA-club-organization-app\src\screens\ForgetPassword.js">
-        <metrics statements="9" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="2"/>
+        <metrics statements="10" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="7" coveredmethods="2"/>
         <line num="4" count="1" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
@@ -36,11 +50,12 @@
         <line num="22" count="0" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
         <line num="33" count="3" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="52" count="1" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="69" count="1" type="stmt"/>
       </file>
       <file name="Loginn.js" path="C:\Users\Logan Mahan\AppData\Local\Android\Sdk\AMA-club-organization-app\src\screens\Loginn.js">
-        <metrics statements="12" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="9" coveredmethods="4"/>
+        <metrics statements="13" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="10" coveredmethods="4"/>
         <line num="4" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
@@ -48,11 +63,12 @@
         <line num="24" count="2" type="stmt"/>
         <line num="30" count="2" type="stmt"/>
         <line num="35" count="8" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="64" count="0" type="stmt"/>
-        <line num="70" count="1" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
       </file>
       <file name="Profile.js" path="C:\Users\Logan Mahan\AppData\Local\Android\Sdk\AMA-club-organization-app\src\screens\Profile.js">
         <metrics statements="12" coveredstatements="3" conditionals="4" coveredconditionals="1" methods="4" coveredmethods="2"/>
@@ -127,13 +143,13 @@
         <line num="101" count="1" type="stmt"/>
         <line num="106" count="1" type="stmt"/>
         <line num="111" count="13" type="stmt"/>
-        <line num="122" count="0" type="stmt"/>
-        <line num="130" count="0" type="stmt"/>
-        <line num="138" count="0" type="stmt"/>
-        <line num="145" count="0" type="stmt"/>
-        <line num="152" count="0" type="stmt"/>
-        <line num="158" count="0" type="stmt"/>
-        <line num="164" count="1" type="stmt"/>
+        <line num="131" count="0" type="stmt"/>
+        <line num="139" count="0" type="stmt"/>
+        <line num="147" count="0" type="stmt"/>
+        <line num="156" count="0" type="stmt"/>
+        <line num="165" count="0" type="stmt"/>
+        <line num="171" count="0" type="stmt"/>
+        <line num="181" count="1" type="stmt"/>
       </file>
     </package>
   </project>

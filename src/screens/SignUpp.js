@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
+import { Image, TouchableOpacity, ImageBackground, StyleSheet, Text, TextInput, View, Button } from 'react-native'
 import firebase from 'firebase';
 import { db } from '../config';
 let config = {
@@ -72,11 +72,11 @@ export default class SignUp extends React.Component {
       }
       else
       {
-        alert('Passwords do not match');
+        alert('Passwords do not match.');
       }
     }
    else {
-      alert("Please enter your wisc email");
+      alert("Please enter your Wisc email (@wisc.edu).");
     }
   }
 
@@ -110,68 +110,113 @@ export default class SignUp extends React.Component {
 render() {
     return (
       <View style={styles.container}>
-        <Text>Sign Up</Text>
-        {this.state.errorMessage &&
-          <Text style={{ color: 'red' }}>
-            {this.state.errorMessage}
-          </Text>}
-        <TextInput
-          placeholder="Email"
-          autoCapitalize="none"
-          style={styles.textInput}
-          onChangeText={email => this.handleEmailChange( email )}
-          value={this.state.email}
-        />
-        <TextInput
-          secureTextEntry
-          placeholder="Password"
-          autoCapitalize="none"
-          style={styles.textInput}
-          onChangeText={password => this.handlePasswordChange( password )}
-          value={this.state.password}
-        />
-        <TextInput
-          secureTextEntry
-          placeholder="Confirmed Password"
-          autoCapitalize="none"
-          style={styles.textInput}
-          onChangeText={confirmedPassword => this.handleConPasswordChange( confirmedPassword )}
-          value={this.state.confirmedPassword}
-        />
-        <TextInput
-          placeholder="First Name"
-          autoCapitalize="none"
-          style={styles.textInput}
-          onChangeText={first_Name => this.handleFirstNameChange( first_Name )}
-          value={this.state.first_Name}
-        />
-        <TextInput
-          placeholder="Last Name"
-          autoCapitalize="none"
-          style={styles.textInput}
-          onChangeText={last_Name => this.handleLastNameChange( last_Name )}
-          value={this.state.last_Name}
-        />
-        <Button title="Sign Up" onPress={this.checkEmail} />
-        <Button
-          title="Already have an account? Login"
-          onPress={() => this.props.navigation.navigate('Loginn')}
-        />
+          <ImageBackground
+              style = {styles.backgroundImage}
+              source = {require('../backgrounds/BG2.png')}
+          >
+             <View style={styles.container}>
+                <Image
+                    style = {{alignSelf: 'center', width: 150, height: 50, margin: 10}}
+                    source = {require('../icons/AMA_white.png')}
+                />
+                {this.state.errorMessage &&
+                  <Text style={{ color: 'red' }}>
+                    {this.state.errorMessage}
+                  </Text>}
+                <TextInput
+                  placeholder="First Name"
+                  autoCapitalize="none"
+                  placeholderTextColor= 'white'
+                  style={styles.textInput}
+                  onChangeText={first_Name => this.handleFirstNameChange( first_Name )}
+                  value={this.state.first_Name}
+                />
+                <TextInput
+                  placeholder="Last Name"
+                  autoCapitalize="none"
+                  placeholderTextColor= 'white'
+                  style={styles.textInput}
+                  onChangeText={last_Name => this.handleLastNameChange( last_Name )}
+                  value={this.state.last_Name}
+                />
+                <TextInput
+                  placeholder="Email"
+                  autoCapitalize="none"
+                  placeholderTextColor= 'white'
+                  style={styles.textInput}
+                  onChangeText={email => this.handleEmailChange( email )}
+                  value={this.state.email}
+                />
+                <TextInput
+                  secureTextEntry
+                  placeholder="Password"
+                  autoCapitalize="none"
+                  placeholderTextColor= 'white'
+                  style={styles.textInput}
+                  onChangeText={password => this.handlePasswordChange( password )}
+                  value={this.state.password}
+                />
+                <TextInput
+                  secureTextEntry
+                  placeholder="Confirm Password"
+                  autoCapitalize="none"
+                  placeholderTextColor= 'white'
+                  style={styles.textInput}
+                  onChangeText={confirmedPassword => this.handleConPasswordChange( confirmedPassword )}
+                  value={this.state.confirmedPassword}
+                />
+                <TouchableOpacity style = {styles.btn1} onPress={this.checkEmail}>
+                    <Text style={styles.btntxt}>Sign Up</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style = {styles.btn1} onPress={() => this.props.navigation.navigate('Loginn')}>
+                    <Text style={styles.btntxt}>Already have an account? Log in here</Text>
+                </TouchableOpacity>
+            </View>
+        </ImageBackground>
       </View>
     )
   }
 }
+
 const styles = StyleSheet.create({
+    backgroundImage: {
+        flex: 1,
+        alignSelf: 'stretch',
+    },
+    btn1: {
+        backgroundColor: 'rgba(127,141,221,0.6)',
+        alignSelf: 'stretch',
+        marginLeft: 20,
+        marginRight: 20,
+
+        borderWidth: 1,
+        marginTop: 10,
+        borderColor: 'white',
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    btntxt: {
+        fontSize: 20,
+        color: 'white',
+    },
+    buttonView: {
+        flexDirection:'row',
+        backgroundColor: 'transparent',
+    },
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   textInput: {
-    height: 40,
+    height: 50,
+    fontSize: 20,
     width: '90%',
-    borderColor: 'gray',
+    borderColor: 'white',
+    backgroundColor: 'rgba(57,189,225,0.6)',
     borderWidth: 1,
-    marginTop: 8
+    marginTop: 8,
+    color: 'white',
   }
 })

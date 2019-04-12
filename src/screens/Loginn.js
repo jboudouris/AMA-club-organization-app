@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
+import { TouchableOpacity, Image,  ImageBackground, StyleSheet, Text, TextInput, View, Button } from 'react-native'
 import firebase from 'firebase';
 let config = {
   apiKey: "AIzaSyB9kMpxhilLczlWR57TLOM8IMxKuUEcRW0",
@@ -34,50 +34,122 @@ export default class Login extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Login</Text>
-        {this.state.errorMessage &&
-          <Text style={{ color: 'red' }}>
-            {this.state.errorMessage}
-          </Text>}
-        <TextInput
-          style={styles.textInput}
-          autoCapitalize="none"
-          placeholder="Email"
-          onChangeText={email => this.handleEmailChange(email)}
-          value={this.state.email}
-        />
-        <TextInput
-          secureTextEntry
-          style={styles.textInput}
-          autoCapitalize="none"
-          placeholder="Password"
-          onChangeText={password => this.handlePasswordChange(password)}
-          value={this.state.password}
-        />
-        <Button title="Login" onPress={this.handleLogin} />
-        <Button
-          title="Don't have an account? Sign Up"
-          onPress={() => this.props.navigation.navigate('SignUpp')}
-        />
-        <Button
-          title="Forget Password"
-          onPress={() => this.props.navigation.navigate('ForgetPassword')}
-        />
+        <ImageBackground
+            style = {styles.backgroundImage}
+            source = {require('../backgrounds/BG2.png')}
+        >
+            <View style={styles.container}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
+                    <Image
+                        style = {{alignSelf: 'center', width: 150, height: 50, margin: 10}}
+                        source = {require('../icons/AMA_white.png')}
+                    />
+                </TouchableOpacity>
+                {this.state.errorMessage &&
+                  <Text style={{ color: 'red' }}>
+                    {this.state.errorMessage}
+                  </Text>}
+                <TextInput
+                  style={styles.textInput}
+                  autoCapitalize="none"
+                  placeholder="Email"
+                  placeholderTextColor='white'
+                  onChangeText={email => this.handleEmailChange(email)}
+                  value={this.state.email}
+                />
+                <TextInput
+                  secureTextEntry
+                  style={styles.textInput}
+                  placeholderTextColor= 'white'
+                  autoCapitalize="none"
+                  placeholder="Password"
+                  onChangeText={password => this.handlePasswordChange(password)}
+                  value={this.state.password}
+                />
+                <TouchableOpacity style = {styles.btn1} onPress={this.handleLogin}>
+                    <Text style={styles.btntxt}>Login</Text>
+                </TouchableOpacity>
+                <View style = {styles.buttonView}>
+                    <TouchableOpacity style = {styles.btn2} onPress={() => this.props.navigation.navigate('SignUpp')}>
+                        <Text style={styles.btntxt}>Sign Up</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style = {styles.btn3} onPress={() => this.props.navigation.navigate('ForgetPassword')}>
+                                <Text style={styles.btntxt}>Forgot Password</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </ImageBackground>
       </View>
     )
   }
 }
 const styles = StyleSheet.create({
+    backgroundImage: {
+        flex: 1,
+        alignSelf: 'stretch',
+    },
+    btn1: {
+        backgroundColor: 'rgba(127,141,221,0.6)',
+        alignSelf: 'stretch',
+        marginLeft: 20,
+        marginRight: 20,
+
+        borderWidth: 1,
+        marginTop: 10,
+        borderColor: 'white',
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    btn2: {
+        backgroundColor: 'rgba(127,141,221,0.6)',
+        alignSelf: 'stretch',
+        marginLeft: 20,
+        marginRight: 10,
+        borderWidth: 1,
+        marginTop: 10,
+        borderColor: 'white',
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingLeft: 50,
+        paddingRight: 50,
+    },
+    btn3: {
+        backgroundColor: 'rgba(127,141,221,0.6)',
+        alignSelf: 'stretch',
+        marginLeft: 10,
+        marginRight: 20,
+        borderWidth: 1,
+        marginTop: 10,
+        borderColor: 'white',
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingLeft: 15,
+        paddingRight: 15,
+    },
+    btntxt: {
+        fontSize: 20,
+        color: 'white',
+    },
+    buttonView: {
+        flexDirection:'row',
+        backgroundColor: 'transparent',
+    },
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   textInput: {
-    height: 40,
+    height: 50,
+    fontSize: 20,
     width: '90%',
-    borderColor: 'gray',
+    borderColor: 'white',
+    backgroundColor: 'rgba(57,189,225,0.6)',
     borderWidth: 1,
-    marginTop: 8
+    marginTop: 8,
+    color: 'white',
   }
 })

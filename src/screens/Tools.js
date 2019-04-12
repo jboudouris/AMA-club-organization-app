@@ -91,7 +91,7 @@ export default class Home extends Component {
 
           <ImageBackground
               style = {styles.backgroundImage}
-              source = {require('../backgrounds/BG1.png')}
+              source = {require('../backgrounds/BG2.png')}
           >
             <View>
              <ScrollView style = {{backgroundColor: 'transparent'}}>
@@ -103,8 +103,7 @@ export default class Home extends Component {
                             <Text>Logout</Text>
                         </TouchableOpacity>
                 </View>
-
-            </ScrollView>
+             </ScrollView>
             </View>
         </ImageBackground>
       </View>
@@ -134,7 +133,7 @@ const styles = StyleSheet.create({
     },
     header: {
         height: 70,
-        backgroundColor: 'purple',
+        backgroundColor: '#EDD395',
         flexDirection: 'row',
         alignItems: 'center',
     },
