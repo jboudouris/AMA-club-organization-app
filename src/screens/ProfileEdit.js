@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import UserComponent from '../components/UserComponent';
 
-import {KeyboardAvoidingView, ScrollView, View, Modal, Text, TextInput, TouchableHighlight, Button} from 'react-native';
+import {KeyboardAvoidingView, ScrollView, View, Modal, Text, TextInput, TouchableHighlight, Button, SafeAreaView, StyleSheet} from 'react-native';
 
 import { db } from '../config';
 import firebase from 'firebase';
@@ -132,6 +132,7 @@ componentDidMount() {
 
 render() {
   return (
+    <SafeAreaView style={styles.safeArea}>
     <KeyboardAvoidingView>
     <ScrollView>
     <View>
@@ -188,6 +189,14 @@ render() {
     </View>
     </ScrollView>
     </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 }
 }
+
+const styles = StyleSheet.create({
+    safeArea: {
+    flex: 1,
+    backgroundColor: '#ddd'
+  }
+});

@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableOpacity, Image,  ImageBackground, StyleSheet, Text, TextInput, View, Button } from 'react-native'
+import { TouchableOpacity, Image,  ImageBackground, StyleSheet, Text, TextInput, View, Button, SafeAreaView } from 'react-native'
 import firebase from 'firebase';
 let config = {
   apiKey: "AIzaSyB9kMpxhilLczlWR57TLOM8IMxKuUEcRW0",
@@ -33,6 +33,7 @@ export default class Login extends React.Component {
    }
   render() {
     return (
+      <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <ImageBackground
             style = {styles.backgroundImage}
@@ -80,6 +81,7 @@ export default class Login extends React.Component {
             </View>
         </ImageBackground>
       </View>
+      </SafeAreaView>
     )
   }
 }
@@ -151,5 +153,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginTop: 8,
     color: 'white',
-  }
+  },
+  safeArea: {
+  flex: 1,
+  backgroundColor: '#ddd'
+}
 })

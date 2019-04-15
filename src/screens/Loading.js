@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, ActivityIndicator, StyleSheet } from 'react-native'
+import { View, Text, ActivityIndicator, StyleSheet, SafeAreaView } from 'react-native'
 import firebase from 'firebase';
 let config = {
   apiKey: "AIzaSyB9kMpxhilLczlWR57TLOM8IMxKuUEcRW0",
@@ -35,10 +35,12 @@ export default class Loading extends React.Component {
  }
   render() {
     return (
+      <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <Text>Loading</Text>
         <ActivityIndicator size="large" />
       </View>
+      </SafeAreaView>
     )
   }
 }
@@ -47,5 +49,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
+  safeArea: {
+  flex: 1,
+  backgroundColor: '#ddd'
+}
 })

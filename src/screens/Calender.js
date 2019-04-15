@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {CalendarList} from 'react-native-calendars';
-import {Image, TouchableOpacity, StyleSheet, View, Modal, Text, TouchableHighlight, Button} from 'react-native';
+import {Image, TouchableOpacity, StyleSheet, View, Modal, Text, TouchableHighlight, Button, SafeAreaView} from 'react-native';
 import List from './SelectedDayEvent'
 import { db } from '../config';
 import { Avatar } from 'react-native-elements';
@@ -92,6 +92,7 @@ export default class HorizontalCalendarList extends Component {
     }
   render() {
     return (
+      <SafeAreaView style={styles.safeArea}>
       <View>
         <View style  = {styles.header}>
             <View style = {{paddingLeft: 10, flex:1, alignItems:'flex-start'}}>
@@ -142,6 +143,7 @@ export default class HorizontalCalendarList extends Component {
         />
         <List eventToday={this.state.date} navigation={this.props.navigation}/>
       </View>
+      </SafeAreaView>
     );
   }
 }
@@ -177,5 +179,9 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         alignItems: 'center',
 
-    }
+    },
+    safeArea: {
+    flex: 1,
+    backgroundColor: '#ddd'
+  }
 });

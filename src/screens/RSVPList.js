@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 import RSVPComponent from '../components/RSVPComponent';
 
 import { db } from '../config';
@@ -41,6 +41,7 @@ export default class List extends Component {
 
   render() {
     return (
+      <SafeAreaView style={styles.safeArea}>
       <View>
         <Text> {this.props.navigation.state.params.eventName}</Text>
         <Text> Number of people RSVP =  {this.state.items.length} </Text>
@@ -50,6 +51,7 @@ export default class List extends Component {
           <Text>No one RSVP</Text>
         )}
       </View>
+      </SafeAreaView>
     );
   }
 }
@@ -59,5 +61,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: '#ebebeb'
-  }
+  },
+  safeArea: {
+  flex: 1,
+  backgroundColor: '#ddd'
+}
 });

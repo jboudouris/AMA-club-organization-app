@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 import EventComponent from '../components/EventComponent';
 
 import { db } from '../config';
@@ -77,6 +77,7 @@ export default class List extends Component {
 
   render() {
     return (
+      <SafeAreaView style={styles.safeArea}>
       <ScrollView>
       <View style={styles.container}>
         {this.state.items.length > 0 ? (
@@ -86,6 +87,7 @@ export default class List extends Component {
         )}
       </View>
       </ScrollView>
+      </SafeAreaView>
     );
   }
 }
@@ -95,5 +97,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: '#ebebeb'
-  }
+  },
+  safeArea: {
+  flex: 1,
+  backgroundColor: '#ddd'
+}
 });

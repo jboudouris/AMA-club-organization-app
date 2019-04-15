@@ -8,6 +8,7 @@ import {
   ScrollView,
   TouchableOpacity,
   Picker,
+  SafeAreaView,
 } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import TimePicker from 'react-native-simple-time-picker';
@@ -136,6 +137,7 @@ export default class AddItem extends Component {
   render() {
     const { selectedHours, selectedMinutes } = this.state;
     return (
+      <SafeAreaView style={styles.safeArea}>
       <ScrollView>
         <View style={styles.main}>
           <View style={{flex:1, flexDirection: 'row'}}>
@@ -246,6 +248,7 @@ export default class AddItem extends Component {
 
         </View>
       </ScrollView>
+      </SafeAreaView>
     );
   }
 }
@@ -294,5 +297,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     alignSelf: 'stretch',
     justifyContent: 'center'
-  }
+  },
+  safeArea: {
+  flex: 1,
+  backgroundColor: '#ddd'
+}
 });

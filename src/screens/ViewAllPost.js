@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ImageBackground, Image, TouchableOpacity, View, Text, StyleSheet, TextInput, TouchableHighlight, ScrollView } from 'react-native';
+import { ImageBackground, Image, TouchableOpacity, View, Text, StyleSheet, TextInput, TouchableHighlight, ScrollView, SafeAreaView } from 'react-native';
 import PostComponent from '../components/PostComponent';
 import { Avatar } from 'react-native-elements';
 
@@ -48,6 +48,7 @@ export default class List extends Component {
 
   render() {
     return (
+      <SafeAreaView style={styles.safeArea}>
       <View>
          <View style  = {styles.header}>
             <View style = {{paddingLeft: 10, flex:1, alignItems:'flex-start'}}>
@@ -109,6 +110,7 @@ export default class List extends Component {
             </View>
         </ImageBackground>
       </View>
+      </SafeAreaView>
     );
   }
 }
@@ -153,5 +155,9 @@ const styles = StyleSheet.create({
       alignSelf: 'center',
       alignItems: 'center',
 
-  }
+  },
+  safeArea: {
+  flex: 1,
+  backgroundColor: '#ddd'
+}
 });

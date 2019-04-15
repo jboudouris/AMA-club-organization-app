@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TextInput,
   Button,
+  SafeAreaView,
 } from 'react-native';
 
 import { db } from '../config';
@@ -58,6 +59,7 @@ export default class AddItem extends Component {
 
   render() {
     return (
+      <SafeAreaView style={styles.safeArea}>
       <View style={styles.main}>
         <Text style={styles.title}>{this.state.name}</Text>
         <Text style={styles.title}>{this.props.navigation.state.params.date}</Text>
@@ -85,6 +87,7 @@ export default class AddItem extends Component {
               }}
         />
       </View>
+      </SafeAreaView>
     );
   }
 }
@@ -128,5 +131,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     alignSelf: 'stretch',
     justifyContent: 'center'
-  }
+  },
+  safeArea: {
+  flex: 1,
+  backgroundColor: '#ddd'
+}
 });

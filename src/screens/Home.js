@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import { Button, View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, ImageBackground, SafeAreaView } from 'react-native';
 import firebase from 'firebase';
 import { db } from '../config';
 import Swiper from 'react-native-swiper';
@@ -94,6 +94,7 @@ export default class Home extends Component {
 }
   render() {
     return (
+      <SafeAreaView style={styles.safeArea}>
        <View style = {styles.columnView}>
          <View style  = {styles.header}>
             <View style = {{paddingLeft: 10, flex:1, alignItems:'flex-start'}}>
@@ -254,6 +255,7 @@ export default class Home extends Component {
             </View>
         </ImageBackground>
       </View>
+      </SafeAreaView>
     );
   }
 }
@@ -289,5 +291,9 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         alignItems: 'center',
 
-    }
+    },
+    safeArea: {
+    flex: 1,
+    backgroundColor: '#ddd'
+  }
 });

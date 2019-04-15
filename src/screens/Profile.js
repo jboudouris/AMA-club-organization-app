@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import UserComponent from '../components/UserComponent';
-import {View, Modal, Text, TouchableHighlight, Button} from 'react-native';
+import {View, Modal, Text, TouchableHighlight, Button, SafeAreaView, StyleSheet} from 'react-native';
 
 import { db } from '../config';
 import firebase from 'firebase';
@@ -51,6 +51,7 @@ export default class Profile extends Component {
 
   render() {
     return (
+      <SafeAreaView style={styles.safeArea}>
       <View>
         <Text>Name: {this.state.first_Name} {this.state.last_Name}</Text>
         <Text>Email: {this.state.email}</Text>
@@ -79,6 +80,14 @@ export default class Profile extends Component {
           }}
         />
       </View>
+      </SafeAreaView>
     );
   }
 }
+
+const styles = StyleSheet.create({
+    safeArea: {
+    flex: 1,
+    backgroundColor: '#ddd'
+  }
+});

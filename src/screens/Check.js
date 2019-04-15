@@ -5,6 +5,7 @@ import {
   TouchableHighlight,
   StyleSheet,
   TextInput,
+  SafeAreaView,
 } from 'react-native';
 
 import { db } from '../config';
@@ -26,6 +27,7 @@ export default class AddItem extends Component {
 
   render() {
     return (
+      <SafeAreaView style={styles.safeArea}>
       <View style={styles.main}>
         <Text style={styles.title}>Add Item</Text>
         <TextInput style={styles.itemInput} onChange={this.handleChange} />
@@ -37,6 +39,7 @@ export default class AddItem extends Component {
           <Text style={styles.buttonText}>Add</Text>
         </TouchableHighlight>
       </View>
+      </SafeAreaView>
     );
   }
 }
@@ -80,5 +83,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     alignSelf: 'stretch',
     justifyContent: 'center'
-  }
+  },
+  safeArea: {
+  flex: 1,
+  backgroundColor: '#ddd'
+}
 });

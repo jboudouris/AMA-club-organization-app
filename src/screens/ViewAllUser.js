@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableHighlight, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableHighlight, ScrollView, SafeAreaView } from 'react-native';
 import UserComponent from '../components/UserComponent';
 
 import { db } from '../config';
@@ -68,6 +68,7 @@ export default class List extends Component {
 
   render() {
     return (
+      <SafeAreaView style={styles.safeArea}>
 
       <ScrollView style={styles.scrollView}>
         <Text style={styles.title}> Executive Member </Text>
@@ -83,6 +84,7 @@ export default class List extends Component {
           <Text>No items</Text>
         )}
       </ScrollView>
+      </SafeAreaView>
     );
   }
 }
@@ -101,5 +103,9 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     fontSize: 20,
     paddingRight: 5,
-  }
+  },
+  safeArea: {
+  flex: 1,
+  backgroundColor: '#ddd'
+}
 });

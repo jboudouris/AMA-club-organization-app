@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TextInput,
   ScrollView,
+  SafeAreaView,
 } from 'react-native';
 import firebase from 'firebase';
 import { db } from '../config';
@@ -56,6 +57,7 @@ export default class AddItem extends Component {
 
   render() {
     return (
+      <SafeAreaView style={styles.safeArea}>
       <ScrollView>
         <View style={styles.main}>
         <Text style={styles.title}>Name</Text>
@@ -73,6 +75,7 @@ export default class AddItem extends Component {
           </TouchableHighlight>
         </View>
       </ScrollView>
+      </SafeAreaView>
     );
   }
 }
@@ -116,5 +119,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     alignSelf: 'stretch',
     justifyContent: 'center'
-  }
+  },
+  safeArea: {
+  flex: 1,
+  backgroundColor: '#ddd'
+}
 });
