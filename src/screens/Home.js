@@ -135,16 +135,17 @@ export default class Home extends Component {
 
           <ImageBackground
               style = {styles.backgroundImage}
-              source = {require('../backgrounds/BG1.png')}
+              source = {require('../backgrounds/BG3.png')}
           >
             <View>
              <ScrollView style = {{backgroundColor: 'transparent'}}>
                  <View style = {styles.buttonView}>
-                        <TouchableOpacity
-                            style = {styles.btn}
-                            onPress={() => this.props.navigation.navigate('ViewAllPost')}
+                        <TouchableOpacity style={styles.btn}
+                              onPress={() => this.props.navigation.navigate('ViewAllPost')}
                         >
-                            <Text>Archives</Text>
+                            <Image style={styles.imageStyle}
+                                source={require('../icons/Archives.png')}
+                             />
                         </TouchableOpacity>
                         <TouchableOpacity
                             style = {styles.btn}
@@ -161,7 +162,9 @@ export default class Home extends Component {
                             });
                             }}
                         >
-                            <Text>Profiles</Text>
+                            <Image style={styles.imageStyle}
+                                source={require('../icons/cog.png')}
+                             />
                         </TouchableOpacity>
                 </View>
                  <View style = {styles.buttonView}>
@@ -178,7 +181,9 @@ export default class Home extends Component {
                             });
                             }}
                         >
-                            <Text>Calendar</Text>
+                            <Image style={styles.imageStyle}
+                                source={require('../icons/Calendar.png')}
+                             />
                         </TouchableOpacity>
                         <TouchableOpacity
                             style = {styles.btn}
@@ -190,7 +195,9 @@ export default class Home extends Component {
                             });
                             }}
                         >
-                            <Text>Events</Text>
+                            <Image style={styles.imageStyle}
+                                source={require('../icons/Events.png')}
+                             />
                         </TouchableOpacity>
                  </View>
                   <View style = {styles.buttonView}>
@@ -207,7 +214,9 @@ export default class Home extends Component {
                              });
                              }}
                          >
-                            <Text>Chat</Text>
+                            <Image style={styles.imageStyle}
+                                source={require('../icons/Chat.png')}
+                             />
                          </TouchableOpacity>
                          <TouchableOpacity
                              style = {styles.btn}
@@ -219,7 +228,9 @@ export default class Home extends Component {
                              });
                              }}
                          >
-                            <Text>Members</Text>
+                            <Image style={styles.imageStyle}
+                                source={require('../icons/Members.png')}
+                             />
                          </TouchableOpacity>
                   </View>
                   <View style = {styles.buttonView}>
@@ -290,7 +301,13 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         alignSelf: 'center',
         alignItems: 'center',
-
+    },
+    imageStyle: {
+        flex: 1,
+        alignSelf: 'stretch',
+        width: null,
+        height: null,
+        resizeMode: 'contain'
     },
     safeArea: {
         flex: 1,

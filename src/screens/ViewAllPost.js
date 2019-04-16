@@ -122,6 +122,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ebebeb'
   },
   scrollView: {
+    marginTop: 200,
     height: 400,
     backgroundColor: 'transparent',
   },
