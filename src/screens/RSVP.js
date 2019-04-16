@@ -159,7 +159,7 @@ export default class AddItem extends Component {
   };
   render() {
     return (
-      <SafeAreaView style={styles.safeArea}
+      <SafeAreaView style={styles.safeArea}>
       <View style={styles.main}>
         <Text style={styles.title}>Text</Text>
         <Text style={styles.title}>{this.props.navigation.state.params.email}</Text>
