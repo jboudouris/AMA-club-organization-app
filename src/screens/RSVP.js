@@ -5,11 +5,10 @@ import {
   TouchableHighlight,
   StyleSheet,
   TextInput,
-  SafeAreaView,
+  SafeAreaView
 } from 'react-native';
 import firebase from 'firebase';
 import { db } from '../config';
-
 let addItem = (name, eventName, eventUKey, isRSVP, currentUserUid, attendantNum) => {
   let RSVP;
   db.ref('/userRSVP').child(eventName).on('value', snapshot => {
@@ -33,23 +32,61 @@ let addItem = (name, eventName, eventUKey, isRSVP, currentUserUid, attendantNum)
   }
   else {
     //alert(RSVP);
-    key = db.ref('/userRSVP').child(eventName).push();
-    db.ref('/userRSVP').child(eventName).push({
+    // let valuekey = db.ref('/event').push().key;
+    //
+    //   db.ref('/event/' + valuekey).update({
+    //     name: name,
+    //     date: date,
+    //     time: time,
+    //     location: location,
+    //     description: description,
+    //     picture: picture,
+    //     RSVP: RSVP,
+    //     eventKey: eventKey,
+    //     key: valuekey,
+    //
+    //   });
+    // };
+    key = db.ref('/userRSVP').child(eventName).push().key;
+    db.ref('/userRSVP/' + eventName +'/' + key ).update({
       name: name,
       eventName: eventName,
+      key: key,
     });
      let attendantNum1 = attendantNum + 1;
      firebase.database().ref('user/' + currentUserUid).update({
      'attendantNum': attendantNum1
    });
-
-    alert('RSVP Sucess');
+    //alert('RSVP Sucess');
   }
-
-
-
 };
-
+ let removeItem = (name, eventName, eventUKey, isRSVP, currentUserUid, attendantNum) => {
+   let RSVP;
+   let key = '';
+   db.ref('/userRSVP').child(eventName).on('value', snapshot => {
+     if (snapshot.exists() == true){
+       let data = snapshot.val();
+       let items = Object.values(data);
+       for (let i=0; i< items.length; i++){
+         if (items[i].name == name){
+           key = items[i].key
+           break;
+         }
+         else {
+         }
+       }
+     }
+     //}
+   });
+     //alert(RSVP);
+     let toRemove = '/userRSVP/' + eventName + '/' + key;
+     db.ref(toRemove).remove();
+      let attendantNum1 = attendantNum + 1;
+      firebase.database().ref('user/' + currentUserUid).update({
+      'attendantNum': attendantNum1
+    });
+     //alert('RSVP Sucess');
+   };
 export default class AddItem extends Component {
   state = {
     name: '',
@@ -63,8 +100,8 @@ export default class AddItem extends Component {
     eventUKey: '',
     attendantNum: '',
     isRSVP: false,
+    rsvpButton: 'RSVP',
   };
-
   componentDidMount() {
     this.setState({
       name: this.props.navigation.state.params.full_Name,
@@ -78,43 +115,51 @@ export default class AddItem extends Component {
       eventUKey: this.props.navigation.state.params.eventUKey,
       attendantNum: this.props.navigation.state.params.attendantNum,
     });
-    // db.ref('/userRSVP').child(this.props.navigation.state.params.eventName).on('value', snapshot => {
-    //   if (snapshot.exists() == true){
-    //     let data = snapshot.val();
-    //     let items = Object.values(data);
-    //     for (let i=0; i< items.length; i++){
-    //       if (items[i].name == this.state.name){
-    //         //alert(items[i].name == this.state.name);
-    //         this.setState({
-    //           isRSVP: true
-    //         });
-    //         break;
-    //       }
-    //       else {
-    //         this.setState({
-    //           isRSVP: false
-    //         });
-    //       }
-    //     }
-    //   }
-    //   //}
-    // });
+    db.ref('/userRSVP').child(this.props.navigation.state.params.eventName).on('value', snapshot => {
+      if (snapshot.exists() == true){
+        let data = snapshot.val();
+        let items = Object.values(data);
+        for (let i=0; i< items.length; i++){
+          if (items[i].name == this.state.name){
+            this.setState({
+              rsvpButton: "UnRSVP"
+            });
+            break;
+          }
+          else {
+            this.setState({
+              rsvpButton: "RSVP"
+            });
+          }
+        }
+      }
+      //}
+    });
     }
-
   handleChange = e => {
     this.setState({
       name: e.nativeEvent.text
     });
   };
   handleSubmit = () => {
+    if (this.state.rsvpButton == 'RSVP'){
     addItem(this.state.name, this.state.eventName, this.state.eventUKey, this.state.isRSVP,
             this.state.currentUserUid, this.state.attendantNum);
-    //alert('Success');
+      this.setState({
+        rsvpButton: "UnRSVP"
+      });
+    }
+    if (this.state.rsvpButton== 'UnRSVP'){
+      removeItem(this.state.name, this.state.eventName, this.state.eventUKey, this.state.isRSVP,
+              this.state.currentUserUid, this.state.attendantNum);
+        this.setState({
+          rsvpButton: "RSVP"
+        });
+    }
   };
-
   render() {
     return (
-      <SafeAreaView style={styles.safeArea}>
+      <SafeAreaView style={styles.safeArea}
       <View style={styles.main}>
         <Text style={styles.title}>Text</Text>
         <Text style={styles.title}>{this.props.navigation.state.params.email}</Text>
@@ -127,14 +172,13 @@ export default class AddItem extends Component {
           underlayColor="white"
           onPress={this.handleSubmit}
         >
-          <Text style={styles.buttonText}>RSVP</Text>
+          <Text style={styles.buttonText}>{this.state.rsvpButton}</Text>
         </TouchableHighlight>
       </View>
       </SafeAreaView>
     );
   }
 }
-
 const styles = StyleSheet.create({
   main: {
     flex: 1,
@@ -176,7 +220,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   safeArea: {
-  flex: 1,
-  backgroundColor: '#ddd'
-}
+      flex: 1,
+      backgroundColor: '#ddd'
+  }
 });
