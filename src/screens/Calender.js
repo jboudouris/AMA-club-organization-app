@@ -4,9 +4,7 @@ import {Image, TouchableOpacity, StyleSheet, View, Modal, Text, TouchableHighlig
 import List from './SelectedDayEvent'
 import { db } from '../config';
 import { Avatar } from 'react-native-elements';
-
 let itemsRef = db.ref('/event');
-
 //Array of date
 let nextDay = [];
 //Load the date
@@ -34,7 +32,6 @@ export default class HorizontalCalendarList extends Component {
       currentDate: '',
     };
   }
-
 //Call mark function
   componentDidMount() {
     this.setState({
@@ -49,20 +46,17 @@ export default class HorizontalCalendarList extends Component {
     this.getCurrentDate();
     this.anotherFunc();
     }
-
 //take NextDay array and mark it on calendar
     anotherFunc = () => {
     var obj = nextDay.reduce((c, v) => Object.assign(c, {[v]: {selected: true}}), {});
     this.setState({ marked : obj});
 }
-
     setDate = (day) => {
       let days = day.dateString
       this.setState({
         date: days
       });
     }
-
     getCurrentDate = () => {
       let date = new Date();
       let day;
@@ -74,7 +68,6 @@ export default class HorizontalCalendarList extends Component {
       else {
         day = date.getDate();
       }
-
       // date.getMonth return 0-11
       if ((date.getMonth() + 1) < 10){
         month = '0' + (date.getMonth() + 1);
@@ -82,7 +75,6 @@ export default class HorizontalCalendarList extends Component {
       else {
         month = date.getMonth() + 1;
       }
-
       let year = date.getFullYear();
       //date format YYYY-MM-DD
       let eventDate = year+'-'+month+'-'+day;
@@ -130,6 +122,24 @@ export default class HorizontalCalendarList extends Component {
                 </TouchableOpacity>
             </View>
          </View>
+         <View style={{height: 30, flexDirection: 'row'}}>
+            <View style={{flex:1}}>
+              <TouchableOpacity
+                  onPress={() => {this.props.navigation.navigate('CreateEvent')
+                  }}
+              >
+                  <Text style={styles.add}> Add </Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{flex:1}}>
+              <TouchableOpacity
+                  onPress={() => {this.props.navigation.navigate('ListEvent')
+                  }}
+              >
+                  <Text style={styles.listAll}> List All </Text>
+              </TouchableOpacity>
+            </View>
+         </View>
         <CalendarList
           current= {this.state.currentDate}
           pastScrollRange={24}
@@ -147,7 +157,6 @@ export default class HorizontalCalendarList extends Component {
     );
   }
 }
-
 const styles = StyleSheet.create({
     backgroundImage: {
         flex: 1,
@@ -174,14 +183,24 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     },
+    add:  {
+        paddingTop: 5,
+        fontSize: 20,
+        paddingLeft: 5,
+    },
+    listAll:  {
+        paddingTop: 5,
+        fontSize: 20,
+        paddingRight: 5,
+        alignSelf: 'flex-end'
+    },
     headerAMA:  {
         backgroundColor: 'transparent',
         alignSelf: 'center',
         alignItems: 'center',
-
     },
     safeArea: {
-    flex: 1,
-    backgroundColor: '#ddd'
-  }
+        flex: 1,
+        backgroundColor: '#ddd'
+    }
 });
