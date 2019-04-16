@@ -94,7 +94,7 @@ export default class Home extends Component {
 }
   render() {
     return (
-      <SafeAreaView style={styles.safeArea}>
+       <SafeAreaView style={styles.safeArea}>
        <View style = {styles.columnView}>
          <View style  = {styles.header}>
             <View style = {{paddingLeft: 10, flex:1, alignItems:'flex-start'}}>
@@ -282,7 +282,7 @@ const styles = StyleSheet.create({
     },
     header: {
         height: 70,
-        backgroundColor: '#39BDE1',
+        backgroundColor: '#1b2f50',
         flexDirection: 'row',
         alignItems: 'center',
     },
@@ -293,7 +293,7 @@ const styles = StyleSheet.create({
 
     },
     safeArea: {
-    flex: 1,
-    backgroundColor: '#ddd'
-  }
+        flex: 1,
+        backgroundColor: '#ddd'
+    }
 });
