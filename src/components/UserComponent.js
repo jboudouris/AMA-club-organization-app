@@ -22,17 +22,20 @@ export default class ItemComponent extends Component {
       <View>
         {this.props.items.map((item, index) => {
           return (
-                <View key={index}>
-                <TouchableHighlight
-                  style={styles.button}
-                  underlayColor="white"
-                  onPress={() => {
-                    this.props.navigation.navigate('Chat', {
-                      email: item.email,
-                      first_Name: item.first_Name,
-                      user: firebase.auth().currentUser.email,
-                      userKey: item.userKey,
-
+            <View key={index}>
+            <TouchableHighlight
+              style={styles.button}
+              underlayColor="white"
+              onPress={() => {
+                this.props.navigation.navigate('UserProfile', {
+                  email: item.email,
+                  first_Name: item.first_Name,
+                  last_Name: item.last_Name,
+                  quote: item.quote,
+                  status: item.status,
+                  phone_Number: item.phone_Number,
+                  user: firebase.auth().currentUser.email,
+                  userKey: item.userKey,
                     });
 
                   }}
