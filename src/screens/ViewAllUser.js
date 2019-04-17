@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableHighlight, ScrollView, SafeAreaView } from 'react-native';
+import { TouchableOpacity, Image, ImageBackground, View, Text, StyleSheet, TextInput, TouchableHighlight, ScrollView, SafeAreaView } from 'react-native';
 import UserComponent from '../components/UserComponent';
 
 import { db } from '../config';
@@ -69,21 +69,37 @@ export default class List extends Component {
   render() {
     return (
       <SafeAreaView style={styles.safeArea}>
-
-      <ScrollView style={styles.scrollView}>
-        <Text style={styles.title}> Executive Member </Text>
-        {this.state.items.length > 0 ? (
-          <UserComponent items={this.state.items} navigation={this.props.navigation} />
-          ) : (
-          <Text>No items</Text>
-        )}
-        <Text style={styles.title}> Club Member </Text>
-        {this.state.userList.length > 0 ? (
-          <UserComponent items={this.state.userList} navigation={this.props.navigation} />
-          ) : (
-          <Text>No items</Text>
-        )}
-      </ScrollView>
+          <View style={styles.columnView}>
+             <View style  = {styles.header}>
+                <View style={{width:'100%'}}>
+                    <TouchableOpacity style={styles.headerAMA} onPress={() => this.props.navigation.navigate('Home')}>
+                        <Image
+                            style = {{alignSelf: 'center', width: 150, height: 50, margin: 10}}
+                            source = {require('../icons/AMA_white.png')}
+                        />
+                    </TouchableOpacity>
+                </View>
+             </View>
+            <ImageBackground
+                style = {styles.backgroundImage}
+                source = {require('../backgrounds/BG2.png')}
+            >
+              <ScrollView style={styles.scrollView}>
+                <Text style={styles.title}> Executive Members </Text>
+                {this.state.items.length > 0 ? (
+                  <UserComponent items={this.state.items} navigation={this.props.navigation} />
+                  ) : (
+                  <Text>No items</Text>
+                )}
+                <Text style={styles.title}> Club Members </Text>
+                {this.state.userList.length > 0 ? (
+                  <UserComponent items={this.state.userList} navigation={this.props.navigation} />
+                  ) : (
+                  <Text>No items</Text>
+                )}
+              </ScrollView>
+            </ImageBackground>
+          </View>
       </SafeAreaView>
     );
   }
@@ -100,12 +116,31 @@ const styles = StyleSheet.create({
   },
   title: {
     marginTop: 10,
-    marginBottom: 20,
+    marginBottom: 10,
     fontSize: 20,
     paddingRight: 5,
+    color: 'rgba(0,0,0,.6)',
   },
   safeArea: {
-  flex: 1,
-  backgroundColor: '#ddd'
-}
+    flex: 1,
+    backgroundColor: '#ddd'
+  },
+  header: {
+      height: 70,
+      backgroundColor: '#1b2f50',
+      flexDirection: 'row',
+      alignItems: 'center',
+  },
+  headerAMA:  {
+      backgroundColor: 'transparent',
+      alignSelf: 'center',
+      alignItems: 'center',
+  },
+  backgroundImage: {
+      flex: 1,
+      alignSelf: 'stretch',
+  },
+  columnView: {
+      flex:1,
+  },
 });

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {CalendarList} from 'react-native-calendars';
-import {Image, TouchableOpacity, StyleSheet, View, Modal, Text, TouchableHighlight, Button, SafeAreaView} from 'react-native';
+import { ImageBackground, Image, TouchableOpacity, StyleSheet, View, Modal, Text, TouchableHighlight, Button, SafeAreaView} from 'react-native';
 import List from './SelectedDayEvent'
 import { db } from '../config';
 import { Avatar } from 'react-native-elements';
@@ -86,72 +86,50 @@ export default class HorizontalCalendarList extends Component {
     return (
       <SafeAreaView style={styles.safeArea}>
       <View>
-        <View style  = {styles.header}>
-            <View style = {{paddingLeft: 10, flex:1, alignItems:'flex-start'}}>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Tools')}>
-                    <Image
-                        style = {{width: 35, height: 35, margin: 10}}
-                        source = {require('../icons/gear_1.png')}
-                    />
-                </TouchableOpacity>
-            </View>
-            <View style = {{flex:1}}>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
+         <View style  = {styles.header}>
+            <View style={{width:'100%'}}>
+                <TouchableOpacity style={styles.headerAMA} onPress={() => this.props.navigation.navigate('Home')}>
                     <Image
                         style = {{alignSelf: 'center', width: 150, height: 50, margin: 10}}
                         source = {require('../icons/AMA_white.png')}
                     />
                 </TouchableOpacity>
             </View>
-            <View style = {{paddingRight: 10, flex:1, alignItems:'flex-end'}}>
-                <TouchableOpacity
-                    onPress={() => {this.props.navigation.navigate('Profile', {
-                       email: this.state.email,
-                       first_Name: this.state.first_Name,
-                       last_Name: this.state.last_Name,
-                       role: this.state.role,
-                       currentUserUid: this.state.currentUserUid,
-                       full_Name: this.state.full_Name,
-                       attendantNum: this.state.attendantNum,
-                       phone_Number: this.state.phone_Number,
-                       quote: this.state.quote,
-                    });
-                    }}
-                >
-                    <Avatar rounded title="LM" />
-                </TouchableOpacity>
-            </View>
          </View>
-         <View style={{height: 30, flexDirection: 'row'}}>
-            <View style={{flex:1}}>
-              <TouchableOpacity
-                  onPress={() => {this.props.navigation.navigate('CreateEvent')
-                  }}
-              >
-                  <Text style={styles.add}> Add </Text>
-              </TouchableOpacity>
-            </View>
-            <View style={{flex:1}}>
-              <TouchableOpacity
-                  onPress={() => {this.props.navigation.navigate('ListEvent')
-                  }}
-              >
-                  <Text style={styles.listAll}> List All </Text>
-              </TouchableOpacity>
-            </View>
-         </View>
-        <CalendarList
-          current= {this.state.currentDate}
-          pastScrollRange={24}
-          futureScrollRange={24}
-          horizontal
-          pagingEnabled
-          style={{borderBottomWidth: 1, borderBottomColor: 'black'}}
-          hideDayNames={false}
-          onDayPress={(day) => this.setDate(day)}
-          markedDates={this.state.marked}
-        />
-        <List eventToday={this.state.date} navigation={this.props.navigation}/>
+             <View style={{height: 30, flexDirection: 'row'}}>
+                <View style={{flex:1}}>
+                  <TouchableOpacity
+                      style={styles.btn}
+                      onPress={() => {this.props.navigation.navigate('CreateEvent')
+                      }}
+                  >
+                      <Text style={styles.btntxt}> Add+ </Text>
+                  </TouchableOpacity>
+                </View>
+                <View style={{flex:1}}>
+                  <TouchableOpacity
+                      style={styles.btn}
+                      onPress={() => {this.props.navigation.navigate('ListEvent')
+                      }}
+                  >
+                      <Text style={styles.btntxt}> List All </Text>
+                  </TouchableOpacity>
+                </View>
+             </View>
+             <View>
+                <CalendarList
+                  current= {this.state.currentDate}
+                  pastScrollRange={24}
+                  futureScrollRange={24}
+                  horizontal
+                  pagingEnabled
+                  style={{borderBottomWidth: 1, borderBottomColor: 'black'}}
+                  hideDayNames={false}
+                  onDayPress={(day) => this.setDate(day)}
+                  markedDates={this.state.marked}
+                />
+                <List eventToday={this.state.date} navigation={this.props.navigation}/>
+             </View>
       </View>
       </SafeAreaView>
     );
@@ -165,8 +143,11 @@ const styles = StyleSheet.create({
     btn: {
         flex: 1,
         alignSelf: 'stretch',
-        backgroundColor: 'rgba(255,255,255,0.5)',
-        margin: 15,
+        backgroundColor: 'rgba(0,0,0,0.2)',
+        borderColor: 'rgba(0,0,0,.8)',
+        borderLeftWidth: .4,
+        borderRightWidth: .4,
+        borderBottomWidth: .8,
     },
     buttonView: {
         flex: 1,
@@ -179,20 +160,15 @@ const styles = StyleSheet.create({
     },
     header: {
         height: 70,
-        backgroundColor: '#39BDE1',
+        backgroundColor: '#1b2f50',
         flexDirection: 'row',
         alignItems: 'center',
     },
-    add:  {
+    btntxt:  {
         paddingTop: 5,
-        fontSize: 20,
-        paddingLeft: 5,
-    },
-    listAll:  {
-        paddingTop: 5,
-        fontSize: 20,
-        paddingRight: 5,
-        alignSelf: 'flex-end'
+        fontSize: 18,
+        color: 'white',
+        alignSelf: 'center',
     },
     headerAMA:  {
         backgroundColor: 'transparent',
@@ -201,6 +177,10 @@ const styles = StyleSheet.create({
     },
     safeArea: {
         flex: 1,
-        backgroundColor: '#ddd'
-    }
+        backgroundColor: '#39bde1'
+    },
+    backgroundImage: {
+        flex: 1,
+        alignSelf: 'stretch',
+    },
 });

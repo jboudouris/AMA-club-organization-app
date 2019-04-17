@@ -22,9 +22,11 @@ export default class ItemComponent extends Component {
 
           return (
             <View style={styles.container} key={index}>
-              <Text>{item.date}</Text>
-              <Text>Some Name</Text>
-              <Text style = {styles.itemtext}>{item.description}</Text>
+              <View>
+                  <Text style={styles.itemtext1}>Some Name</Text>
+                  <Text style={styles.itemtext2}>{item.date}</Text>
+              </View>
+              <Text style={styles.itemtext3}>{item.description}</Text>
             </View>
           );
 
@@ -36,20 +38,34 @@ export default class ItemComponent extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    margin: 5,
-    backgroundColor: 'white',
-    borderColor: 'gray',
-    borderWidth: 1,
-    borderRadius: 8,
-  },
-  itemsList: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'space-around'
-  },
-  itemtext: {
-    padding: 5,
-    fontSize: 25,
-  }
+    container: {
+        margin: 5,
+        backgroundColor: 'rgba(31,235,221,0.6)',
+        borderColor: 'rgba(0,0,0,.4)',
+        borderWidth: 1,
+        borderRadius: 8,
+    },
+    itemsList: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-around'
+    },
+    itemtext1: {
+        paddingTop: 5,
+        paddingRight: 5,
+        paddingLeft: 5,
+        fontSize: 24,
+        color: 'white',
+    },
+    itemtext2: {
+        paddingLeft: 5,
+        paddingRight: 5,
+        fontSize: 14,
+        color: 'white',
+    },
+    itemtext3: {
+        padding: 5,
+        fontSize: 20,
+        color: 'white',
+    }
 });

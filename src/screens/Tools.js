@@ -51,64 +51,49 @@ export default class Home extends Component {
 }
   render() {
     return (
-      <SafeAreaView style={styles.safeArea}>
-       <View style = {styles.columnView}>
-         <View style  = {styles.header}>
-            <View style = {{paddingLeft: 10, flex:1, alignItems:'flex-start'}}>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Tools')}>
-                    <Image
-                        style = {{width: 35, height: 35, margin: 10}}
-                        source = {require('../icons/gear_1.png')}
-                    />
-                </TouchableOpacity>
-            </View>
-            <View style = {{flex:1}}>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
-                    <Image
-                        style = {{alignSelf: 'center', width: 150, height: 50, margin: 10}}
-                        source = {require('../icons/AMA_white.png')}
-                    />
-                </TouchableOpacity>
-            </View>
-            <View style = {{paddingRight: 10, flex:1, alignItems:'flex-end'}}>
-                <TouchableOpacity
-                    onPress={() => {this.props.navigation.navigate('Profile', {
-                       email: this.state.email,
-                       first_Name: this.state.first_Name,
-                       last_Name: this.state.last_Name,
-                       role: this.state.role,
-                       currentUserUid: this.state.currentUserUid,
-                       full_Name: this.state.full_Name,
-                       attendantNum: this.state.attendantNum,
-                       phone_Number: this.state.phone_Number,
-                       quote: this.state.quote,
-                    });
-                    }}
-                >
-                    <Avatar rounded title="LM" />
-                </TouchableOpacity>
-            </View>
-         </View>
-
-          <ImageBackground
-              style = {styles.backgroundImage}
-              source = {require('../backgrounds/BG2.png')}
-          >
-            <View>
-             <ScrollView style = {{backgroundColor: 'transparent'}}>
-                 <View style = {styles.buttonView}>
-                        <TouchableOpacity
-                            style = {styles.btn}
-                            onPress={() => this.logout()}
-                        >
-                            <Text>Logout</Text>
+        <SafeAreaView style={styles.safeArea}>
+            <View style = {styles.columnView}>
+                 <View style  = {styles.header}>
+                    <View style={{width:'100%'}}>
+                        <TouchableOpacity style={styles.headerAMA} onPress={() => this.props.navigation.navigate('Home')}>
+                            <Image
+                                style = {{alignSelf: 'center', width: 150, height: 50, margin: 10}}
+                                source = {require('../icons/AMA_white.png')}
+                            />
                         </TouchableOpacity>
-                </View>
-             </ScrollView>
+                    </View>
+                 </View>
+
+                <ImageBackground
+                    style = {styles.backgroundImage}
+                    source = {require('../backgrounds/BG2.png')}
+                >
+                    <View>
+                        <ScrollView style = {{backgroundColor: 'transparent'}}>
+                                <View style = {styles.buttonView}>
+                                    <TouchableOpacity
+                                        style = {styles.btn}
+                                        onPress={() => {this.props.navigation.navigate('ProfileEdit', {
+                                            email: this.state.email,
+                                            first_Name: this.state.first_Name,
+                                            last_Name: this.state.last_Name,
+                                            role: this.state.role,
+                                            currentUserUid: this.state.currentUserUid,
+                                            full_Name: this.state.full_Name,
+                                            attendantNum: this.state.attendantNum,
+                                            phone_Number: this.state.phone_Number,
+                                            quote: this.state.quote,
+                                        });
+                                        }}
+                                    >
+                                        <Text style={styles.btntxt}>Edit Profile</Text>
+                                    </TouchableOpacity>
+                                </View>
+                        </ScrollView>
+                    </View>
+                </ImageBackground>
             </View>
-        </ImageBackground>
-      </View>
-      </SafeAreaView>
+        </SafeAreaView>
     );
   }
 }
@@ -122,20 +107,28 @@ const styles = StyleSheet.create({
         flex: 1,
         alignSelf: 'stretch',
         backgroundColor: 'rgba(255,255,255,0.5)',
-        margin: 15,
+        margin: 5,
+    },
+    btntxt: {
+        alignSelf: 'center',
+        marginTop: 25,
+        color: 'rgba(0,0,0,.8)',
+        fontSize: 25,
+        fontWeight: 'bold',
     },
     buttonView: {
         flex: 1,
-        height: 200,
+        height: 100,
         flexDirection:'row',
         backgroundColor: 'transparent',
+        alignItems: 'center',
     },
     columnView:  {
         flex:1
     },
     header: {
         height: 70,
-        backgroundColor: '#EDD395',
+        backgroundColor: '#1b2f50',
         flexDirection: 'row',
         alignItems: 'center',
     },
@@ -146,7 +139,7 @@ const styles = StyleSheet.create({
 
     },
     safeArea: {
-    flex: 1,
-    backgroundColor: '#ddd'
-  }
+        flex: 1,
+        backgroundColor: '#ddd'
+    },
 });

@@ -9,6 +9,8 @@ import {
   TouchableOpacity,
   Picker,
   SafeAreaView,
+  Image,
+  ImageBackground,
 } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import TimePicker from 'react-native-simple-time-picker';
@@ -138,116 +140,133 @@ export default class AddItem extends Component {
     const { selectedHours, selectedMinutes } = this.state;
     return (
       <SafeAreaView style={styles.safeArea}>
-      <ScrollView>
-        <View style={styles.main}>
-          <View style={{flex:1, flexDirection: 'row'}}>
-            <Text style={styles.title}>Event Name</Text>
-            <TextInput style={styles.itemInput} onChangeText={name => this.setState({ name })} />
-          </View>
-
-          <View style={{flex:1, flexDirection: 'row'}}>
-            <Text style={styles.title}>Date</Text>
-            <View style={{ flex: 1 }}>
-              <TouchableOpacity
-                onPress={this._showDateTimePicker}>
-                <Text style={styles.title}> {this.state.chooseDate} </Text>
-              </TouchableOpacity>
-              <DateTimePicker
-                isVisible={this.state.isDateTimePickerVisible}
-                onConfirm={this._handleDatePicked}
-                onCancel={this._hideDateTimePicker}
-              />
+      <View style={styles.columnView}>
+         <View style  = {styles.header}>
+            <View style={{width:'100%'}}>
+                <TouchableOpacity style={styles.headerAMA} onPress={() => this.props.navigation.navigate('Home')}>
+                    <Image
+                        style = {{alignSelf: 'center', width: 150, height: 50, margin: 10}}
+                        source = {require('../icons/AMA_white.png')}
+                    />
+                </TouchableOpacity>
             </View>
-          </View>
+         </View>
+        <ImageBackground
+            style = {styles.backgroundImage}
+            source = {require('../backgrounds/BG2.png')}
+        >
+          <ScrollView>
+            <View style={styles.main}>
+              <View style={styles.buttonView}>
+                <Text style={styles.title}>Event</Text>
+                <TextInput style={styles.textInput} onChangeText={name => this.setState({ name })} />
+              </View>
 
-          <View style={{flex:1, flexDirection: 'row'}}>
-            <Text style={styles.title}>Time</Text>
-            <View style={{ flex: 1 }}>
-              <TouchableOpacity
-                onPress={this._showStartTimePicker}>
-                <Text style={styles.title}> {this.state.chooseStartTime} </Text>
-              </TouchableOpacity>
-              <DateTimePicker
-                isVisible={this.state.isStartTimePickerVisible}
-                onConfirm={this._handleStartTimePicked}
-                onCancel={this._hideStartTimePicker}
-                mode='time'
-                datePickerModeAndroid='spinner'
-              />
+              <View style={styles.buttonView}>
+                <Text style={styles.title}>Date</Text>
+                <View style={{ flex: 1 }}>
+                  <TouchableOpacity
+                    onPress={this._showDateTimePicker}>
+                    <Text style={styles.title}> {this.state.chooseDate} </Text>
+                  </TouchableOpacity>
+                  <DateTimePicker
+                    isVisible={this.state.isDateTimePickerVisible}
+                    onConfirm={this._handleDatePicked}
+                    onCancel={this._hideDateTimePicker}
+                  />
+                </View>
+              </View>
+
+              <View  style={styles.buttonView}>
+                <Text style={styles.title}>Time</Text>
+                <View style={{ width: '30%' }}>
+                  <TouchableOpacity
+                    onPress={this._showStartTimePicker}>
+                    <Text style={styles.textInput1}> {this.state.chooseStartTime} </Text>
+                  </TouchableOpacity>
+                  <DateTimePicker
+                    isVisible={this.state.isStartTimePickerVisible}
+                    onConfirm={this._handleStartTimePicked}
+                    onCancel={this._hideStartTimePicker}
+                    mode='time'
+                    datePickerModeAndroid='spinner'
+                  />
+                </View>
+
+                    <Text style={styles.title1}> to </Text>
+
+                <View style={{ width: '30%' }}>
+                  <TouchableOpacity
+                    onPress={this._showEndTimePicker}>
+                    <Text style={styles.textInput1}> {this.state.chooseEndTime} </Text>
+                  </TouchableOpacity>
+                  <DateTimePicker
+                    isVisible={this.state.isEndTimePickerVisible}
+                    onConfirm={this._handleEndTimePicked}
+                    onCancel={this._hideEndTimePicker}
+                    mode='time'
+                    datePickerModeAndroid='spinner'
+                  />
+                </View>
+              </View>
+
+              <View style={styles.buttonView}>
+                <Text style={styles.title}>Location</Text>
+                <TextInput style={styles.textInput} onChangeText={location => this.setState({ location })} />
+              </View>
+
+              <View style={styles.buttonView}>
+                <Text style={styles.title}>Description</Text>
+                <TextInput style={styles.textInput} onChangeText={description => this.setState({ description })} />
+              </View>
+
+              <View style={styles.buttonView}>
+                <Text style={styles.title}>Picture</Text>
+                <TextInput style={styles.textInput} onChangeText={picture => this.setState({ picture })} />
+              </View>
+
+              <View style={styles.buttonView}>
+                <Text style={styles.title}>Enable RSVP</Text>
+                <Picker
+                  selectedValue={this.state.RSVP}
+                  style={styles.textInput}
+                  onValueChange={(itemValue, itemIndex) =>
+                    this.setState({
+                      RSVP: itemValue
+                    })
+                  }>
+                  <Picker.Item label="True" value= "True" />
+                  <Picker.Item label="False" value= "False" />
+                </Picker>
+              </View>
+
+              <View style={styles.buttonView}>
+                <Text style={styles.title}>Key</Text>
+                <TextInput style={styles.textInput} onChangeText={eventKey => this.setState({ eventKey })} />
+              </View>
+
+              <TouchableHighlight
+                style={styles.button}
+                underlayColor="white"
+                onPress={this.handleSubmit}
+              >
+                <Text style={styles.buttonText}>Create</Text>
+              </TouchableHighlight>
+
+              <TouchableHighlight
+                style={styles.button}
+                underlayColor="white"
+                onPress={() => this.props.navigation.navigate('Home')}
+              >
+                <Text style={styles.buttonText}>Cancel</Text>
+              </TouchableHighlight>
+
+
+
             </View>
-
-                <Text style={styles.title}> to </Text>
-
-            <View style={{ flex: 1 }}>
-              <TouchableOpacity
-                onPress={this._showEndTimePicker}>
-                <Text style={styles.title}> {this.state.chooseEndTime} </Text>
-              </TouchableOpacity>
-              <DateTimePicker
-                isVisible={this.state.isEndTimePickerVisible}
-                onConfirm={this._handleEndTimePicked}
-                onCancel={this._hideEndTimePicker}
-                mode='time'
-                datePickerModeAndroid='spinner'
-              />
-            </View>
-          </View>
-
-          <View style={{flex:1, flexDirection: 'row'}}>
-            <Text style={styles.title}>Location</Text>
-            <TextInput style={styles.itemInput} onChangeText={location => this.setState({ location })} />
-          </View>
-
-          <View style={{flex:1, flexDirection: 'row'}}>
-            <Text style={styles.title}>Description</Text>
-            <TextInput style={styles.itemInput} onChangeText={description => this.setState({ description })} />
-          </View>
-
-          <View style={{flex:1, flexDirection: 'row'}}>
-            <Text style={styles.title}>Picture</Text>
-            <TextInput style={styles.itemInput} onChangeText={picture => this.setState({ picture })} />
-          </View>
-
-          <View style={{flex:1, flexDirection: 'row'}}>
-            <Text style={styles.title}>Enable RSVP</Text>
-            <Picker
-              selectedValue={this.state.RSVP}
-              style={{height: 50, width: 150}}
-              onValueChange={(itemValue, itemIndex) =>
-                this.setState({
-                  RSVP: itemValue
-                })
-              }>
-              <Picker.Item label="True" value= "True" />
-              <Picker.Item label="False" value= "False" />
-            </Picker>
-          </View>
-
-          <View style={{flex:1, flexDirection: 'row'}}>
-            <Text style={styles.title}>SignIn Key</Text>
-            <TextInput style={styles.itemInput} onChangeText={eventKey => this.setState({ eventKey })} />
-          </View>
-
-          <TouchableHighlight
-            style={styles.button}
-            underlayColor="white"
-            onPress={this.handleSubmit}
-          >
-            <Text style={styles.buttonText}>Create</Text>
-          </TouchableHighlight>
-
-          <TouchableHighlight
-            style={styles.button}
-            underlayColor="white"
-            onPress={() => this.props.navigation.navigate('Home')}
-          >
-            <Text style={styles.buttonText}>Cancel</Text>
-          </TouchableHighlight>
-
-
-
+          </ScrollView>
+        </ImageBackground>
         </View>
-      </ScrollView>
       </SafeAreaView>
     );
   }
@@ -256,50 +275,88 @@ export default class AddItem extends Component {
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    padding: 15,
+    padding:10,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: 'white'
   },
   title: {
-    marginBottom: 20,
-    fontSize: 20,
+    fontSize: 18,
     alignSelf: 'center',
+    justifyContent: 'center',
+    color: 'white',
     paddingRight: 5,
+    width: '30%'
   },
-  itemInput: {
-    height: 50,
-    padding: 4,
-    marginBottom: 10,
-    marginRight: 5,
-    fontSize: 23,
+    title1: {
+      fontSize: 18,
+      alignSelf: 'center',
+      justifyContent: 'center',
+      color: 'white',
+      paddingRight: 5,
+      paddingLeft: 5,
+    },
+  textInput: {
+    height: 40,
+    fontSize: 18,
+    width: '70%',
+    borderColor: 'white',
+    backgroundColor: 'rgba(57,189,225,0.6)',
     borderWidth: 1,
-    borderColor: 'black',
-    borderRadius: 8,
-    color: 'black',
-    alignSelf: 'stretch',
-    flex: 1,
-    flexDirection: 'row'
+    marginTop: 8,
+    color: 'white',
   },
+    textInput1: {
+      height: 40,
+      fontSize: 18,
+      width: '100%',
+      borderColor: 'white',
+      backgroundColor: 'rgba(57,189,225,0.6)',
+      borderWidth: 1,
+      marginTop: 8,
+      color: 'white',
+    },
   buttonText: {
     fontSize: 18,
-    color: '#111',
+    color: '#fff',
     alignSelf: 'center',
+
+  },
+    safeArea: {
+        flex: 1,
+        backgroundColor: '#ddd'
+    },
+  header: {
+      height: 70,
+      backgroundColor: '#1b2f50',
+      flexDirection: 'row',
+      alignItems: 'center',
+  },
+  headerAMA:  {
+      backgroundColor: 'transparent',
+      alignSelf: 'center',
+      alignItems: 'center',
+  },
+  backgroundImage: {
+      flex: 1,
+      alignSelf: 'stretch',
+  },
+  columnView: {
+      flex:1,
+  },
+  buttonView: {
+      flexDirection:'row',
+      marginTop: 5,
+      marginBottom: 5,
   },
   button: {
-    height: 45,
-    flexDirection: 'row',
-    backgroundColor: '#3b5998',
-    borderColor: 'white',
-    borderWidth: 1,
-    borderRadius: 8,
-    marginBottom: 10,
-    marginTop: 10,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
+      backgroundColor: 'rgba(127,141,221,0.6)',
+      alignSelf: 'center',
+      width: '100%',
+      borderWidth: 1,
+      marginTop: 10,
+      borderColor: 'white',
+      height: 50,
+      alignItems: 'center',
+      justifyContent: 'center',
   },
-  safeArea: {
-  flex: 1,
-  backgroundColor: '#ddd'
-}
 });

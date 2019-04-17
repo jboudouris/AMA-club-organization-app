@@ -50,8 +50,8 @@ export default class List extends Component {
       <SafeAreaView style={styles.safeArea}>
       <View>
          <View style  = {styles.header}>
-            <View style = {{flex:1}}>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
+            <View style={{width:'100%'}}>
+                <TouchableOpacity style={styles.headerAMA} onPress={() => this.props.navigation.navigate('Home')}>
                     <Image
                         style = {{alignSelf: 'center', width: 150, height: 50, margin: 10}}
                         source = {require('../icons/AMA_white.png')}
@@ -63,7 +63,7 @@ export default class List extends Component {
                 <ScrollView style={styles.scrollView}>
                     <ImageBackground
                         style = {styles.backgroundImage}
-                        source = {require('../backgrounds/BG1.png')}
+                        source = {require('../backgrounds/BG2.png')}
                     >
                     {this.state.items.length > 0 ? (
                       <PostComponent items={this.state.items} />

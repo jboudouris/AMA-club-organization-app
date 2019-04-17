@@ -74,8 +74,8 @@ export default class Home extends Component {
        <SafeAreaView style={styles.safeArea}>
        <View style = {styles.columnView}>
          <View style  = {styles.header}>
-            <View style = {{flex:1}}>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
+            <View style={{width:'100%'}}>
+                <TouchableOpacity style={styles.headerAMA} onPress={() => this.props.navigation.navigate('Home')}>
                     <Image
                         style = {{alignSelf: 'center', width: 150, height: 50, margin: 10}}
                         source = {require('../icons/AMA_white.png')}
@@ -85,7 +85,7 @@ export default class Home extends Component {
          </View>
           <ImageBackground
               style = {styles.backgroundImage}
-              source = {require('../backgrounds/BG3.png')}
+              source = {require('../backgrounds/BG4.png')}
           >
             <View>
              <ScrollView style = {{backgroundColor: 'transparent'}}>
@@ -190,14 +190,16 @@ export default class Home extends Component {
                   <View style = {styles.buttonView}>
                            <TouchableOpacity
                                style = {styles.btn}
-                               onPress={() => {this.props.navigation.navigate('About Us', {
-                                  email: this.state.email,
-                                  first_Name: this.state.first_Name,
-                                  last_Name: this.state.last_Name,
-                                  role: this.state.role,
-                                  currentUserUid: this.state.currentUserUid,
-                                  full_Name: this.state.full_Name,
-                                  attendantNum: this.state.attendantNum,
+                               onPress={() => {this.props.navigation.navigate('Tools', {
+                                   email: this.state.email,
+                                   first_Name: this.state.first_Name,
+                                   last_Name: this.state.last_Name,
+                                   role: this.state.role,
+                                   currentUserUid: this.state.currentUserUid,
+                                   full_Name: this.state.full_Name,
+                                   attendantNum: this.state.attendantNum,
+                                   phone_Number: this.state.phone_Number,
+                                   quote: this.state.quote,
                                });
                                }}
                            >
@@ -244,7 +246,7 @@ const styles = StyleSheet.create({
     },
     header: {
         height: 70,
-        backgroundColor: '#39bde1',
+        backgroundColor: '#1b2f50',
         flexDirection: 'row',
         alignItems: 'center',
     },

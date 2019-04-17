@@ -77,13 +77,13 @@ export default class List extends Component {
 
   render() {
     return (
-      <SafeAreaView style={styles.safeArea}>
+      <SafeAreaView>
       <ScrollView>
       <View style={styles.container}>
         {this.state.items.length > 0 ? (
           <EventComponent items={this.state.items} navigation={this.props.navigation}/>
         ) : (
-          <Text>No items</Text>
+          <Text>No Events</Text>
         )}
       </View>
       </ScrollView>
@@ -96,10 +96,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#ebebeb'
+    backgroundColor: 'white'
   },
-  safeArea: {
-  flex: 1,
-  backgroundColor: '#ddd'
-}
 });

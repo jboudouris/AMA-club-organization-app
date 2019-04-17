@@ -41,22 +41,24 @@ export default class ItemComponent extends Component {
        {this.props.items.map((item, index) => {
          return (
            <View key={index}>
-             <View style={{flex:1, flexDirection:'row', height: 70}}>
+             <View style={{flex:1, flexDirection:'row', height: '10%'}}>
                <View style={{flex:3}}>
                    <TouchableOpacity
+                     style={styles.event}
                      onPress={() => {this.props.navigation.navigate('EventDetail', {
                         name: item.name,
                         date: item.date,
                      });
                      }}
                    >
-                       <Text> {item.name} </Text>
-                       <Text> {item.time} </Text>
+                       <Text style={styles.itemtext1}> {item.name} </Text>
+                       <Text style={styles.itemtext2}> {item.time} </Text>
                    </TouchableOpacity>
                </View>
 
                <View style={{flex:1}}>
                    <TouchableOpacity
+                       style={styles.btn}
                        onPress={() => {this.props.navigation.navigate('RSVP', {
                           eventName: item.name,
                           full_Name: this.props.navigation.state.params.full_Name,
@@ -68,7 +70,7 @@ export default class ItemComponent extends Component {
                        });
                        }}
                    >
-                       <Text style = {{alignSelf: 'center'}}> RSVP </Text>
+                       <Text style = {styles.itemtext}> RSVP </Text>
                    </TouchableOpacity>
                </View>
              </View>
@@ -82,14 +84,38 @@ export default class ItemComponent extends Component {
 }
 
 const styles = StyleSheet.create({
- itemsList: {
-   flex: 1,
-   flexDirection: 'column',
-   justifyContent: 'space-around'
- },
- itemtext: {
-   fontSize: 24,
-   fontWeight: 'bold',
-   textAlign: 'center'
- }
+    btn: {
+        backgroundColor: 'rgba(31,235,221,0.6)',
+        alignSelf: 'center',
+        width: '100%',
+        height: '100%',
+        borderWidth: 1,
+        borderColor: 'rgba(0,0,0,.2)',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    itemsList: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-around'
+    },
+    itemtext: {
+        fontSize: 18,
+        textAlign: 'center',
+        color: 'white',
+    },
+    itemtext1: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: 'white',
+    },
+    itemtext2: {
+        fontSize: 14,
+        color: 'white',
+    },
+    event: {
+        backgroundColor: 'rgba(127,141,221,0.6)',
+        borderColor: 'rgba(0,0,0,.2)',
+        borderWidth: 1,
+    },
 });
