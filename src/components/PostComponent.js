@@ -21,9 +21,10 @@ export default class ItemComponent extends Component {
         {this.props.items.map((item, index) => {
 
           return (
-            <View key={index}>
-              <Text>{item.key}</Text>
-              <Text>{item.description}</Text>
+            <View style={styles.container} key={index}>
+              <Text>{item.date}</Text>
+              <Text>Some Name</Text>
+              <Text style = {styles.itemtext}>{item.description}</Text>
             </View>
           );
 
@@ -35,14 +36,20 @@ export default class ItemComponent extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    margin: 5,
+    backgroundColor: 'white',
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 8,
+  },
   itemsList: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-around'
   },
   itemtext: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center'
+    padding: 5,
+    fontSize: 25,
   }
 });

@@ -4,9 +4,7 @@ import firebase from 'firebase';
 import { db } from '../config';
 import Swiper from 'react-native-swiper';
 import { Avatar } from 'react-native-elements';
-
 let itemsRef = db.ref('/user');
-
 export default class Home extends Component {
   state = {
     email: '',
@@ -22,14 +20,6 @@ export default class Home extends Component {
   };
   logout(){
     firebase.auth().signOut();
-  }
-
-  logout1(){
-    alert(this.state.currentUserUid);
-  }
-
-  logout2(){
-    alert(firebase.auth().currentUser.emailVerified);
   }
   componentDidMount(){
     itemsRef.on('value', snapshot => {
@@ -55,19 +45,6 @@ export default class Home extends Component {
       }
     });
   }
-  logout3(){
-    alert(
-          'email: ' + this.state.email + '\n' +
-          'firstName: ' + this.state.first_Name + '\n' +
-          'lastName: ' + this.state.last_Name + '\n' +
-          'fullName: ' + this.state.full_Name + '\n' +
-          'role: ' + this.state.role + '\n' +
-          'attendantNum: ' + this.state.attendantNum + '\n' +
-          'userUid: ' + this.state.currentUserUid
-
-        );
-  }
-
   renderElement(){
    if(this.state.role == 'user'){
       return <Button
@@ -97,14 +74,6 @@ export default class Home extends Component {
        <SafeAreaView style={styles.safeArea}>
        <View style = {styles.columnView}>
          <View style  = {styles.header}>
-            <View style = {{paddingLeft: 10, flex:1, alignItems:'flex-start'}}>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Tools')}>
-                    <Image
-                        style = {{width: 35, height: 35, margin: 10}}
-                        source = {require('../icons/gear_1.png')}
-                    />
-                </TouchableOpacity>
-            </View>
             <View style = {{flex:1}}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
                     <Image
@@ -113,26 +82,7 @@ export default class Home extends Component {
                     />
                 </TouchableOpacity>
             </View>
-            <View style = {{paddingRight: 10, flex:1, alignItems:'flex-end'}}>
-                <TouchableOpacity
-                    onPress={() => {this.props.navigation.navigate('Profile', {
-                       email: this.state.email,
-                       first_Name: this.state.first_Name,
-                       last_Name: this.state.last_Name,
-                       role: this.state.role,
-                       currentUserUid: this.state.currentUserUid,
-                       full_Name: this.state.full_Name,
-                       attendantNum: this.state.attendantNum,
-                       phone_Number: this.state.phone_Number,
-                       quote: this.state.quote,
-                    });
-                    }}
-                >
-                    <Avatar rounded title="LM" />
-                </TouchableOpacity>
-            </View>
          </View>
-
           <ImageBackground
               style = {styles.backgroundImage}
               source = {require('../backgrounds/BG3.png')}
@@ -162,9 +112,13 @@ export default class Home extends Component {
                             });
                             }}
                         >
-                            <Image style={styles.imageStyle}
-                                source={require('../icons/cog.png')}
-                             />
+                            <Avatar
+                                size="xlarge"
+                                title={this.state.first_Name[0] + this.state.last_Name[0]}
+                                containerStyle={{marginTop: 10}}
+                                overlayContainerStyle={{backgroundColor: '#1b2f50'}}
+                                activeOpacity={0.8}
+                            />
                         </TouchableOpacity>
                 </View>
                  <View style = {styles.buttonView}>
@@ -187,7 +141,7 @@ export default class Home extends Component {
                         </TouchableOpacity>
                         <TouchableOpacity
                             style = {styles.btn}
-                            onPress={() => {this.props.navigation.navigate('Events', {
+                            onPress={() => {this.props.navigation.navigate('ListEvent', {
                                first_Name: this.state.first_Name,
                                last_Name: this.state.last_Name,
                                role: this.state.role,
@@ -203,14 +157,14 @@ export default class Home extends Component {
                   <View style = {styles.buttonView}>
                          <TouchableOpacity
                              style = {styles.btn}
-                             onPress={() => {this.props.navigation.navigate('List', {
-                                email: this.state.email,
-                                first_Name: this.state.first_Name,
-                                last_Name: this.state.last_Name,
-                                role: this.state.role,
-                                currentUserUid: this.state.currentUserUid,
-                                full_Name: this.state.full_Name,
-                                attendantNum: this.state.attendantNum,
+                             onPress={() => {this.props.navigation.navigate('Inbox', {
+                                   email: this.state.email,
+                                   first_Name: this.state.first_Name,
+                                   last_Name: this.state.last_Name,
+                                   role: this.state.role,
+                                   currentUserUid: this.state.currentUserUid,
+                                   full_Name: this.state.full_Name,
+                                   attendantNum: this.state.attendantNum,
                              });
                              }}
                          >
@@ -247,21 +201,19 @@ export default class Home extends Component {
                                });
                                }}
                            >
-                                <Text>About Us</Text>
+                                <Image style={styles.imageStyle}
+                                    source={require('../icons/Info.png')}
+                                 />
                            </TouchableOpacity>
                            <TouchableOpacity
                                style = {styles.btn}
-                               onPress={() => {this.props.navigation.navigate('Tools', {
-                                  first_Name: this.state.first_Name,
-                                  last_Name: this.state.last_Name,
-                                  role: this.state.role,
-                               });
-                               }}
+                               onPress={() => this.logout()}
                            >
-                               <Text>Tools</Text>
+                               <Image style={styles.imageStyle}
+                                   source={require('../icons/Logout.png')}
+                                />
                            </TouchableOpacity>
                   </View>
-
             </ScrollView>
             </View>
         </ImageBackground>
@@ -270,7 +222,6 @@ export default class Home extends Component {
     );
   }
 }
-
 const styles = StyleSheet.create({
     backgroundImage: {
         flex: 1,
@@ -279,7 +230,7 @@ const styles = StyleSheet.create({
     btn: {
         flex: 1,
         alignSelf: 'stretch',
-        backgroundColor: 'rgba(255,255,255,0.5)',
+        backgroundColor: 'rgba(255,255,255,0)',
         margin: 15,
     },
     buttonView: {
@@ -293,7 +244,7 @@ const styles = StyleSheet.create({
     },
     header: {
         height: 70,
-        backgroundColor: '#1b2f50',
+        backgroundColor: '#39bde1',
         flexDirection: 'row',
         alignItems: 'center',
     },
@@ -307,7 +258,7 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch',
         width: null,
         height: null,
-        resizeMode: 'contain'
+        resizeMode: 'contain',
     },
     safeArea: {
         flex: 1,

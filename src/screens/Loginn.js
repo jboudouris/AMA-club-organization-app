@@ -92,10 +92,9 @@ const styles = StyleSheet.create({
     },
     btn1: {
         backgroundColor: 'rgba(127,141,221,0.6)',
-        alignSelf: 'stretch',
-        marginLeft: 20,
-        marginRight: 20,
+        alignSelf: 'center',
 
+        width: '90%',
         borderWidth: 1,
         marginTop: 10,
         borderColor: 'white',
@@ -105,7 +104,7 @@ const styles = StyleSheet.create({
     },
     btn2: {
         backgroundColor: 'rgba(127,141,221,0.6)',
-        alignSelf: 'stretch',
+        width: '42.5%',
         marginLeft: 20,
         marginRight: 10,
         borderWidth: 1,
@@ -114,12 +113,10 @@ const styles = StyleSheet.create({
         height: 50,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingLeft: 50,
-        paddingRight: 50,
     },
     btn3: {
         backgroundColor: 'rgba(127,141,221,0.6)',
-        alignSelf: 'stretch',
+        width: '42.5%',
         marginLeft: 10,
         marginRight: 20,
         borderWidth: 1,
@@ -128,11 +125,9 @@ const styles = StyleSheet.create({
         height: 50,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingLeft: 15,
-        paddingRight: 15,
     },
     btntxt: {
-        fontSize: 20,
+        fontSize: 18,
         color: 'white',
     },
     buttonView: {
@@ -146,7 +141,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     height: 50,
-    fontSize: 20,
+    fontSize: 18,
     width: '90%',
     borderColor: 'white',
     backgroundColor: 'rgba(57,189,225,0.6)',

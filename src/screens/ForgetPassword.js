@@ -75,19 +75,17 @@ const styles = StyleSheet.create({
     },
     btn1: {
         backgroundColor: 'rgba(127,141,221,0.6)',
-        alignSelf: 'stretch',
-        marginLeft: 20,
-        marginRight: 20,
-
+        alignSelf: 'center',
         borderWidth: 1,
         marginTop: 10,
+        width: '90%',
         borderColor: 'white',
         height: 50,
         alignItems: 'center',
         justifyContent: 'center',
     },
     btntxt: {
-        fontSize: 20,
+        fontSize: 18,
         color: 'white',
     },
     buttonView: {
@@ -101,7 +99,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     height: 50,
-    fontSize: 20,
+    fontSize: 18,
     width: '90%',
     borderColor: 'white',
     backgroundColor: 'rgba(57,189,225,0.6)',

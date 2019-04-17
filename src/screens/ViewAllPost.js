@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ImageBackground, Image, TouchableOpacity, View, Text, StyleSheet, TextInput, TouchableHighlight, ScrollView, SafeAreaView } from 'react-native';
+import {  KeyboardAvoidingView, ImageBackground, Image, TouchableOpacity, View, Text, StyleSheet, TextInput, TouchableHighlight, ScrollView, SafeAreaView } from 'react-native';
 import PostComponent from '../components/PostComponent';
 import { Avatar } from 'react-native-elements';
 
@@ -34,7 +34,6 @@ export default class List extends Component {
       this.state.date,
       this.state.picture,
     );
-    alert('Success');
   };
 
   componentDidMount() {
@@ -51,14 +50,6 @@ export default class List extends Component {
       <SafeAreaView style={styles.safeArea}>
       <View>
          <View style  = {styles.header}>
-            <View style = {{paddingLeft: 10, flex:1, alignItems:'flex-start'}}>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Tools')}>
-                    <Image
-                        style = {{width: 35, height: 35, margin: 10}}
-                        source = {require('../icons/gear_1.png')}
-                    />
-                </TouchableOpacity>
-            </View>
             <View style = {{flex:1}}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
                     <Image
@@ -67,48 +58,31 @@ export default class List extends Component {
                     />
                 </TouchableOpacity>
             </View>
-            <View style = {{paddingRight: 10, flex:1, alignItems:'flex-end'}}>
-                <TouchableOpacity
-                    onPress={() => {this.props.navigation.navigate('Profile', {
-                       email: this.state.email,
-                       first_Name: this.state.first_Name,
-                       last_Name: this.state.last_Name,
-                       role: this.state.role,
-                       currentUserUid: this.state.currentUserUid,
-                       full_Name: this.state.full_Name,
-                       attendantNum: this.state.attendantNum,
-                       phone_Number: this.state.phone_Number,
-                       quote: this.state.quote,
-                    });
-                    }}
-                >
-                    <Avatar rounded title="LM" />
-                </TouchableOpacity>
-            </View>
          </View>
-
-         <ImageBackground
-             style = {styles.backgroundImage}
-             source = {require('../backgrounds/BG2.png')}
-          >
-            <View>
+         <View style = {styles.container}>
                 <ScrollView style={styles.scrollView}>
+                    <ImageBackground
+                        style = {styles.backgroundImage}
+                        source = {require('../backgrounds/BG1.png')}
+                    >
                     {this.state.items.length > 0 ? (
                       <PostComponent items={this.state.items} />
                       ) : (
                       <Text>No items</Text>
                     )}
+                    </ImageBackground>
                 </ScrollView>
-                <TextInput style={styles.itemInput} onChangeText={description => this.setState({ description })} />
-                <TouchableHighlight
-                  style={styles.button}
-                  underlayColor="white"
-                  onPress={this.handleSubmit}
-                >
-                  <Text style={styles.buttonText}>Add</Text>
-                </TouchableHighlight>
-            </View>
-        </ImageBackground>
+                <View style={styles.textbar}>
+                    <TextInput style={styles.txtInput} onChangeText={description => this.setState({ description })} />
+                    <TouchableOpacity
+                      style={styles.btn}
+                      underlayColor="white"
+                      onPress={this.handleSubmit}
+                    >
+                      <Text style={styles.buttonText}>Post</Text>
+                    </TouchableOpacity>
+                </View>
+         </View>
       </View>
       </SafeAreaView>
     );
@@ -117,24 +91,29 @@ export default class List extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#ebebeb'
+    flexDirection: 'column',
   },
   scrollView: {
-    marginTop: 200,
-    height: 400,
     backgroundColor: 'transparent',
+    height: '80%',
   },
   backgroundImage: {
       flex: 1,
-      alignSelf: 'stretch',
   },
   btn: {
-      flex: 1,
-      alignSelf: 'stretch',
-      backgroundColor: 'rgba(255,255,255,0.5)',
-      margin: 15,
+      backgroundColor: '#cccccc',
+      alignSelf: 'center',
+      width: '15%',
+      borderWidth: 1,
+      margin: 5,
+      borderColor: 'gray',
+      height: 40,
+      alignItems: 'center',
+      justifyContent: 'center',
+  },
+  buttonText: {
+      fontSize: 18,
+      color: '#1b2f50',
   },
   buttonView: {
       flex: 1,
@@ -147,7 +126,7 @@ const styles = StyleSheet.create({
   },
   header: {
       height: 70,
-      backgroundColor: '#39BDE1',
+      backgroundColor: '#1b2f50',
       flexDirection: 'row',
       alignItems: 'center',
   },
@@ -155,10 +134,23 @@ const styles = StyleSheet.create({
       backgroundColor: 'transparent',
       alignSelf: 'center',
       alignItems: 'center',
-
   },
   safeArea: {
-  flex: 1,
-  backgroundColor: '#ddd'
-}
+      backgroundColor: '#fff'
+  },
+  textbar: {
+      height: '10%',
+      flexDirection:'row',
+      backgroundColor: '#1b2f50',
+  },
+  txtInput:  {
+      marginLeft: 5,
+      height: 40,
+      alignSelf: 'center',
+      width: '85%',
+      flex: 1,
+      backgroundColor: 'rgba(255, 255, 255, 1)',
+      borderColor: 'gray',
+      borderWidth: 1,
+  }
 });

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, View, Text, TextInput, SafeAreaView, FlatList, ScrollView, Dimensions, TouchableOpacity } from 'react-native';
 import firebase from 'firebase';
+import {KeyboardAvoidingView} from 'react-native';
 let title1 = 'Chat';
 
 export default class Home extends Component {
@@ -95,6 +96,7 @@ GoTo_bottom_function =()=>{
           keyExtractor={(item, index)=>index.toString()}
           scrollToIndex={this.state.messageList.length -1 }
         />
+    <KeyboardAvoidingView behavior="position" style={{paddingBottom: 15}}>
      <View style={{ flexDirection:'row', alignItems: 'center' }}>
         <TextInput
             value={this.state.textMessage}
@@ -105,6 +107,7 @@ GoTo_bottom_function =()=>{
           <Text> Send </Text>
         </TouchableOpacity>
      </View>
+    </KeyboardAvoidingView>
      </SafeAreaView>
     );
   }
