@@ -28,9 +28,13 @@ export default class ItemComponent extends Component {
               style={styles.button}
               underlayColor="white"
               onPress={() => {
-                this.props.navigation.navigate('Chat', {
+                this.props.navigation.navigate('UserProfile', {
                   email: item.email,
                   first_Name: item.first_Name,
+                  last_Name: item.last_Name,
+                  quote: item.quote,
+                  status: item.status,
+                  phone_Number: item.phone_Number,
                   user: firebase.auth().currentUser.email,
                   userKey: item.userKey,
 
