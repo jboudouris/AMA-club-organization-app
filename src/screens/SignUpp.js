@@ -72,11 +72,13 @@ export default class SignUp extends React.Component {
       }
       else
       {
-        alert('Passwords do not match.');
+//        alert('Passwords do not match.');
+        return true;
       }
     }
    else {
-      alert("Please enter your Wisc email (@wisc.edu).");
+//      alert("Please enter your Wisc email (@wisc.edu).");
+      return true;
     }
   }
 

@@ -6,7 +6,7 @@ import { Avatar } from 'react-native-elements';
 import { db } from '../config';
 import firebase from 'firebase';
 let itemsRef = db.ref('/post');
-let addItem = (description, date, picture) => {
+let addItem = (description, date, picture, full_Name) => {
 let valuekey = db.ref('/post').push().key;
 
   db.ref('/post/' + valuekey).update({
@@ -15,7 +15,7 @@ let valuekey = db.ref('/post').push().key;
     picture: picture,
     user: firebase.auth().currentUser.uid,
     key: valuekey,
-
+    full_Name: full_Name,
 
   });
 };
@@ -26,6 +26,7 @@ export default class List extends Component {
     date: '',
     picture: '',
     key: '',
+    full_Name: '',
   };
 
   handleSubmit = () => {
@@ -33,6 +34,7 @@ export default class List extends Component {
       this.state.description,
       this.state.date,
       this.state.picture,
+      this.props.navigation.state.params.full_Name,
     );
   };
 

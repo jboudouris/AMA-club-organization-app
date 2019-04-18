@@ -7,7 +7,10 @@ export default class ItemComponent extends Component {
   static propTypes = {
     items: PropTypes.array.isRequired
   };
-
+convertTime = (date) => {
+    let time = date[5]+date[6]+date[7]+date[8]+date[9]+date[4]+date[0]+date[1]+date[2]+date[3];
+    return time;
+}
   componentDidMount() {
     itemsRef.on('value', snapshot => {
       let data = snapshot.val();
@@ -23,8 +26,8 @@ export default class ItemComponent extends Component {
           return (
             <View style={styles.container} key={index}>
               <View>
-                  <Text style={styles.itemtext1}>Some Name</Text>
-                  <Text style={styles.itemtext2}>{item.date}</Text>
+                  <Text style={styles.itemtext1}>{item.full_Name}</Text>
+                  <Text style={styles.itemtext2}>{this.convertTime(item.date)}</Text>
               </View>
               <Text style={styles.itemtext3}>{item.description}</Text>
             </View>

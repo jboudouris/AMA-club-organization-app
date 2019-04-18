@@ -5,9 +5,6 @@ import Home from './src/screens/Home';
 
 // we will use these two screens later in our AppNavigator
 import AddUser from './src/screens/AddUser';
-import Login from './src/screens/Login';
-import Check from './src/screens/Check';
-import SignUp from './src/screens/SignUp';
 import Loading from './src/screens/Loading';
 import SignUpp from './src/screens/SignUpp';
 import Loginn from './src/screens/Loginn';
@@ -19,7 +16,6 @@ import RSVP from './src/screens/RSVP';
 import DeleteEvent from './src/screens/DeleteEvent';
 import Calender from './src/screens/Calender';
 import Archives from './src/screens/Archives';
-import AddPost from './src/screens/AddPost';
 import ViewAllPost from './src/screens/ViewAllPost';
 import ViewAllUser from './src/screens/ViewAllUser';
 import Chat from './src/screens/Chat';
@@ -49,7 +45,6 @@ const AppNavigator = createStackNavigator(
     Calender,
     EventDetail,
     Archives,
-    AddPost,
     ViewAllPost,
     ViewAllUser,
     Chat,

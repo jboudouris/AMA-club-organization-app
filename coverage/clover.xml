@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1555107431583" clover="3.2.0">
-  <project timestamp="1555107431583" name="All files">
-    <metrics statements="108" coveredstatements="35" conditionals="20" coveredconditionals="5" methods="66" coveredmethods="16" elements="194" coveredelements="56" complexity="0" loc="108" ncloc="108" packages="5" files="9" classes="9"/>
+<coverage generated="1555619006595" clover="3.2.0">
+  <project timestamp="1555619006595" name="All files">
+    <metrics statements="57" coveredstatements="26" conditionals="14" coveredconditionals="4" methods="37" coveredmethods="13" elements="108" coveredelements="43" complexity="0" loc="57" ncloc="57" packages="4" files="6" classes="6"/>
     <package name="src">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="config.js" path="C:\Users\Logan Mahan\AppData\Local\Android\Sdk\AMA-club-organization-app\src\config.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="2" count="5" type="stmt"/>
-        <line num="10" count="5" type="stmt"/>
-        <line num="11" count="5" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
       </file>
     </package>
     <package name="src.backgrounds">
@@ -16,20 +16,6 @@
       <file name="BG2.png" path="C:\Users\Logan Mahan\AppData\Local\Android\Sdk\AMA-club-organization-app\src\backgrounds\BG2.png">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="3" type="stmt"/>
-      </file>
-    </package>
-    <package name="src.components">
-      <metrics statements="8" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
-      <file name="UserComponent.js" path="C:\Users\Logan Mahan\AppData\Local\Android\Sdk\AMA-club-organization-app\src\components\UserComponent.js">
-        <metrics statements="8" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="54" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.icons">
@@ -40,7 +26,7 @@
       </file>
     </package>
     <package name="src.screens">
-      <metrics statements="95" coveredstatements="28" conditionals="20" coveredconditionals="5" methods="61" coveredmethods="16"/>
+      <metrics statements="52" coveredstatements="21" conditionals="14" coveredconditionals="4" methods="37" coveredmethods="13"/>
       <file name="ForgetPassword.js" path="C:\Users\Logan Mahan\AppData\Local\Android\Sdk\AMA-club-organization-app\src\screens\ForgetPassword.js">
         <metrics statements="10" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="7" coveredmethods="2"/>
         <line num="4" count="1" type="stmt"/>
@@ -50,9 +36,9 @@
         <line num="22" count="0" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
         <line num="33" count="3" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
-        <line num="69" count="1" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
       </file>
       <file name="Loginn.js" path="C:\Users\Logan Mahan\AppData\Local\Android\Sdk\AMA-club-organization-app\src\screens\Loginn.js">
         <metrics statements="13" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="10" coveredmethods="4"/>
@@ -63,61 +49,12 @@
         <line num="24" count="2" type="stmt"/>
         <line num="30" count="2" type="stmt"/>
         <line num="35" count="8" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="57" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="76" count="0" type="stmt"/>
-        <line num="86" count="1" type="stmt"/>
-      </file>
-      <file name="Profile.js" path="C:\Users\Logan Mahan\AppData\Local\Android\Sdk\AMA-club-organization-app\src\screens\Profile.js">
-        <metrics statements="12" coveredstatements="3" conditionals="4" coveredconditionals="1" methods="4" coveredmethods="2"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="41" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="53" count="1" type="stmt"/>
-        <line num="70" count="0" type="stmt"/>
-      </file>
-      <file name="ProfileEdit.js" path="C:\Users\Logan Mahan\AppData\Local\Android\Sdk\AMA-club-organization-app\src\screens\ProfileEdit.js">
-        <metrics statements="31" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="20" coveredmethods="1"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="57" count="0" type="stmt"/>
-        <line num="69" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
         <line num="74" count="0" type="stmt"/>
-        <line num="79" count="0" type="stmt"/>
-        <line num="85" count="0" type="stmt"/>
-        <line num="91" count="0" type="stmt"/>
-        <line num="97" count="0" type="stmt"/>
-        <line num="103" count="0" type="stmt"/>
-        <line num="109" count="0" type="stmt"/>
-        <line num="119" count="0" type="stmt"/>
-        <line num="134" count="8" type="stmt"/>
-        <line num="141" count="0" type="stmt"/>
-        <line num="147" count="0" type="stmt"/>
-        <line num="153" count="0" type="stmt"/>
-        <line num="159" count="0" type="stmt"/>
-        <line num="165" count="0" type="stmt"/>
-        <line num="171" count="0" type="stmt"/>
-        <line num="177" count="0" type="stmt"/>
-        <line num="186" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="88" count="1" type="stmt"/>
       </file>
       <file name="SignUpp.js" path="C:\Users\Logan Mahan\AppData\Local\Android\Sdk\AMA-club-organization-app\src\screens\SignUpp.js">
         <metrics statements="29" coveredstatements="10" conditionals="10" coveredconditionals="2" methods="20" coveredmethods="7"/>
@@ -132,24 +69,24 @@
         <line num="54" count="0" type="stmt"/>
         <line num="59" count="0" type="stmt"/>
         <line num="60" count="0" type="stmt"/>
-        <line num="68" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="68" count="2" type="cond" truecount="1" falsecount="1"/>
         <line num="69" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="71" count="0" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="79" count="1" type="stmt"/>
-        <line num="84" count="2" type="stmt"/>
-        <line num="90" count="1" type="stmt"/>
-        <line num="96" count="1" type="stmt"/>
-        <line num="101" count="1" type="stmt"/>
-        <line num="106" count="1" type="stmt"/>
-        <line num="111" count="13" type="stmt"/>
-        <line num="131" count="0" type="stmt"/>
-        <line num="139" count="0" type="stmt"/>
-        <line num="147" count="0" type="stmt"/>
-        <line num="156" count="0" type="stmt"/>
-        <line num="165" count="0" type="stmt"/>
-        <line num="171" count="0" type="stmt"/>
-        <line num="181" count="1" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="81" count="2" type="stmt"/>
+        <line num="86" count="2" type="stmt"/>
+        <line num="92" count="1" type="stmt"/>
+        <line num="98" count="1" type="stmt"/>
+        <line num="103" count="1" type="stmt"/>
+        <line num="108" count="1" type="stmt"/>
+        <line num="113" count="13" type="stmt"/>
+        <line num="134" count="0" type="stmt"/>
+        <line num="142" count="0" type="stmt"/>
+        <line num="150" count="0" type="stmt"/>
+        <line num="159" count="0" type="stmt"/>
+        <line num="168" count="0" type="stmt"/>
+        <line num="174" count="0" type="stmt"/>
+        <line num="185" count="1" type="stmt"/>
       </file>
     </package>
   </project>

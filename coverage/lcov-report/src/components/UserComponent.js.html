@@ -111,7 +111,20 @@
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -134,7 +147,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -142,6 +154,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -165,6 +178,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -199,47 +225,60 @@ export default class ItemComponent extends Component {
 <span class="cstat-no" title="statement not covered" >    return (</span>
       &lt;View&gt;
         {this.props.items.map(<span class="fstat-no" title="function not covered" >(i</span>tem, index) =&gt; {
-&nbsp;
 <span class="cstat-no" title="statement not covered" >          return (</span>
             &lt;View key={index}&gt;
             &lt;TouchableHighlight
               style={styles.button}
               underlayColor="white"
               onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >                this.props.navigation.navigate('Chat', {</span>
+<span class="cstat-no" title="statement not covered" >                this.props.navigation.navigate('UserProfile', {</span>
                   email: item.email,
                   first_Name: item.first_Name,
+                  last_Name: item.last_Name,
+                  quote: item.quote,
+                  status: item.status,
+                  phone_Number: item.phone_Number,
                   user: firebase.auth().currentUser.email,
                   userKey: item.userKey,
+                    });
 &nbsp;
-                });
+                  }}
 &nbsp;
-              }}
-&nbsp;
-            &gt;
-              &lt;Text style={styles.buttonText}&gt;{item.email}&lt;/Text&gt;
-            &lt;/TouchableHighlight&gt;
-            &lt;/View&gt;
+                &gt;
+                  &lt;Text style={styles.btntxt}&gt;{item.first_Name} {item.last_Name}&lt;/Text&gt;
+                &lt;/TouchableHighlight&gt;
+                &lt;/View&gt;
           );
-&nbsp;
-&nbsp;
         })}
-      &lt;/View&gt;
+    &lt;/View&gt;
     );
   }
 }
 &nbsp;
 const styles = StyleSheet.create({
-  itemsList: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'space-around'
-  },
-  itemtext: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center'
-  }
+    itemsList: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-around'
+    },
+    itemtext: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        textAlign: 'center'
+    },
+    button: {
+        backgroundColor: 'rgba(255,255,255,.5)',
+        height: 40,
+        borderColor: 'rgba(0,0,0,.3)',
+        borderTopWidth: .5,
+        borderBottomWidth: .25,
+        justifyContent: 'center',
+    },
+    btntxt: {
+        fontSize: 18,
+        marginLeft: 5,
+        color: 'rgba(0,0,0,.6)',
+    },
 });
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -247,7 +286,7 @@ const styles = StyleSheet.create({
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Apr 12 2019 17:17:11 GMT-0500 (Central Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Apr 18 2019 15:06:54 GMT-0500 (Central Daylight Time)
 </div>
 </div>
 <script src="..\..\prettify.js"></script>

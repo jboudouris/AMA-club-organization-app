@@ -170,6 +170,16 @@ export default class AddItem extends Component {
         <TouchableHighlight
           style={styles.button}
           underlayColor="white"
+          onPress={() => {this.props.navigation.navigate('RSVPList', {
+                                     eventName: this.state.eventName,
+                                   });
+                                 }}
+        >
+          <Text style={styles.buttonText}>RSVP List</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.button}
+          underlayColor="white"
           onPress={this.handleSubmit}
         >
           <Text style={styles.buttonText}>{this.state.rsvpButton}</Text>

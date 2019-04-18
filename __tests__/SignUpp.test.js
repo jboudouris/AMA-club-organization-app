@@ -57,5 +57,5 @@ it('should check email', () => {
     loginComponent.handleEmailChange('some_email')
     loginComponent.checkEmail()
 
-    expect(loginComponent.checkEmail()).toThrow()
+    expect(loginComponent.checkEmail()).toBeTruthy()
 })

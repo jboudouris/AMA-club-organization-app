@@ -55,7 +55,7 @@ export default class Home extends Component {
                 last_Name: this.state.last_Name,
                 role: this.state.role,
                 currentUserUid: this.state.currentUserUid,
-                full_Name: this.state.full_Name,
+                full_Name: this.state.first_Name  + this.state.last_Name,
                 attendantNum: this.state.attendantNum,
               });
             }}
@@ -91,7 +91,10 @@ export default class Home extends Component {
              <ScrollView style = {{backgroundColor: 'transparent'}}>
                  <View style = {styles.buttonView}>
                         <TouchableOpacity style={styles.btn}
-                              onPress={() => this.props.navigation.navigate('ViewAllPost')}
+                              onPress={() => {this.props.navigation.navigate('ViewAllPost', {
+                                    full_Name: this.state.full_Name,
+                              });
+                              }}
                         >
                             <Image style={styles.imageStyle}
                                 source={require('../icons/Archives.png')}
