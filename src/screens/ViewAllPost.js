@@ -40,9 +40,13 @@ export default class List extends Component {
 
   componentDidMount() {
     itemsRef.on('value', snapshot => {
-      let data = snapshot.val();
-      let items = Object.values(data);
-      this.setState({ items });
+      if  (snapshot.exists() == true)  {
+            let data = snapshot.val();
+            let items = Object.values(data);
+              this.setState({ items });
+      }
+
+
       //}
     });
   }

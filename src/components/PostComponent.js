@@ -27,7 +27,7 @@ convertTime = (date) => {
             <View style={styles.container} key={index}>
               <View>
                   <Text style={styles.itemtext1}>{item.full_Name}</Text>
-                  <Text style={styles.itemtext2}>{this.convertTime(item.date)}</Text>
+                  <Text style={styles.itemtext2}>{item.date}</Text>
               </View>
               <Text style={styles.itemtext3}>{item.description}</Text>
             </View>

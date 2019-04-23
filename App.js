@@ -4,7 +4,6 @@ import { View, StyleSheet } from 'react-native';
 import Home from './src/screens/Home';
 
 // we will use these two screens later in our AppNavigator
-import AddUser from './src/screens/AddUser';
 import Loading from './src/screens/Loading';
 import SignUpp from './src/screens/SignUpp';
 import Loginn from './src/screens/Loginn';
@@ -34,7 +33,6 @@ const AppNavigator = createStackNavigator(
   {
     Loading,
     SignUpp,
-    SignUp,
     Loginn,
     Main,
     CreateEvent,
