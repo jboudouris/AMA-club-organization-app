@@ -28,6 +28,7 @@ import ListEvent from './src/screens/ListEvent';
 import Inbox from './src/screens/Inbox';
 import DeleteUser from './src/screens/DeleteUser';
 import UserProfile from './src/screens/UserProfile';
+import EditUsers from './src/screens/EditUsers';
 
 const AppNavigator = createStackNavigator(
   {
@@ -56,6 +57,7 @@ const AppNavigator = createStackNavigator(
     Inbox,
     DeleteUser,
     UserProfile,
+    EditUsers,
   },
   {
     initialRouteName: 'Loading',

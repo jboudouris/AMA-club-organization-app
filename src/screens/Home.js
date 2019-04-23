@@ -85,7 +85,7 @@ export default class Home extends Component {
          </View>
           <ImageBackground
               style = {styles.backgroundImage}
-              source = {require('../backgrounds/BG4.png')}
+              source = {require('../backgrounds/BG2.png')}
           >
             <View>
              <ScrollView style = {{backgroundColor: 'transparent'}}>

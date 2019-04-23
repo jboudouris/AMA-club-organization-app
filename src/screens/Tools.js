@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, ImageBackground, SafeAreaView } from 'react-native';
+import { Alert,  Button, View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, ImageBackground, SafeAreaView } from 'react-native';
 import firebase from 'firebase';
 import { db } from '../config';
 import Swiper from 'react-native-swiper';
@@ -23,6 +23,20 @@ export default class Home extends Component {
   };
   logout(){
     firebase.auth().signOut();
+  }
+
+  componentDidMount() {
+    this.setState({
+      email: this.props.navigation.state.params.email,
+      first_Name: this.props.navigation.state.params.first_Name,
+      last_Name: this.props.navigation.state.params.last_Name,
+      role: this.props.navigation.state.params.role,
+      currentUserUid: this.props.navigation.state.params.currentUserUid,
+      full_Name: this.props.navigation.state.params.full_Name,
+      attendantNum: this.props.navigation.state.params.attendantNum,
+      phone_Number: this.props.navigation.state.params.phone_Number,
+      quote: this.props.navigation.state.params.quote,
+    });
   }
 
   renderElement(){
@@ -49,6 +63,28 @@ export default class Home extends Component {
  }
  return null;
 }
+
+deleteAccountPrompt(){
+        Alert.alert(
+            'Are you sure you want to delete your account?',
+            'Your account will be permanently deleted and all saved information will be lost.',
+            [
+             {
+               text: 'Cancel',
+               onPress: () => console.log('Account Deletion Halted'),
+               style: 'cancel',
+             },
+             { text: 'I am sure', onPress: () => this.deleteAccount() },
+            ]
+        );
+}
+
+deleteAccount() {
+    let toRemove = '/user/' + firebase.auth().currentUser.uid;
+    db.ref(toRemove).remove();
+    firebase.auth().signOut();
+}
+
   render() {
     return (
         <SafeAreaView style={styles.safeArea}>
@@ -89,6 +125,33 @@ export default class Home extends Component {
                                         <Text style={styles.btntxt}>Edit Profile</Text>
                                     </TouchableOpacity>
                                 </View>
+                                <View style = {styles.buttonView}>
+                                    <TouchableOpacity
+                                        style = {styles.btn}
+                                        onPress={() => this.deleteAccountPrompt()}
+                                    >
+                                        <Text style={styles.btntxt}>Delete Account</Text>
+                                    </TouchableOpacity>
+                                </View>
+                                    <View style = {styles.buttonView}>
+                                        <TouchableOpacity
+                                            style = {styles.btn}
+                                            onPress={() => {this.props.navigation.navigate('EditUsers', {
+                                                email: this.state.email,
+                                                first_Name: this.state.first_Name,
+                                                last_Name: this.state.last_Name,
+                                                role: this.state.role,
+                                                currentUserUid: this.state.currentUserUid,
+                                                full_Name: this.state.full_Name,
+                                                attendantNum: this.state.attendantNum,
+                                                phone_Number: this.state.phone_Number,
+                                                quote: this.state.quote,
+                                            });
+                                            }}
+                                        >
+                                            <Text style={styles.btntxt}>Edit Users</Text>
+                                        </TouchableOpacity>
+                                    </View>
                         </ScrollView>
                     </View>
                 </ImageBackground>
