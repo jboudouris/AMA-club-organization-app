@@ -114,17 +114,14 @@ export default class AddItem extends Component {
             onPress={() => {
               this.props.navigation.navigate('Chat', {
                 email: item.email,
-                first_Name: "item.first_Name",
+                first_Name: item.first_Name,
+                full_Name: item.full_Name,
                 user: firebase.auth().currentUser.email,
                 userKey: item.otherUserKey,
-                to: "to",
-
               });
-
             }}
-
           >
-              <Text> {item.to} " " {item.message}</Text>
+              <Text>{item.other_Name} {item.message}</Text>
           </TouchableHighlight>
       </View>
     )
