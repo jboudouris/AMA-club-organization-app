@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import UserComponent from '../components/UserComponent';
 
-import {ImageBackground, Image, KeyboardAvoidingView, ScrollView, View, Modal, Text, TextInput, TouchableOpacity, Button, SafeAreaView, StyleSheet} from 'react-native';
+import {Picker, ImageBackground, Image, KeyboardAvoidingView, ScrollView, View, Modal, Text, TextInput, TouchableOpacity, Button, SafeAreaView, StyleSheet} from 'react-native';
 
 import { db } from '../config';
 import firebase from 'firebase';
@@ -51,17 +51,31 @@ export default class Profile extends Component {
  }
 
 //Call mark function
-componentDidMount() {
-  this.setState({
-    email: this.props.navigation.state.params.email,
-    first_Name: this.props.navigation.state.params.first_Name,
-    last_Name: this.props.navigation.state.params.last_Name,
-    role: this.props.navigation.state.params.role,
-    phone_Number: this.props.navigation.state.params.phone_Number,
-    quote: this.props.navigation.state.params.quote,
-    payment: this.props.navigation.state.params.payment,
-  });
-}
+ componentDidMount(){
+    itemsRef.on('value', snapshot => {
+      let data = snapshot.val();
+      let items = Object.values(data);
+      for (let i=0; i< items.length; i++)
+      {
+        if(items[i].userKey == this.props.navigation.state.params.currentUserUid)
+        {
+          this.setState({
+            email: items[i].email,
+            first_Name: items[i].first_Name,
+            last_Name: items[i].last_Name,
+            role: items[i].role,
+            full_Name: items[i].first_Name + ' ' + items[i].last_Name,
+            currentUserUid: items[i].userKey,
+            attendantNum: items[i].attendantNum,
+            phone_Number: items[i].phone_Number,
+            quote: items[i].quote,
+            payment: items[i].payment,
+          });
+          break;
+        }
+      }
+    });
+  }
 
   handleAltEmailChange = (alt_Email) => {
     this.setState({
@@ -190,12 +204,17 @@ render() {
                   underlineColorAndroid='transparent'
               />
               <Text style={styles.field}>Payment: </Text>
-              <TextInput
-                  style={styles.textInput}
-                  placeholder={this.props.navigation.state.params.payment}
-                  onChangeText={ payment => this.handlePaymentChange( payment ) }
-                  underlineColorAndroid='transparent'
-              />
+                <Picker
+                    selectedValue={this.state.payment}
+                    style={styles.textInput}
+                    onValueChange={(itemValue, itemIndex) =>
+                    this.setState({
+                      payment: itemValue
+                    })
+                    }>
+                    <Picker.Item label="Paid" value= "Paid" />
+                    <Picker.Item label="Unpaid" value= "Unpaid" />
+                </Picker>
                 <View style = {styles.buttonView}>
                     <TouchableOpacity style = {styles.btn2} onPress={() => this.handleSubmit()}>
                         <Text style={styles.btntxt}>Submit</Text>

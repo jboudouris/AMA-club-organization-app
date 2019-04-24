@@ -22,6 +22,7 @@ let valuekey = db.ref('/post').push().key;
 export default class List extends Component {
   state = {
     items: [],
+    items1: [],
     description: '',
     date: '',
     picture: '',
@@ -39,13 +40,17 @@ export default class List extends Component {
   };
 
   componentDidMount() {
+    let items1 = [];
     itemsRef.on('value', snapshot => {
       if  (snapshot.exists() == true)  {
             let data = snapshot.val();
             let items = Object.values(data);
-              this.setState({ items });
+            this.setState({ items });
+            for (let i = 0; i < items.length; i++) {
+                    items1.push(items[items.length - 1 - i]);
+            }
+            this.setState({ items1 : items1 });
       }
-
 
       //}
     });
@@ -71,8 +76,8 @@ export default class List extends Component {
                         style = {styles.backgroundImage}
                         source = {require('../backgrounds/BG2.png')}
                     >
-                    {this.state.items.length > 0 ? (
-                      <PostComponent items={this.state.items} />
+                    {this.state.items1.length > 0 ? (
+                      <PostComponent items={this.state.items1} />
                       ) : (
                       <Text>No items</Text>
                     )}

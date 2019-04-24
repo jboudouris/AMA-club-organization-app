@@ -40,6 +40,7 @@ export default class SignUp extends React.Component {
                     quote: '',
                     phone_Number: '',
                     alt_Email: '',
+                    payment: false,
                 });
               this.sendVerification();
               firebase.auth().signOut();
