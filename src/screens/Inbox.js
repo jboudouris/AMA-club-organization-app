@@ -26,6 +26,7 @@ export default class AddItem extends Component {
   componentDidMount(){
     let otherUserList = [];
     firebase.database().ref('messages').child(firebase.auth().currentUser.uid).on('value', snapshot => {
+      if (snapshot.exists() == true){
       let childrenKey = [];
       let data = snapshot.val();
       let items = Object.values(data);
@@ -57,6 +58,7 @@ export default class AddItem extends Component {
         }
 
       }
+    }
     });
 
   }
