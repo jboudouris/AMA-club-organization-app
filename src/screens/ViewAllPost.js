@@ -36,19 +36,53 @@ export default class List extends Component {
       this.state.picture,
       this.props.navigation.state.params.full_Name,
     );
+    this.forceUpdate(this.rerenderPost());
   };
 
   componentDidMount() {
+    let postArr = [];
     itemsRef.on('value', snapshot => {
       if  (snapshot.exists() == true)  {
             let data = snapshot.val();
             let items = Object.values(data);
-              this.setState({ items });
+              // this.setState({ items });
+
+          for (let i=0; i< items.length; i++){
+            postArr.push(items[items.length - 1 - i])
+          }
+          this.setState({
+            items: postArr
+          })
       }
 
 
       //}
     });
+  }
+
+  rerenderPost() {
+    let postArr = [];
+    itemsRef.on('value', snapshot => {
+      if  (snapshot.exists() == true)  {
+            let data = snapshot.val();
+            let items = Object.values(data);
+              // this.setState({ items });
+
+          for (let i=0; i< items.length; i++){
+            postArr.push(items[items.length - 1 - i])
+          }
+          this.setState({
+            items: postArr
+          })
+      }
+
+
+      //}
+    });
+  }
+
+  componentWillMount() {
+    this.forceUpdate(this.rerenderPost());
   }
 
   render() {
