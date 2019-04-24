@@ -85,7 +85,7 @@ export default class ItemComponent extends Component {
 
 const styles = StyleSheet.create({
     btn: {
-        backgroundColor: 'rgba(31,235,221,0.6)',
+        backgroundColor: 'rgba(45,78,134,0.7)',
         alignSelf: 'center',
         width: '100%',
         height: '100%',

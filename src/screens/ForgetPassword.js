@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch',
     },
     btn1: {
-        backgroundColor: 'rgba(127,141,221,0.6)',
+        backgroundColor: 'rgba(45,78,134,0.7)',
         alignSelf: 'center',
         borderWidth: 1,
         marginTop: 10,

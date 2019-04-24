@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch',
     },
     btn1: {
-        backgroundColor: 'rgba(27,47,80,0.5)',
+        backgroundColor: 'rgba(45,78,134,0.7)',
         alignSelf: 'center',
 
         width: '90%',
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     },
     btn2: {
 //        backgroundColor: 'rgba(127,141,221,0.6)',
-        backgroundColor: 'rgba(27,47,80,0.5)',
+        backgroundColor: 'rgba(45,78,134,0.7)',
         width: '42.5%',
         marginLeft: 20,
         marginRight: 10,
@@ -117,7 +117,8 @@ const styles = StyleSheet.create({
     },
     btn3: {
 //        backgroundColor: 'rgba(127,141,221,0.6)',
-                backgroundColor: 'rgba(27,47,80,0.5)',
+//                backgroundColor: 'rgba(27,47,80,0.5)',
+        backgroundColor: 'rgba(45,78,134,0.7)',
         width: '42.5%',
         marginLeft: 10,
         marginRight: 20,

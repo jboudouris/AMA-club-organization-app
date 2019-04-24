@@ -72,7 +72,7 @@ export default class Profile extends Component {
                    rounded size="xlarge"
                    title={this.state.first_Name[0] + this.state.last_Name[0]}
                    containerStyle={{marginTop: 10, marginLeft: 10}}
-                   overlayContainerStyle={{backgroundColor: '#20c9c6', borderColor: 'white', borderWidth: .5}}
+                   overlayContainerStyle={{backgroundColor: 'rgba(45,78,134,.8)', borderColor: 'white', borderWidth: .5}}
                    activeOpacity={0.8}
                />
                 <Text style={styles.quote}>{this.state.quote}</Text>

@@ -166,6 +166,7 @@ render() {
               <TextInput
                   style={styles.textInput}
                   placeholder={this.props.navigation.state.params.first_Name}
+                  placeholderTextColor='white'
                   onChangeText={ first_Name => this.handleFirstNameChange( first_Name ) }
                   underlineColorAndroid='transparent'
               />
@@ -173,19 +174,23 @@ render() {
               <TextInput
                   style={styles.textInput}
                   placeholder={this.props.navigation.state.params.last_Name}
+                  placeholderTextColor='white'
                   onChangeText={ last_Name => this.handleLastNameChange( last_Name ) }
                   underlineColorAndroid='transparent'
               />
               <Text style={styles.field}>Alternate Email:</Text>
               <TextInput
                   style={styles.textInput}
+                  placeholder={this.state.alt_Email}
                   onChangeText={ alt_Email => this.handleAltEmailChange( alt_Email ) }
+                  placeholderTextColor='white'
                   underlineColorAndroid='transparent'
               />
               <Text style={styles.field}>Phone Number: </Text>
               <TextInput
                   style={styles.textInput}
                   placeholder={this.props.navigation.state.params.phone_Number}
+                  placeholderTextColor='white'
                   onChangeText={ phone_Number => this.handlePhoneNumberChange( phone_Number ) }
                   underlineColorAndroid='transparent'
               />
@@ -193,6 +198,7 @@ render() {
               <TextInput
                   style={styles.textInput}
                   placeholder={this.props.navigation.state.params.quote}
+                  placeholderTextColor='white'
                   onChangeText={ quote => this.handleQuoteChange( quote ) }
                   underlineColorAndroid='transparent'
               />
@@ -200,6 +206,7 @@ render() {
               <TextInput
                   style={styles.textInput}
                   placeholder={this.props.navigation.state.params.role}
+                  placeholderTextColor='white'
                   onChangeText={ role => this.handleRoleChange( role ) }
                   underlineColorAndroid='transparent'
               />
@@ -239,11 +246,12 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     btn2: {
-        backgroundColor: 'rgba(127,141,221,0.6)',
+        backgroundColor: 'rgba(45,78,134,0.7)',
         width: '42.5%',
         marginRight: 10,
         borderWidth: 1,
-        marginTop: 10,
+        marginTop: 20,
+        marginBottom: 20,
         marginLeft: '5%',
         borderColor: 'white',
         height: 50,
@@ -252,11 +260,12 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     btn3: {
-        backgroundColor: 'rgba(127,141,221,0.6)',
+        backgroundColor: 'rgba(45,78,134,0.7)',
         width: '42.5%',
         marginLeft: 10,
         borderWidth: 1,
-        marginTop: 10,
+        marginTop: 20,
+        marginBottom: 20,
         marginRight: '5%',
         borderColor: 'white',
         height: 50,
@@ -270,7 +279,7 @@ const styles = StyleSheet.create({
     },
     buttonView: {
         flex: 1,
-        height: 150,
+
         flexDirection:'row',
         backgroundColor: 'transparent',
         alignItems: 'center',

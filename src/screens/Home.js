@@ -118,8 +118,8 @@ export default class Home extends Component {
                             <Avatar
                                 size="xlarge"
                                 title={this.state.first_Name[0] + this.state.last_Name[0]}
-                                containerStyle={{marginTop: 10}}
-                                overlayContainerStyle={{backgroundColor: '#1b2f50'}}
+                                containerStyle={{flex:1, width: '100%'}}
+                                overlayContainerStyle={{        backgroundColor: 'rgba(45,78,134,0.9)',}}
                                 activeOpacity={0.8}
                             />
                         </TouchableOpacity>

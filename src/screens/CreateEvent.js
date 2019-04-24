@@ -44,7 +44,7 @@ export default class AddItem extends Component {
     RSVP: "False",
     eventKey: '',
     key: '',
-    chooseDate: 'Choose a date',
+    chooseDate: 'Select a date',
     chooseStartTime: 'Start Time',
     chooseEndTime: 'End Time',
     isDateTimePickerVisible: false,
@@ -167,7 +167,7 @@ export default class AddItem extends Component {
                 <View style={{ flex: 1 }}>
                   <TouchableOpacity
                     onPress={this._showDateTimePicker}>
-                    <Text style={styles.title}> {this.state.chooseDate} </Text>
+                    <Text style={styles.textInput1}> {this.state.chooseDate} </Text>
                   </TouchableOpacity>
                   <DateTimePicker
                     isVisible={this.state.isDateTimePickerVisible}
@@ -227,17 +227,18 @@ export default class AddItem extends Component {
 
               <View style={styles.buttonView}>
                 <Text style={styles.title}>Enable RSVP</Text>
-                <Picker
-                  selectedValue={this.state.RSVP}
-                  style={styles.textInput}
-                  onValueChange={(itemValue, itemIndex) =>
-                    this.setState({
-                      RSVP: itemValue
-                    })
-                  }>
-                  <Picker.Item label="True" value= "True" />
-                  <Picker.Item label="False" value= "False" />
-                </Picker>
+                <View style={styles.textInput}>
+                    <Picker
+                      selectedValue={this.state.RSVP}
+                      onValueChange={(itemValue, itemIndex) =>
+                        this.setState({
+                          RSVP: itemValue
+                        })
+                      }>
+                      <Picker.Item label="True" style={styles.title2} value= "True" />
+                      <Picker.Item label="False" style={styles.title2} value= "False" />
+                    </Picker>
+                </View>
               </View>
 
               <View style={styles.buttonView}>
@@ -295,6 +296,10 @@ const styles = StyleSheet.create({
       paddingRight: 5,
       paddingLeft: 5,
     },
+    title2: {
+       fontSize: 18,
+        color: 'blue',
+    },
   textInput: {
     height: 40,
     fontSize: 18,
@@ -314,6 +319,7 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       marginTop: 8,
       color: 'white',
+      alignItems: 'center'
     },
   buttonText: {
     fontSize: 18,
@@ -349,11 +355,12 @@ const styles = StyleSheet.create({
       marginBottom: 5,
   },
   button: {
-      backgroundColor: 'rgba(127,141,221,0.6)',
+      backgroundColor: 'rgba(45,78,134,0.7)',
       alignSelf: 'center',
       width: '100%',
       borderWidth: 1,
-      marginTop: 10,
+      marginTop: 5,
+      marginBottom: 5,
       borderColor: 'white',
       height: 50,
       alignItems: 'center',

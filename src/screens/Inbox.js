@@ -8,6 +8,9 @@ import {
   ScrollView,
   SafeAreaView,
   FlatList,
+  TouchableOpacity,
+  ImageBackground,
+  Image,
 } from 'react-native';
 import InboxUserComponent from '../components/InboxUserComponent';
 import firebase from 'firebase';
@@ -105,82 +108,98 @@ export default class AddItem extends Component {
   renderRow = ({item}) => {
     return(
       <View>
-      <TouchableHighlight
-        style={styles.button}
-        underlayColor="black"
-        onPress={() => {
-          this.props.navigation.navigate('Chat', {
-            email: item.email,
-            first_Name: "item.first_Name",
-            user: firebase.auth().currentUser.email,
-            userKey: item.otherUserKey,
-            to: "to",
+          <TouchableHighlight
+            style={styles.button}
+            underlayColor="black"
+            onPress={() => {
+              this.props.navigation.navigate('Chat', {
+                email: item.email,
+                first_Name: "item.first_Name",
+                user: firebase.auth().currentUser.email,
+                userKey: item.otherUserKey,
+                to: "to",
 
-          });
+              });
 
-        }}
+            }}
 
-      >
-      <Text> {item.to} " " {item.message}</Text>
-      </TouchableHighlight>
+          >
+              <Text> {item.to} " " {item.message}</Text>
+          </TouchableHighlight>
       </View>
     )
   }
 
   render() {
     return (
-      <View>
-      <Text> {this.props.navigation.state.params.refresh} </Text>
-      <SafeAreaView>
-        <FlatList
-          data={this.state.otherUser}
-          renderItem={this.renderRow}
-          keyExtractor={(item, index)=>index.toString()}
-        />
-      </SafeAreaView>
-      </View>
+        <SafeAreaView style={styles.safeArea}>
+         <View style={styles.header}>
+            <View style={{width:'100%'}}>
+                <TouchableOpacity style={styles.headerAMA} onPress={() => this.props.navigation.navigate('Home')}>
+                    <Image
+                        style = {{alignSelf: 'center', width: 150, height: 50, margin: 10}}
+                        source = {require('../icons/AMA_white.png')}
+                    />
+                </TouchableOpacity>
+            </View>
+         </View>
+              <ImageBackground
+                  style = {styles.backgroundImage}
+                  source = {require('../backgrounds/BG2.png')}
+              >
+                <View>
+                    <FlatList
+                      data={this.state.otherUser}
+                      renderItem={this.renderRow}
+                      keyExtractor={(item, index)=>index.toString()}
+                    />
+                </View>
+              </ImageBackground>
+          </SafeAreaView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-    padding: 30,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    backgroundColor: '#6565fc'
-  },
-  title: {
-    marginBottom: 20,
-    fontSize: 25,
-    textAlign: 'center'
-  },
-  itemInput: {
-    height: 50,
-    padding: 4,
-    marginRight: 5,
-    fontSize: 23,
-    borderWidth: 1,
-    borderColor: 'white',
-    borderRadius: 8,
-    color: 'white'
-  },
-  buttonText: {
-    fontSize: 18,
-    color: '#111',
-    alignSelf: 'center'
-  },
-  button: {
-    height: 45,
-    flexDirection: 'row',
-    backgroundColor: 'white',
-    borderColor: 'white',
-    borderWidth: 1,
-    borderRadius: 8,
-    marginBottom: 10,
-    marginTop: 10,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  }
+    backgroundImage: {
+        flex: 1,
+        alignSelf: 'stretch',
+    },
+    btn: {
+        flex: 1,
+        alignSelf: 'stretch',
+        backgroundColor: 'rgba(255,255,255,0)',
+        margin: 15,
+    },
+    buttonView: {
+        flex: 1,
+        height: 200,
+        flexDirection:'row',
+        backgroundColor: 'transparent',
+    },
+    columnView:  {
+        flex:1
+    },
+    header: {
+        height: 70,
+        backgroundColor: '#1b2f50',
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    headerAMA:  {
+        backgroundColor: 'transparent',
+        alignSelf: 'center',
+        alignItems: 'center',
+    },
+    imageStyle: {
+        flex: 1,
+        alignSelf: 'stretch',
+        width: null,
+        height: null,
+        resizeMode: 'contain',
+    },
+    safeArea: {
+        flex: 1,
+        backgroundColor: '#ddd'
+    }
 });
