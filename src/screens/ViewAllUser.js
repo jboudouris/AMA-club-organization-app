@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Image, ImageBackground, View, Text, StyleSheet, TextInput, TouchableHighlight, ScrollView, SafeAreaView } from 'react-native';
+import { TouchableOpacity, Image, ImageBackground, View, Text, StyleSheet, TextInput, TouchableHighlight, ScrollView, SafeAreaView, Button } from 'react-native';
 import UserComponent from '../components/UserComponent';
 
 import { db } from '../config';
@@ -28,6 +28,7 @@ export default class List extends Component {
     date: '',
     picture: '',
     key: '',
+    full_Name: '',
   };
 
   handleSubmit = () => {
@@ -40,6 +41,9 @@ export default class List extends Component {
   };
 
   componentDidMount() {
+    this.setState({
+      full_Name: this.props.navigation.state.params.full_Name,
+    });
     let execArr = [];
     let userArr = [];
     itemsRef.on('value', snapshot => {
@@ -93,7 +97,7 @@ export default class List extends Component {
                 )}
                 <Text style={styles.title}> Club Members </Text>
                 {this.state.userList.length > 0 ? (
-                  <UserComponent items={this.state.userList} navigation={this.props.navigation} />
+                  <UserComponent items={this.state.userList} navigation={this.props.navigation} full_Name={this.state.full_Name}/>
                   ) : (
                   <Text>No items</Text>
                 )}
