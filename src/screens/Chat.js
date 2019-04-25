@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, Image, ImageBackground, Button, View, Text, TextInput, SafeAreaView, FlatList, ScrollView, Dimensions, TouchableOpacity } from 'react-native';
 import firebase from 'firebase';
+import { db } from '../config';
 import {KeyboardAvoidingView} from 'react-native';
 let title1 = 'Chat';
-
+let itemsRef = db.ref('/user');
 export default class Home extends Component {
   static navigationOptions = {
    title: title1
@@ -14,13 +15,12 @@ export default class Home extends Component {
    this.state = {
      person: {
        email: this.props.navigation.state.params.email,
-       full_Name: this.props.navigation.state.params.full_Name,
+       otherfull_Name: this.props.navigation.state.params.otherfull_Name,
        userKey: this.props.navigation.state.params.userKey,
      },
-     other_Name: '',
+     full_Name: '',
      textMessage: '',
      messageList:[],
-     page:1,
    }
  }
 
@@ -45,8 +45,8 @@ export default class Home extends Component {
      let message = {
        message: this.state.textMessage,
        time: firebase.database.ServerValue.TIMESTAMP,
-       from: this.state.person.full_Name,
-       to: this.state.other_Name,
+       from: this.state.full_Name,
+       to: this.state.person.otherfull_Name,
        otherUserKey: this.state.person.userKey,
        email: this.props.navigation.state.params.email,
      }
@@ -66,6 +66,25 @@ export default class Home extends Component {
        }
      })
    })
+ }
+
+ componentDidMount(){
+   let some_Name = '';
+   itemsRef.on('value', snapshot => {
+         let data = snapshot.val();
+         let items = Object.values(data);
+         for (let i=0; i< items.length; i++)
+         {
+           if(items[i].userKey ==  firebase.auth().currentUser.uid)
+           {
+             this.setState({
+               full_Name: items[i].first_Name + ' ' + items[i].last_Name,
+             });
+
+             break;
+           }
+         }
+       });
  }
 
  renderRow = ({item}) => {
@@ -104,7 +123,7 @@ GoTo_bottom_function =()=>{
     let {height, width} = Dimensions.get('window');
     return (
         <SafeAreaView>
-            <View style={styles.columnView}>
+            <View>
              <View style  = {styles.header}>
                 <View style={{width:'100%'}}>
                     <TouchableOpacity style={styles.headerAMA} onPress={() => this.props.navigation.navigate('Home')}>
@@ -116,27 +135,27 @@ GoTo_bottom_function =()=>{
                 </View>
              </View>
 
-                        <View style={styles.main}>
-                            <FlatList
-                                style={{width: '85%', padding: 30, height: 500}}
-                                data={this.state.messageList}
-                                renderItem={this.renderRow}
-                                keyExtractor={(item, index)=>index.toString()}
-                                scrollToIndex={this.state.messageList.length -1 }
-                            />
-                            <KeyboardAvoidingView behavior="position">
-                                <View style={{ flexDirection:'row'}}>
-                                    <TextInput
-                                    value={this.state.textMessage}
-                                    placeholder="Type message..."
-                                    onChangeText={textMessage => this.setState({ textMessage })}
-                                    />
-                                    <TouchableOpacity onPress={this.handleSubmit}>
-                                        <Text> Send </Text>
-                                    </TouchableOpacity>
-                                </View>
-                            </KeyboardAvoidingView>
-                         </View>
+
+              <FlatList
+                  style={{padding: 30, height: height * 0.8}}
+                  data={this.state.messageList}
+                  renderItem={this.renderRow}
+                  keyExtractor={(item, index)=>index.toString()}
+                  scrollToIndex={this.state.messageList.length -1 }
+              />
+              <KeyboardAvoidingView behavior="position">
+                  <View style={{ flexDirection:'row'}}>
+                      <TextInput
+                      value={this.state.textMessage}
+                      placeholder="Type message..."
+                      onChangeText={textMessage => this.setState({ textMessage })}
+                      />
+                      <TouchableOpacity onPress={this.handleSubmit}>
+                          <Text> Send </Text>
+                      </TouchableOpacity>
+                  </View>
+              </KeyboardAvoidingView>
+
             </View>
         </SafeAreaView>
     );
