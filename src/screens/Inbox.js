@@ -114,8 +114,8 @@ export default class AddItem extends Component {
             onPress={() => {
               this.props.navigation.navigate('Chat', {
                 email: item.email,
-                first_Name: item.first_Name,
-                full_Name: item.full_Name,
+                first_Name: "item.first_Name",
+                otherfull_Name: item.to,
                 user: firebase.auth().currentUser.email,
                 userKey: item.otherUserKey,
               });
