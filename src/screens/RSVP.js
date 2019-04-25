@@ -28,7 +28,7 @@ let addItem = (name, eventName, eventUKey, isRSVP, currentUserUid, attendantNum)
     //}
   });
   if (RSVP == true){
-    alert('You already RSVP this event');
+    alert('You are already RSVP\'d to this event');
   }
   else {
     //alert(RSVP);
@@ -190,47 +190,50 @@ export default class AddItem extends Component {
   }
 }
 const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-    padding: 30,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    backgroundColor: '#6565fc'
-  },
-  title: {
-    marginBottom: 20,
-    fontSize: 25,
-    textAlign: 'center'
-  },
-  itemInput: {
-    height: 50,
-    padding: 4,
-    marginRight: 5,
-    fontSize: 23,
-    borderWidth: 1,
-    borderColor: 'white',
-    borderRadius: 8,
-    color: 'white'
-  },
-  buttonText: {
-    fontSize: 18,
-    color: '#111',
-    alignSelf: 'center'
-  },
-  button: {
-    height: 45,
-    flexDirection: 'row',
-    backgroundColor: 'white',
-    borderColor: 'white',
-    borderWidth: 1,
-    borderRadius: 8,
-    marginBottom: 10,
-    marginTop: 10,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
-  safeArea: {
-      flex: 1,
-      backgroundColor: '#ddd'
-  }
+   main: {
+     flex: 1,
+     padding: 30,
+     flexDirection: 'column',
+     justifyContent: 'center',
+   },
+   title: {
+     marginBottom: 20,
+     fontSize: 25,
+     textAlign: 'center'
+   },
+   itemInput: {
+     height: 50,
+     padding: 4,
+     marginRight: 5,
+     fontSize: 23,
+     borderWidth: 1,
+     borderColor: 'white',
+     borderRadius: 8,
+     color: 'white'
+   },
+   buttonText: {
+     fontSize: 18,
+     color: 'white',
+     alignSelf: 'center'
+   },
+   button: {
+         backgroundColor: 'rgba(45,78,134,0.7)',
+         alignSelf: 'center',
+
+         width: '90%',
+         borderWidth: 1,
+         marginTop: 10,
+         borderColor: 'white',
+         height: 50,
+         alignItems: 'center',
+         justifyContent: 'center',
+   },
+   safeArea: {
+       flex: 1,
+       backgroundColor: '#ddd'
+   },
+   backgroundImage: {
+       flex: 1,
+       alignSelf: 'stretch',
+   },
 });

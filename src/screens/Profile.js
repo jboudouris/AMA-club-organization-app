@@ -71,17 +71,19 @@ export default class Profile extends Component {
                <Avatar
                    rounded size="xlarge"
                    title={this.state.first_Name[0] + this.state.last_Name[0]}
-                   containerStyle={{marginTop: 10, marginLeft: 10}}
-                   overlayContainerStyle={{backgroundColor: 'rgba(45,78,134,.8)', borderColor: 'white', borderWidth: .5}}
+                   containerStyle={{alignSelf: 'center'}}
+                   overlayContainerStyle={{backgroundColor: 'rgba(45,78,134,.8)', borderColor: 'white', borderWidth: 3}}
                    activeOpacity={0.8}
                />
-                <Text style={styles.quote}>{this.state.quote}</Text>
             </View>
             <View style={styles.body}>
-                <Text style={styles.txt}>{this.state.first_Name} {this.state.last_Name}</Text>
-                <Text style={styles.txt}>Email: {this.state.email}</Text>
-                <Text style={styles.txt}>Status: {this.state.role}</Text>
-                <Text style={styles.txt}>Phone Number: {this.state.phone_Number}</Text>
+                <View style={styles.con1}>
+                    <Text style={styles.txt1}>{this.state.first_Name} {this.state.last_Name}</Text>
+                    <Text style={styles.quote}>{this.state.quote}</Text>
+                </View>
+                    <Text style={styles.txt1}>Email: {this.state.email}</Text>
+                    <Text style={styles.txt1}>Status: {this.state.role}</Text>
+                    <Text style={styles.txt1}>Phone Number: {this.state.phone_Number}</Text>
                 <View>
                     {this.state.items > 0 ? (
                       <Text>Start a chat</Text>,
@@ -104,9 +106,9 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch',
     },
     body: {
-        backgroundColor: 'rgba(255,255,255,.8)',
+        backgroundColor: 'rgba(228,228,228,.9)',
         height: '75%',
-        margin: 5,
+
     },
     btn: {
         flex: 1,
@@ -118,6 +120,7 @@ const styles = StyleSheet.create({
         height: '27.5%',
         flexDirection:'row',
         backgroundColor: 'transparent',
+        justifyContent: 'center',
     },
     columnView:  {
         flex:1
@@ -149,11 +152,27 @@ const styles = StyleSheet.create({
         marginLeft: 5,
         marginTop: 5
     },
+    txt1: {
+        fontSize: 30,
+        marginTop: 5,
+
+        alignSelf: 'center',
+        color: 'black',
+    },
     quote: {
         alignItems: 'center',
         alignSelf: 'center',
-        fontSize: 25,
-        color: 'white',
+        justifyContent: 'center',
+        fontSize: 20,
+        color: 'gray',
         margin: 10,
+        flex: 1,
+    },
+    con1: {
+        borderBottomWidth: 1,
+        borderTopWidth: .5,
+        height: '30%',
+        borderColor: 'rgba(183,183,183,1)',
+        backgroundColor: 'white',
     }
 });

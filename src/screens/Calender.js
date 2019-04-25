@@ -118,12 +118,33 @@ export default class HorizontalCalendarList extends Component {
              </View>
              <View>
                 <CalendarList
+                theme={{
+                    backgroundColor: 'blue',
+                    calendarBackground: 'rgba(45,78,134,0.3)',
+                    textSectionTitleColor: 'white',
+                    selectedDayBackgroundColor: 'rgba(45,78,134,0.8)',
+                    selectedDayTextColor: '#ffffff',
+                    todayTextColor: 'white',
+                    dayTextColor: 'black',
+                    textDisabledColor: '#d9e1e8',
+                    dotColor: '#00adf5',
+                    selectedDotColor: '#ffffff',
+                    arrowColor: 'orange',
+                    monthTextColor: 'white',
+//                    textDayFontFamily: 'monospace',
+//                    textMonthFontFamily: 'monospace',
+//                    textDayHeaderFontFamily: 'monospace',
+                    textMonthFontWeight: 'bold',
+                    textDayFontSize: 16,
+                    textMonthFontSize: 20,
+                    textDayHeaderFontSize: 16
+                  }}
                   current= {this.state.currentDate}
                   pastScrollRange={24}
                   futureScrollRange={24}
                   horizontal
                   pagingEnabled
-                  style={{borderBottomWidth: 1, borderBottomColor: 'black'}}
+                  style={{borderBottomWidth: .8, borderBottomColor: 'black'}}
                   hideDayNames={false}
                   onDayPress={(day) => this.setDate(day)}
                   markedDates={this.state.marked}
@@ -143,7 +164,7 @@ const styles = StyleSheet.create({
     btn: {
         flex: 1,
         alignSelf: 'stretch',
-        backgroundColor: 'rgba(0,0,0,0.2)',
+        backgroundColor: 'rgba(45,78,134,0.7)',
         borderColor: 'rgba(0,0,0,.8)',
         borderLeftWidth: .4,
         borderRightWidth: .4,
@@ -177,7 +198,7 @@ const styles = StyleSheet.create({
     },
     safeArea: {
         flex: 1,
-        backgroundColor: 'rgba(45,78,134,1)',
+        backgroundColor: 'rgba(45,78,134,0.3)',
     },
     backgroundImage: {
         flex: 1,

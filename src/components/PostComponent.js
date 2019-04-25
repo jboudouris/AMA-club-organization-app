@@ -43,7 +43,7 @@ convertTime = (date) => {
 const styles = StyleSheet.create({
     container: {
         margin: 5,
-        backgroundColor: 'rgba(45,78,134,0.7)',
+        backgroundColor: 'rgba(45,78,134,0.8)',
         borderColor: 'rgba(0,0,0,.4)',
         borderWidth: 1,
         borderRadius: 8,

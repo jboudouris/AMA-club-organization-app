@@ -34,6 +34,7 @@ export default class Home extends Component {
             first_Name: items[i].first_Name,
             last_Name: items[i].last_Name,
             role: items[i].role,
+            alt_Email: items[i].alt_Email,
             full_Name: items[i].first_Name + ' ' + items[i].last_Name,
             currentUserUid: items[i].userKey,
             attendantNum: items[i].attendantNum,
@@ -148,6 +149,8 @@ export default class Home extends Component {
                                first_Name: this.state.first_Name,
                                last_Name: this.state.last_Name,
                                role: this.state.role,
+                               currentUserUid: this.state.currentUserUid,
+                               full_Name: this.state.full_Name,
                                attendantNum: this.state.attendantNum,
                             });
                             }}
@@ -198,6 +201,7 @@ export default class Home extends Component {
                                    first_Name: this.state.first_Name,
                                    last_Name: this.state.last_Name,
                                    role: this.state.role,
+                                   alt_Email: this.state.alt_Email,
                                    currentUserUid: this.state.currentUserUid,
                                    full_Name: this.state.full_Name,
                                    attendantNum: this.state.attendantNum,

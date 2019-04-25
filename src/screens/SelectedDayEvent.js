@@ -83,7 +83,9 @@ export default class List extends Component {
         {this.state.items.length > 0 ? (
           <EventComponent items={this.state.items} navigation={this.props.navigation}/>
         ) : (
-          <Text>No Events</Text>
+          <View style = {{alignSelf: 'stretch', backgroundColor: 'rgba(45,78,134,0.3)'}}>
+             <Text style={styles.txt}>No Events</Text>
+          </View>
         )}
       </View>
       </ScrollView>
@@ -98,4 +100,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'white'
   },
+  txt: {
+    marginTop: 5,
+    fontSize: 18,
+    alignSelf: 'center',
+  }
 });

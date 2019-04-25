@@ -141,19 +141,19 @@ const styles = StyleSheet.create({
       flex: 1,
   },
   btn: {
-      backgroundColor: '#cccccc',
+      backgroundColor: 'rgba(45,78,134,1)',
       alignSelf: 'center',
       width: '15%',
       borderWidth: 1,
       margin: 5,
-      borderColor: 'gray',
+      borderColor: 'rgba(255,255,255,.6)',
       height: 40,
       alignItems: 'center',
       justifyContent: 'center',
   },
   buttonText: {
       fontSize: 18,
-      color: '#1b2f50',
+      color: '#fff',
   },
   buttonView: {
       flex: 1,
