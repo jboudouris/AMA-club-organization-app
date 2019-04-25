@@ -118,14 +118,10 @@ export default class AddItem extends Component {
                 otherfull_Name: item.to,
                 user: firebase.auth().currentUser.email,
                 userKey: item.otherUserKey,
-                to: "to",
-
               });
-
             }}
-
           >
-              <Text> {item.to} " " {item.message}</Text>
+              <Text>{item.other_Name} {item.message}</Text>
           </TouchableHighlight>
       </View>
     )

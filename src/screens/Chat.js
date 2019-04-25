@@ -25,6 +25,20 @@ export default class Home extends Component {
  }
 
  handleSubmit = () => {
+   itemsRef.on('value', snapshot => {
+         let data = snapshot.val();
+         let items = Object.values(data);
+         for (let i=0; i< items.length; i++)
+         {
+           if(items[i].userKey ==  this.state.person.userKey)
+           {
+             this.setState({
+               other_Name: items[i].full_Name,
+             });
+             break;
+           }
+         }
+       });
    if(this.state.textMessage.length > 0){
      let msgId = firebase.database().ref('messages').child(firebase.auth().currentUser.uid).child(this.state.person.userKey).push().key;
      let updates = {};
