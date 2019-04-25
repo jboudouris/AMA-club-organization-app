@@ -182,6 +182,7 @@ export default class Home extends Component {
                                 last_Name: this.state.last_Name,
                                 role: this.state.role,
                                 attendantNum: this.state.attendantNum,
+                                full_Name: this.state.full_Name,
                              });
                              }}
                          >

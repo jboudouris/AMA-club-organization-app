@@ -73,6 +73,7 @@ export default class Profile extends Component {
               first_Name: this.state.first_Name,
               user: firebase.auth().currentUser.email,
               userKey: this.props.navigation.state.params.userKey,
+              otherfull_Name: this.state.first_Name + ' ' + this.state.last_Name,
           });
           }}
         />

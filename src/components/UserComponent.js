@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
+import { View, Text, StyleSheet, TouchableHighlight, Button } from 'react-native';
 import PropTypes from 'prop-types';
 import { db } from '../config';
 import firebase from 'firebase';
@@ -36,6 +36,8 @@ export default class ItemComponent extends Component {
                   phone_Number: item.phone_Number,
                   user: firebase.auth().currentUser.email,
                   userKey: item.userKey,
+                  other_Name: item.first_Name + item.last_Name,
+                  full_Name: this.props.full_Name,
                     });
 
                   }}
