@@ -1,12 +1,21 @@
 import React, {Component} from 'react';
 import UserComponent from '../components/UserComponent';
 
-import {Picker, ImageBackground, Image, KeyboardAvoidingView, ScrollView, View, Modal, Text, TextInput, TouchableOpacity, Button, SafeAreaView, StyleSheet} from 'react-native';
+import {Picker, ImageBackground, Image, KeyboardAvoidingView, ScrollView, View, Modal, Text, TextInput, TouchableOpacity, Button, SafeAreaView, StyleSheet, CameraRoll, PermissionsAndroid} from 'react-native';
+import ImagePicker from 'react-native-image-picker';
 
 import { db } from '../config';
 import firebase from 'firebase';
 let itemsRef = db.ref('/user');
 let valuekey = '';
+
+const options = {
+  title: 'Select Avatar',
+  storageOptions: {
+    skipBackup: true,
+    path: 'images',
+  },
+};
 
 let addUser = (alt_Email, first_Name, last_Name, full_Name, phone_Number, quote, payment, role) => {
   itemsRef.on('value', snapshot => {
@@ -35,9 +44,33 @@ let addUser = (alt_Email, first_Name, last_Name, full_Name, phone_Number, quote,
 
 };
 
+export async function request_location_runtime_permission() {
 
+  try {
+  const granted = await PermissionsAndroid.request(
+    PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+    {
+      title: 'Cool Photo App Camera Permission',
+      message:
+        'Cool Photo App needs access to your camera ' +
+        'so you can take awesome pictures.',
+      buttonNeutral: 'Ask Me Later',
+      buttonNegative: 'Cancel',
+      buttonPositive: 'OK',
+    },
+  );
+  if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+    alert('You can use the camera');
+  } else {
+    alert('Camera permission denied');
+  }
+} catch (err) {
+  console.warn(err);
+}
+}
 
 export default class Profile extends Component {
+
  state = {
     email: '',
     alt_Email: '',
@@ -48,10 +81,12 @@ export default class Profile extends Component {
     payment: '',
     phone_Number: '',
     full_Name: '',
+    photos: [],
+    avatarSource: null,
  }
 
 //Call mark function
- componentDidMount(){
+ async componentDidMount(){
     itemsRef.on('value', snapshot => {
       let data = snapshot.val();
       let items = Object.values(data);
@@ -75,6 +110,43 @@ export default class Profile extends Component {
         }
       }
     });
+
+    await PermissionsAndroid.request(
+    PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+    {
+      title: 'Cool Photo App Camera Permission',
+      message:
+        'Cool Photo App needs access to your camera ' +
+        'so you can take awesome pictures.',
+      buttonNeutral: 'Ask Me Later',
+      buttonNegative: 'Cancel',
+      buttonPositive: 'OK',
+    },
+  );
+  await PermissionsAndroid.request(
+  PermissionsAndroid.PERMISSIONS.CAMERA,
+  {
+    title: 'Cool Photo App Camera Permission',
+    message:
+      'Cool Photo App needs access to your camera ' +
+      'so you can take awesome pictures.',
+    buttonNeutral: 'Ask Me Later',
+    buttonNegative: 'Cancel',
+    buttonPositive: 'OK',
+  },
+);
+await PermissionsAndroid.request(
+PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+{
+  title: 'Cool Photo App Camera Permission',
+  message:
+    'Cool Photo App needs access to your camera ' +
+    'so you can take awesome pictures.',
+  buttonNeutral: 'Ask Me Later',
+  buttonNegative: 'Cancel',
+  buttonPositive: 'OK',
+},
+);
   }
 
   handleAltEmailChange = (alt_Email) => {
@@ -116,6 +188,43 @@ export default class Profile extends Component {
       payment: payment
     });
   }
+  _handleButtonPress = () => {
+  /*   CameraRoll.getPhotos({
+         first: 20,
+         assetType: 'Photos',
+       })
+       .then(r => {
+
+         this.setState({ photos: r.edges });
+       })
+       .catch((err) => {
+         alert("ERROR__ " + err);
+          //Error Loading Images
+       });*/
+
+       ImagePicker.showImagePicker(options, (response) => {
+  console.log('Response = ', response);
+
+  if (response.didCancel) {
+    alert('User cancelled image picker');
+  } else if (response.error) {
+    alert('ImagePicker Error: '+ response.error);
+  } else if (response.customButton) {
+    alert('User tapped custom button: '+ response.customButton);
+  } else {
+    const source = { uri: response.uri };
+
+    // You can also display the image using data:
+    // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+    this.setState({
+      avatarSource: source,
+    });
+  //  alert('avatarSource: ' + this.state.avatarSource.uri);
+
+  }
+});
+  };
 
  handleSubmit = () => {
     addUser(
@@ -224,6 +333,19 @@ render() {
                     <Picker.Item label="Paid" value= "Paid" />
                     <Picker.Item label="Unpaid" value= "Unpaid" />
                 </Picker>
+                <View style = {styles.buttonView2}>
+                    <TouchableOpacity style = {styles.btn2} onPress={this._handleButtonPress}>
+                                <Text style={styles.btntxt}>Choose Picture</Text>
+                    </TouchableOpacity>
+                </View>
+                <Image
+           style={{
+             width: 300,
+             height: 300,
+           }}
+           source={this.state.avatarSource}
+         />
+
                 <View style = {styles.buttonView}>
                     <TouchableOpacity style = {styles.btn2} onPress={() => this.props.navigation.navigate('Tools')}>
                                 <Text style={styles.btntxt}>Cancel</Text>
@@ -280,6 +402,14 @@ const styles = StyleSheet.create({
     buttonView: {
         flex: 1,
         height: 200,
+        flexDirection:'row',
+        backgroundColor: 'transparent',
+        alignItems: 'center',
+    },
+    buttonView2: {
+      paddingTop:35,
+        flex: 1,
+        height: 0,
         flexDirection:'row',
         backgroundColor: 'transparent',
         alignItems: 'center',
