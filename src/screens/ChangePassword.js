@@ -12,22 +12,6 @@ export default class Home extends Component {
      confirmPassword: ''
    };
 
-   handlePasswordChange = (email) => {
-   this.setState({
-     currentPassword: currentPassword
-   });
-  }
- handleNewPassword = (email) => {
-     this.setState({
-       newPassword: newPassword
-     });
-   }
- handleConfirmPassword = (email) => {
-       this.setState({
-         confirmPassword: confirmPassword
-       });
-   }
-
   changePassword = (currentPassword, newPassword) => {
          if(this.state.newPassword != this.state.confirmPassword){
            alert('New Passwords do not match');
@@ -44,7 +28,7 @@ export default class Home extends Component {
                 'Success',
                 'Password Changed',
                 [
-                  {text: 'OK',onPress:() => console.log('Sucess') },
+                  {text: 'OK',onPress:() => console.log('Success') },
                 ],
                 {cancelable: false},
               );
