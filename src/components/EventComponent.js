@@ -79,10 +79,6 @@ count = (eventName) =>  {
                        <Text style={styles.itemtext2}> {item.time} </Text>
                    </TouchableOpacity>
                </View>
-               <View style={styles.event1}>
-                       <Text style={styles.itemtext3}> {this.count(item.name)} </Text>
-                       <Text style={styles.itemtext4}> attending </Text>
-               </View>
                <View style={{flex:1}}>
                    <TouchableOpacity
                        style={styles.btn}

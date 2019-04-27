@@ -135,26 +135,32 @@ GoTo_bottom_function =()=>{
                 </View>
              </View>
 
-
+            <View style={styles.body}>
+                <ImageBackground
+                    style = {styles.backgroundImage}
+                    source = {require('../backgrounds/BG2.png')}
+                >
               <FlatList
-                  style={{padding: 30, height: height * 0.8}}
+                  style={{flex: 1, padding: 10, width: '100%', height: '100%'}}
                   data={this.state.messageList}
                   renderItem={this.renderRow}
                   keyExtractor={(item, index)=>index.toString()}
                   scrollToIndex={this.state.messageList.length -1 }
               />
-              <KeyboardAvoidingView behavior="position">
-                  <View style={{ flexDirection:'row'}}>
-                      <TextInput
-                      value={this.state.textMessage}
-                      placeholder="Type message..."
-                      onChangeText={textMessage => this.setState({ textMessage })}
-                      />
-                      <TouchableOpacity onPress={this.handleSubmit}>
-                          <Text> Send </Text>
-                      </TouchableOpacity>
-                  </View>
-              </KeyboardAvoidingView>
+              </ImageBackground>
+                <View style={styles.textbar}>
+                    <TextInput style={styles.txtInput} onChangeText={description => this.setState({ textMessage })} />
+                    <TouchableOpacity
+                      style={styles.btn}
+                      underlayColor="white"
+                      onPress={this.handleSubmit}
+                    >
+                      <Text style={styles.buttonText}>Post</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+
+
 
             </View>
         </SafeAreaView>
@@ -163,6 +169,10 @@ GoTo_bottom_function =()=>{
 }
 
 const styles = StyleSheet.create({
+  body: {
+    height: '90%',
+    width: '100%',
+  },
   main: {
     height: '100%',
     alignSelf: 'stretch',
@@ -184,15 +194,15 @@ const styles = StyleSheet.create({
       paddingRight: 5,
       paddingLeft: 5,
     },
-  textInput: {
-    height: 40,
-    fontSize: 18,
-    width: '70%',
-    borderColor: 'white',
-    backgroundColor: 'rgba(57,189,225,0.6)',
-    borderWidth: 1,
-    marginTop: 8,
-    color: 'white',
+  txtInput:  {
+      marginLeft: 5,
+      height: 40,
+      alignSelf: 'center',
+      width: '85%',
+      flex: 1,
+      backgroundColor: 'rgba(255, 255, 255, 1)',
+      borderColor: 'gray',
+      borderWidth: 1,
   },
     textInput1: {
       height: 40,
@@ -238,15 +248,20 @@ const styles = StyleSheet.create({
       marginTop: 5,
       marginBottom: 5,
   },
-  button: {
-      backgroundColor: 'rgba(127,141,221,0.6)',
+  btn: {
+      backgroundColor: 'rgba(45,78,134,1)',
       alignSelf: 'center',
-      width: '100%',
+      width: '15%',
       borderWidth: 1,
-      marginTop: 10,
-      borderColor: 'white',
-      height: 50,
+      margin: 5,
+      borderColor: 'rgba(255,255,255,.6)',
+      height: 40,
       alignItems: 'center',
       justifyContent: 'center',
   },
+    textbar: {
+        height: '10%',
+        flexDirection:'row',
+        backgroundColor: '#1b2f50',
+    },
 });

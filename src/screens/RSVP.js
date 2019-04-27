@@ -5,7 +5,10 @@ import {
   TouchableHighlight,
   StyleSheet,
   TextInput,
-  SafeAreaView
+  SafeAreaView,
+  Image,
+  ImageBackground,
+  TouchableOpacity,
 } from 'react-native';
 import firebase from 'firebase';
 import { db } from '../config';
@@ -161,79 +164,108 @@ export default class AddItem extends Component {
     return (
       <SafeAreaView style={styles.safeArea}>
       <View style={styles.main}>
-        <Text style={styles.title}>Text</Text>
-        <Text style={styles.title}>{this.props.navigation.state.params.email}</Text>
-        <Text style={styles.title}>{this.props.navigation.state.params.first_Name}</Text>
-        <Text style={styles.title}>{this.props.navigation.state.params.eventName}</Text>
-        <Text style={styles.title}>{this.props.navigation.state.params.eventUKey}</Text>
-        <Text style={styles.title}>Attendant {this.props.navigation.state.params.attendantNum}</Text>
-        <TouchableHighlight
-          style={styles.button}
-          underlayColor="white"
-          onPress={() => {this.props.navigation.navigate('RSVPList', {
-                                     eventName: this.state.eventName,
-                                   });
-                                 }}
-        >
-          <Text style={styles.buttonText}>RSVP List</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.button}
-          underlayColor="white"
-          onPress={this.handleSubmit}
-        >
-          <Text style={styles.buttonText}>{this.state.rsvpButton}</Text>
-        </TouchableHighlight>
+               <View style  = {styles.header}>
+                  <View style={{width:'100%'}}>
+                      <TouchableOpacity style={styles.headerAMA} onPress={() => this.props.navigation.navigate('Home')}>
+                          <Image
+                              style = {{alignSelf: 'center', width: 150, height: 50, margin: 10}}
+                              source = {require('../icons/AMA_white.png')}
+                          />
+                      </TouchableOpacity>
+                  </View>
+               </View>
+         <ImageBackground
+             style = {styles.backgroundImage}
+             source = {require('../backgrounds/BG2.png')}
+         >
+            <TouchableHighlight
+              style={styles.btn1}
+              underlayColor="white"
+              onPress={() => {this.props.navigation.navigate('RSVPList', {
+                                         eventName: this.state.eventName,
+                                       });
+                                     }}
+            >
+              <Text style={styles.btntxt}>RSVP List</Text>
+            </TouchableHighlight>
+            <TouchableHighlight
+              style={styles.btn1}
+              underlayColor="white"
+              onPress={this.handleSubmit}
+            >
+              <Text style={styles.btntxt}>{this.state.rsvpButton}</Text>
+            </TouchableHighlight>
+         </ImageBackground>
       </View>
       </SafeAreaView>
     );
   }
 }
 const styles = StyleSheet.create({
-   main: {
-     flex: 1,
-     padding: 30,
-     flexDirection: 'column',
-     justifyContent: 'center',
-   },
-   title: {
-     marginBottom: 20,
-     fontSize: 25,
-     textAlign: 'center'
-   },
-   itemInput: {
-     height: 50,
-     padding: 4,
-     marginRight: 5,
-     fontSize: 23,
-     borderWidth: 1,
-     borderColor: 'white',
-     borderRadius: 8,
-     color: 'white'
-   },
-   buttonText: {
-     fontSize: 18,
-     color: 'white',
-     alignSelf: 'center'
-   },
-   button: {
-         backgroundColor: 'rgba(45,78,134,0.7)',
-         alignSelf: 'center',
+  main: {
+    flex: 1,
+  },
+  title: {
+    marginBottom: 20,
+    fontSize: 25,
+    textAlign: 'center'
+  },
+  itemInput: {
+    height: 50,
+    padding: 4,
+    marginRight: 5,
+    fontSize: 23,
+    borderWidth: 1,
+    borderColor: 'white',
+    borderRadius: 8,
+    color: 'white'
+  },
+    btntxt: {
+        fontSize: 18,
+        color: 'white',
+    },
+    btn1: {
+        backgroundColor: 'rgba(45,78,134,0.7)',
+        alignSelf: 'center',
 
-         width: '90%',
-         borderWidth: 1,
-         marginTop: 10,
-         borderColor: 'white',
-         height: 50,
-         alignItems: 'center',
-         justifyContent: 'center',
-   },
-   safeArea: {
-       flex: 1,
-       backgroundColor: '#ddd'
-   },
-   backgroundImage: {
-       flex: 1,
-       alignSelf: 'stretch',
-   },
+        width: '100%',
+        borderWidth: 1,
+
+        borderColor: 'white',
+        height: '50%',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    safeArea: {
+        flex: 1,
+        backgroundColor: '#ddd'
+    },
+    backgroundImage: {
+        flex: 1,
+        alignSelf: 'stretch',
+    },
+    header: {
+        height: 70,
+        backgroundColor: '#1b2f50',
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    headerAMA:  {
+        backgroundColor: 'transparent',
+        alignSelf: 'center',
+        alignItems: 'center',
+    },
+    txt1: {
+        fontSize: 30,
+        marginBottom: 15,
+        alignSelf: 'center',
+        color: 'black',
+    },
+    txt2: {
+        fontSize: 20,
+        marginTop: 5,
+
+        alignSelf: 'center',
+        color: 'black',
+    },
 });

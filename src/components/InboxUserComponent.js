@@ -18,7 +18,7 @@ export default class ItemComponent extends Component {
           return (
             <View key={index}>
             <TouchableHighlight
-              style={styles.button}
+              style={styles.btn}
               underlayColor="white"
               onPress={() => {
                 this.props.navigation.navigate('Chat', {
@@ -35,10 +35,10 @@ export default class ItemComponent extends Component {
             >
             <View style={{flexDirection: 'row'}}>
               <View style={{flex:1}}>
-                <Text style={styles.title}>{item.to}</Text>
+                <Text style={styles.itemtext1}>{item.to}</Text>
               </View>
               <View style={{flex:2}}>
-                <Text style={styles.title}>{item.message}</Text>
+                <Text style={styles.itemtext2}>{item.message}</Text>
               </View>
             </View>
             </TouchableHighlight>
@@ -62,5 +62,27 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center'
-  }
+  },
+  btn: {
+      backgroundColor: 'rgba(45,78,134,1)',
+      alignSelf: 'center',
+      width: '100%',
+      height: '100%',
+      borderWidth: 1,
+      borderColor: 'rgba(0,0,0,.2)',
+      alignItems: 'center',
+      justifyContent: 'center',
+  },
+      itemtext1: {
+          fontSize: 20,
+          marginLeft: 3,
+          color: 'white',
+      },
+      itemtext2: {
+          fontSize: 14,
+          color: 'white',
+          marginLeft: 5,
+          marginBottom: 3,
+      },
+
 });

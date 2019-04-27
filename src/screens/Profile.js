@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import UserComponent from '../components/UserComponent';
-import { ImageBackground, Image, View, Modal, Text, TouchableOpacity, Button, SafeAreaView, StyleSheet} from 'react-native';
+import { ScrollView, ImageBackground, Image, View, Modal, Text, TouchableOpacity, Button, SafeAreaView, StyleSheet} from 'react-native';
 import { Avatar } from 'react-native-elements';
 import { db } from '../config';
 import firebase from 'firebase';
@@ -76,23 +76,23 @@ export default class Profile extends Component {
                    activeOpacity={0.8}
                />
             </View>
-            <View style={styles.body}>
-                <View style={styles.con1}>
-                    <Text style={styles.txt1}>{this.state.first_Name} {this.state.last_Name}</Text>
-                    <Text style={styles.quote}>{this.state.quote}</Text>
-                </View>
-                    <Text style={styles.txt1}>Email: {this.state.email}</Text>
-                    <Text style={styles.txt1}>Status: {this.state.role}</Text>
-                    <Text style={styles.txt1}>Phone Number: {this.state.phone_Number}</Text>
-                <View>
-                    {this.state.items > 0 ? (
-                      <Text>Start a chat</Text>,
-                      <UserComponent items={this.state.item} navigation={this.props.navigation} />
-                      ) : (
-                      <Text></Text>
-                    )}
-                </View>
+            <ScrollView style={{backgroundColor: 'white'}}>
+            <View style={styles.con1}>
+                <Text style={styles.txt1}>{this.state.first_Name} {this.state.last_Name}</Text>
+                <Text style={styles.txt3}>({this.state.role})</Text>
+                <Text style={styles.quote}>{this.state.quote}</Text>
             </View>
+            </ScrollView>
+            <ScrollView style={styles.body}>
+                <View style={styles.con2}>
+                    <Text style={styles.txt2}>Email</Text>
+                    <Text style={styles.txt3}>{this.state.email}</Text>
+                    <Text style={styles.txt2}>Alternate Email</Text>
+                    <Text style={styles.txt3}>{this.state.alt_email}</Text>
+                    <Text style={styles.txt2}>Phone Number</Text>
+                    <Text style={styles.txt3}>{this.state.phone_Number}</Text>
+                </View>
+            </ScrollView>
         </ImageBackground>
       </View>
       </SafeAreaView>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     },
     body: {
         backgroundColor: 'rgba(228,228,228,.9)',
-        height: '75%',
+
 
     },
     btn: {
@@ -155,7 +155,20 @@ const styles = StyleSheet.create({
     txt1: {
         fontSize: 30,
         marginTop: 5,
+        alignSelf: 'center',
+        color: 'black',
+    },
+    txt2: {
+        fontSize: 20,
+        marginTop: 5,
 
+        alignSelf: 'center',
+        color: 'black',
+    },
+    txt3: {
+        fontSize: 25,
+
+        marginBottom: 5,
         alignSelf: 'center',
         color: 'black',
     },
@@ -165,14 +178,20 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         fontSize: 20,
         color: 'gray',
-        margin: 10,
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: 5,
         flex: 1,
     },
     con1: {
-        borderBottomWidth: 1,
+
         borderTopWidth: .5,
         height: '30%',
         borderColor: 'rgba(183,183,183,1)',
         backgroundColor: 'white',
+    },
+    con2: {
+        borderTopWidth: 0.5,
+        height: '100%',
     }
 });

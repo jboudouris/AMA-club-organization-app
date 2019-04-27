@@ -29,7 +29,7 @@ convertTime = (date) => {
                   <Text style={styles.itemtext1}>{item.full_Name}</Text>
                   <Text style={styles.itemtext2}>{item.date}</Text>
               </View>
-              <Text style={styles.itemtext3}>{item.description}</Text>
+                  <Text style={styles.itemtext3}>{item.description}</Text>
             </View>
           );
 

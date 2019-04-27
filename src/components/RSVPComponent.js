@@ -17,8 +17,17 @@ export default class ItemComponent extends Component {
 
           return (
             <View key={index}>
-              <Text style={styles.buttonText}>{item.name}</Text>
+             <View style={{flex:1, flexDirection:'row', height: 50}}>
+               <View style={{flex:2}}>
+                  <TouchableHighlight
+                      style={styles.event}
+                        >
+                          <Text style={styles.itemtext1}>{item.name}</Text>
+                  </TouchableHighlight>
+               </View>
+             </View>
             </View>
+
           );
 
 
@@ -29,14 +38,21 @@ export default class ItemComponent extends Component {
 }
 
 const styles = StyleSheet.create({
-  itemsList: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'space-around'
-  },
-  itemtext: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center'
-  }
-});
+    itemsList: {
+         flex: 1,
+         flexDirection: 'column',
+         justifyContent: 'space-around'
+     },
+     itemtext1: {
+         fontSize: 20,
+         marginTop: 10,
+         color: 'white',
+         textAlign: 'center'
+     },
+     event: {
+         backgroundColor: 'rgba(45,78,134,0.8)',
+         borderColor: 'rgba(0,0,0,.3)',
+         borderWidth: 1,
+         height: '100%',
+     },
+ });

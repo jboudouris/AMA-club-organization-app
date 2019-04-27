@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  TouchableHighlight,
   StyleSheet,
   TextInput,
   ScrollView,
@@ -108,9 +107,8 @@ export default class AddItem extends Component {
   renderRow = ({item}) => {
     return(
       <View>
-          <TouchableHighlight
-            style={styles.button}
-            underlayColor="black"
+          <TouchableOpacity
+            style={styles.btn}
             onPress={() => {
               this.props.navigation.navigate('Chat', {
                 email: item.email,
@@ -121,8 +119,11 @@ export default class AddItem extends Component {
               });
             }}
           >
-              <Text>{item.other_Name} {item.message}</Text>
-          </TouchableHighlight>
+            <View>
+              <Text style={styles.itemtext1}>{item.to}</Text>
+              <Text style={styles.itemtext2}>{item.message}</Text>
+            </View>
+          </TouchableOpacity>
       </View>
     )
   }
@@ -144,8 +145,9 @@ export default class AddItem extends Component {
                   style = {styles.backgroundImage}
                   source = {require('../backgrounds/BG2.png')}
               >
-                <View>
+                <View style={{flex:1}}>
                     <FlatList
+                      style={{height: '100%', flexDirection: 'column'}}
                       data={this.state.otherUser}
                       renderItem={this.renderRow}
                       keyExtractor={(item, index)=>index.toString()}
@@ -163,10 +165,14 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch',
     },
     btn: {
-        flex: 1,
-        alignSelf: 'stretch',
-        backgroundColor: 'rgba(255,255,255,0)',
-        margin: 15,
+        backgroundColor: 'rgba(45,78,134,1)',
+        alignSelf: 'center',
+        width: '100%',
+        height: '100%',
+        borderWidth: 1,
+        borderColor: 'rgba(0,0,0,.2)',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     buttonView: {
         flex: 1,
@@ -198,5 +204,16 @@ const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
         backgroundColor: '#ddd'
-    }
+    },
+    itemtext1: {
+      fontSize: 20,
+      marginLeft: 3,
+      color: 'white',
+    },
+    itemtext2: {
+      fontSize: 14,
+      color: 'white',
+      marginLeft: 5,
+      marginBottom: 3,
+    },
 });

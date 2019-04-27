@@ -89,17 +89,21 @@ export default class List extends Component {
                 source = {require('../backgrounds/BG2.png')}
             >
               <ScrollView style={styles.scrollView}>
-                <Text style={styles.title}> Executive Members </Text>
+                <View style={styles.titleView}>
+                    <Text style={styles.title}> Executive Members </Text>
+                </View>
                 {this.state.items.length > 0 ? (
                   <UserComponent items={this.state.items} navigation={this.props.navigation} />
                   ) : (
-                  <Text>No items</Text>
+                  <Text></Text>
                 )}
-                <Text style={styles.title}> Club Members </Text>
+                <View style={styles.titleView}>
+                    <Text style={styles.title}> Club Members </Text>
+                </View>
                 {this.state.userList.length > 0 ? (
                   <UserComponent items={this.state.userList} navigation={this.props.navigation} full_Name={this.state.full_Name}/>
                   ) : (
-                  <Text>No items</Text>
+                  <Text></Text>
                 )}
               </ScrollView>
             </ImageBackground>
@@ -116,14 +120,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#ebebeb'
   },
   scrollView: {
-    height: 400,
+    height: '100%',
+  },
+  titleView: {
+    backgroundColor: 'rgba(45,78,134,.6)',
+    borderWidth: 1,
+    borderColor: 'rgba(0,0,0,.3)',
   },
   title: {
     marginTop: 10,
     marginBottom: 10,
-    fontSize: 20,
+    fontSize: 24,
     paddingRight: 5,
-    color: 'rgba(0,0,0,.6)',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    color: 'white',
   },
   safeArea: {
     flex: 1,
