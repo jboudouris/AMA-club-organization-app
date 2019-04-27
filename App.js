@@ -30,6 +30,7 @@ import DeleteUser from './src/screens/DeleteUser';
 import UserProfile from './src/screens/UserProfile';
 import EditUsers from './src/screens/EditUsers';
 import ListAllEvent from './src/screens/ListAllEvent';
+import ChangePassword from './src/screens/ChangePassword';
 
 const AppNavigator = createStackNavigator(
   {
@@ -60,6 +61,7 @@ const AppNavigator = createStackNavigator(
     UserProfile,
     EditUsers,
     ListAllEvent,
+    ChangePassword,
   },
   {
     initialRouteName: 'Loading',

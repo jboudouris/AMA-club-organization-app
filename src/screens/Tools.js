@@ -125,6 +125,17 @@ deleteAccount() {
                                         <Text style={styles.btntxt}>Edit Profile</Text>
                                     </TouchableOpacity>
                                 </View>
+
+                                <View style = {styles.buttonView}>
+                                    <TouchableOpacity
+                                        style = {styles.btn}
+                                        onPress={() => {this.props.navigation.navigate('ChangePassword')
+                                        }}
+                                    >
+                                        <Text style={styles.btntxt}>Change Password</Text>
+                                    </TouchableOpacity>
+                                </View>
+
                                 <View style = {styles.buttonView}>
                                     <TouchableOpacity
                                         style = {styles.btn}
@@ -172,6 +183,7 @@ deleteAccount() {
                                             <Text style={styles.btntxt}>Edit Event</Text>
                                         </TouchableOpacity>
                                     </View>
+
                         </ScrollView>
                     </View>
                 </ImageBackground>
