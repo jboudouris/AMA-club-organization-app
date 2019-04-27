@@ -6,23 +6,10 @@ import { db } from '../config';
 let itemsRef = db.ref('/event');
 
 export default class ItemComponent extends Component {
+  state = {
+    number: '1',
+  };
 
-count = (eventName) =>  {
-    let attend = db.ref('/userRSVP');
-    let num = 0;
-    attend.on('value', snapshot => {
-         let data = snapshot.val();
-         let items = Object.values(data);
-         for (let i = 0; i  < items.length; i++) {
-            if (items[i].eventName == eventName)
-            {
-                num++;
-            }
-         }
-
-    });
-    return num;
-}
 
  static propTypes = {
    items: PropTypes.array.isRequired,
@@ -31,6 +18,39 @@ count = (eventName) =>  {
 
  handleSubmit = () => {
  };
+
+
+ count = (eventName) =>  {
+     var num = 0;
+     let attend = db.ref('/userRSVP/' + eventName);
+     attend.once('value', snapshot => {
+         if (snapshot.exists()){
+          let data = snapshot.val();
+          let items = Object.values(data);
+          //items.length is the number of people attend the event
+          //the problem with the code below is it does not assign the value
+          //to variable num.
+          num = items.length;
+          //the "return num" does not work for some reason.
+          return num;
+        }
+     });
+     //this will return the num=0 above.
+     return num;
+ }
+
+ count1 = (eventName) => {
+   let itemsRef1 = db.ref('/userRSVP');
+   itemsRef1.child(eventName).once('value').then(function(snapshot) {
+     if (snapshot.exists() == true ){
+     let data = snapshot.val();
+     let items = Object.values(data);
+      return items.length;
+     }
+   });
+
+   return 'this';
+ }
 
  deleteEvent = (eventKey) => {
    itemsRef.on('value', snapshot => {
@@ -82,18 +102,13 @@ count = (eventName) =>  {
                <View style={{flex:1}}>
                    <TouchableOpacity
                        style={styles.btn}
-                       onPress={() => {this.props.navigation.navigate('RSVP', {
+                       onPress={() => {this.props.navigation.navigate('EditEvent', {
                           eventName: item.name,
-                          full_Name: this.props.navigation.state.params.full_Name,
-                          email: this.props.navigation.state.params.email,
-                          first_Name: this.props.navigation.state.params.first_Name,
-                          last_Name: this.props.navigation.state.params.last_Name,
-                          currentUserUid: this.props.navigation.state.params.currentUserUid,
-                          attendantNum: this.props.navigation.state.params.attendantNum,
+                          
                        });
                        }}
                    >
-                       <Text style = {styles.itemtext}> RSVP </Text>
+                       <Text style = {styles.itemtext}> Edit </Text>
                    </TouchableOpacity>
                </View>
              </View>

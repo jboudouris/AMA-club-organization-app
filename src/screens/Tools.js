@@ -152,6 +152,26 @@ deleteAccount() {
                                             <Text style={styles.btntxt}>Edit Users</Text>
                                         </TouchableOpacity>
                                     </View>
+
+                                    <View style = {styles.buttonView}>
+                                        <TouchableOpacity
+                                            style = {styles.btn}
+                                            onPress={() => {this.props.navigation.navigate('ListAllEvent', {
+                                                email: this.state.email,
+                                                first_Name: this.state.first_Name,
+                                                last_Name: this.state.last_Name,
+                                                role: this.state.role,
+                                                currentUserUid: this.state.currentUserUid,
+                                                full_Name: this.state.full_Name,
+                                                attendantNum: this.state.attendantNum,
+                                                phone_Number: this.state.phone_Number,
+                                                quote: this.state.quote,
+                                            });
+                                            }}
+                                        >
+                                            <Text style={styles.btntxt}>Edit Event</Text>
+                                        </TouchableOpacity>
+                                    </View>
                         </ScrollView>
                     </View>
                 </ImageBackground>
