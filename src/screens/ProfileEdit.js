@@ -9,6 +9,13 @@ import firebase from 'firebase';
 let itemsRef = db.ref('/user');
 let valuekey = '';
 
+import RNFetchBlob from 'react-native-fetch-blob'
+
+const Blob = RNFetchBlob.polyfill.Blob;
+const fs = RNFetchBlob.fs;
+window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
+window.Blob = Blob;
+
 const options = {
   title: 'Select Avatar',
   storageOptions: {
@@ -43,6 +50,35 @@ let addUser = (alt_Email, first_Name, last_Name, full_Name, phone_Number, quote,
 
 
 };
+
+let uploadImage = (uri, mime = 'images/', name) => {
+
+  return new Promise((resolve, reject) => {
+    let imgUri = uri; let uploadBlob = null;
+    const uploadUri = Platform.OS === 'ios' ? imgUri.replace('file://', '') : imgUri;
+    const { currentUser } = firebase.auth();
+    const imageRef = firebase.storage().ref('images').child(currentUser);
+
+    fs.readFile(uploadUri, 'base64')
+      .then(data => {
+        return Blob.build(data, { type: `${mime};BASE64` });
+      })
+      .then(blob => {
+        uploadBlob = blob;
+        return imageRef.put(blob, { contentType: mime, name: name });
+      })
+      .then(() => {
+        uploadBlob.close()
+        return imageRef.getDownloadURL();
+      })
+      .then(url => {
+        resolve(url);
+      })
+      .catch(error => {
+        reject(error)
+      })
+    })
+  };
 
 export async function request_location_runtime_permission() {
 
@@ -189,41 +225,24 @@ PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
     });
   }
   _handleButtonPress = () => {
-  /*   CameraRoll.getPhotos({
-         first: 20,
-         assetType: 'Photos',
-       })
-       .then(r => {
-
-         this.setState({ photos: r.edges });
-       })
-       .catch((err) => {
-         alert("ERROR__ " + err);
-          //Error Loading Images
-       });*/
-
        ImagePicker.showImagePicker(options, (response) => {
-  console.log('Response = ', response);
+         console.log('Response = ', response);
 
-  if (response.didCancel) {
-    alert('User cancelled image picker');
-  } else if (response.error) {
-    alert('ImagePicker Error: '+ response.error);
-  } else if (response.customButton) {
-    alert('User tapped custom button: '+ response.customButton);
-  } else {
-    const source = { uri: response.uri };
+         if (response.didCancel) {
+           alert('User cancelled image picker');
+         } else if (response.error) {
+           alert('ImagePicker Error: '+ response.error);
+         } else if (response.customButton) {
+           alert('User tapped custom button: '+ response.customButton);
+         } else {
+           const source = { uri: response.uri };
 
-    // You can also display the image using data:
-    // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+           this.setState({
+             avatarSource: source,
+           });
 
-    this.setState({
-      avatarSource: source,
-    });
-  //  alert('avatarSource: ' + this.state.avatarSource.uri);
-
-  }
-});
+         }
+      });
   };
 
  handleSubmit = () => {
@@ -248,6 +267,7 @@ PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
         phone_Number: this.state.phone_Number,
         quote: this.state.quote,
     });
+    uploadImage(this.state.avatarSource, 'hello');
  };
 
 
