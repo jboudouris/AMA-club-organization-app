@@ -104,6 +104,14 @@ export default class AddItem extends Component {
     }
   }
 
+  checkUser = ({item}) => {
+    if (item.to == this.props.navigation.state.params.otherfull_Name) {
+      return item.from;
+    }
+    else {
+      return item.to;
+    }
+  }
   renderRow = ({item}) => {
     return(
       <View>
@@ -120,7 +128,7 @@ export default class AddItem extends Component {
             }}
           >
             <View>
-              <Text style={styles.itemtext1}>{item.to}</Text>
+              <Text style={styles.itemtext1}> {this.checkUser({item})}</Text>
               <Text style={styles.itemtext2}>{item.message}</Text>
             </View>
           </TouchableOpacity>

@@ -149,7 +149,7 @@ GoTo_bottom_function =()=>{
               />
               </ImageBackground>
                 <View style={styles.textbar}>
-                    <TextInput style={styles.txtInput} onChangeText={description => this.setState({ textMessage })} />
+                    <TextInput style={styles.txtInput} onChangeText={textMessage => this.setState({ textMessage })} />
                     <TouchableOpacity
                       style={styles.btn}
                       underlayColor="white"
