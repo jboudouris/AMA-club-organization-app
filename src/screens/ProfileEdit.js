@@ -292,6 +292,18 @@ render() {
             >
             <View>
               <Text style={styles.field2}>Enter information below to update your profile, or cancel.</Text>
+              <View style = {styles.buttonView2}>
+                  <TouchableOpacity style = {styles.btn2} onPress={this._handleButtonPress}>
+                              <Text style={styles.btntxt}>Upload Profile Pic</Text>
+                  </TouchableOpacity>
+              </View>
+              <Image
+                style={{
+                  width: 150,
+                  height: 150,
+                }}
+                source={this.state.avatarSource}
+                />
               <Text style={styles.field1}>First Name: </Text>
               <TextInput
                   style={styles.textInput}
@@ -353,18 +365,6 @@ render() {
                     <Picker.Item label="Paid" value= "Paid" />
                     <Picker.Item label="Unpaid" value= "Unpaid" />
                 </Picker>
-                <View style = {styles.buttonView2}>
-                    <TouchableOpacity style = {styles.btn2} onPress={this._handleButtonPress}>
-                                <Text style={styles.btntxt}>Choose Picture</Text>
-                    </TouchableOpacity>
-                </View>
-                <Image
-           style={{
-             width: 300,
-             height: 300,
-           }}
-           source={this.state.avatarSource}
-         />
 
                 <View style = {styles.buttonView}>
                     <TouchableOpacity style = {styles.btn2} onPress={() => this.props.navigation.navigate('Tools')}>
