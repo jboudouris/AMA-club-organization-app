@@ -78,6 +78,13 @@ export default class Login extends React.Component {
                                 <Text style={styles.btntxt}>Forgot Password</Text>
                     </TouchableOpacity>
                 </View>
+
+            <Text style = {{alignSelf: 'center', fontSize: 20, paddingTop: 20, color: 'white'}}>About Us</Text>
+            <View style = {styles.aboutText}>
+              <Text style = {{fontSize: 16, color: 'white'}}>UW-Madison Collegiate Chapter of the American Marketing Association </Text>
+              <Text style = {{fontSize: 16, color: 'white'}}>The AMA is a professional association for students interested in leading the practice, teaching and development of marketing knowledge worldwide.</Text>
+              <Text style = {{fontSize: 16, color: 'white'}}>Our principle role is to serve as a fourum to connect like-minded individuals and foster knowledge sharing, provide resources, tools and training and support marketing practice and thought leadership around the globe.</Text>
+            </View>
             </View>
         </ImageBackground>
       </View>
@@ -89,6 +96,13 @@ const styles = StyleSheet.create({
     backgroundImage: {
         flex: 1,
         alignSelf: 'stretch',
+    },
+    aboutText: {
+      alignSelf: 'center',
+      width: '90%',
+      borderWidth: 2,
+      borderColor: 'white',
+      marginTop: 10,
     },
     btn1: {
         backgroundColor: 'rgba(45,78,134,0.7)',
