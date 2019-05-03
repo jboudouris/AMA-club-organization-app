@@ -1,3 +1,18 @@
+## How to Run
+Install Node.js https://nodejs.org/en/download/ (I suggest the LTS version)
+
+Install React-native https://facebook.github.io/react-native/docs/getting-started slightly different based on your operating system but it essentially boils down to the command ‘npm install react-native-cli’
+
+Clone the project
+
+Now if you have a mac you can run both the iOS and Android emulators, but if you have a PC you can only run the android emulator. Either way you will need to install one of them.
+
+To install the iOS emulator download xcode from the mac app store, this should be all you need
+
+To install the android emulator download android studio https://developer.android.com/studio/install and follow the instructions here to run the emulator https://developer.android.com/studio/run/emulator
+
+To run the project change into the directory you copied our branch to. Then run ‘npm install’ to install all the dependencies. If you want to run the iOS emulator (must be on mac with xcode installed) run ‘react-native run-ios’ (sometimes if you get the “No bundle found” error on the first run you need to close the emulator and js server and run this again, it’s a known small asynchronous issue and should work on the second try). If you want to run the android emulator first open the emulator from android studio  and then run ‘react-native run-android’.
+
 # AMA Organization App
 AMA Organization App
 Requirements and Specification Document
